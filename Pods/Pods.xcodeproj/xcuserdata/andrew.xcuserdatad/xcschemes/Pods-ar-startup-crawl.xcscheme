@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2B0132AEECDD6959D10C954D3028CE7A"
+               BlueprintIdentifier = "23E543557B16F34D39E4856738AF5ADF"
                BuildableName = "Pods_ar_startup_crawl.framework"
                BlueprintName = "Pods-ar-startup-crawl"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2B0132AEECDD6959D10C954D3028CE7A"
+            BlueprintIdentifier = "23E543557B16F34D39E4856738AF5ADF"
             BuildableName = "Pods_ar_startup_crawl.framework"
             BlueprintName = "Pods-ar-startup-crawl"
             ReferencedContainer = "container:Pods.xcodeproj">

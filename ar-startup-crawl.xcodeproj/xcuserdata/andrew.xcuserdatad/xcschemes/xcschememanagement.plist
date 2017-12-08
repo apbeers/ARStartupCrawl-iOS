@@ -7,7 +7,25 @@
 		<key>ar-startup-crawl.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>49419C301FBD94E000695889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49419C461FBD94E100695889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49419C511FBD94E100695889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

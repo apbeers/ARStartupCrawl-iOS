@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		49269B4D1FBD9DB000E9C208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49269B4C1FBD9DAF00E9C208 /* Main.storyboard */; };
 		49269B4F1FBD9DCA00E9C208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */; };
-		49269B5E1FBD9E3200E9C208 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49269B501FBD9E2A00E9C208 /* GoogleService-Info.plist */; };
 		49269B5F1FBD9E3200E9C208 /* Constants+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */; };
 		49269B621FBD9E3200E9C208 /* StartupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B541FBD9E2C00E9C208 /* StartupsTableViewController.swift */; };
 		49269B631FBD9E3200E9C208 /* StartupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B551FBD9E2C00E9C208 /* StartupTableViewCell.swift */; };
@@ -29,6 +28,7 @@
 		49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49419C3D1FBD94E000695889 /* Assets.xcassets */; };
 		49419C4C1FBD94E100695889 /* ar_startup_crawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C4B1FBD94E100695889 /* ar_startup_crawlTests.swift */; };
 		49419C571FBD94E100695889 /* ar_startup_crawlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */; };
+		49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
 		FE5384F2275FF22630E62395 /* Pods_ar_startup_crawlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */; };
@@ -54,9 +54,9 @@
 /* Begin PBXFileReference section */
 		19B0CF4A5BEFAB36FD860739 /* Pods-ar-startup-crawl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.debug.xcconfig"; sourceTree = "<group>"; };
 		466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawlTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ar-startup-crawl.entitlements"; sourceTree = "<group>"; };
 		49269B4C1FBD9DAF00E9C208 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		49269B501FBD9E2A00E9C208 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constants+Analytics.swift"; sourceTree = "<group>"; };
 		49269B541FBD9E2C00E9C208 /* StartupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupsTableViewController.swift; sourceTree = "<group>"; };
 		49269B551FBD9E2C00E9C208 /* StartupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupTableViewCell.swift; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 		49419C521FBD94E100695889 /* ar-startup-crawlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ar-startup-crawlUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ar_startup_crawlUITests.swift; sourceTree = "<group>"; };
 		49419C581FBD94E100695889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
 		A2DD81CAC4072E873EB0AB52 /* Pods-ar-startup-crawlUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,14 +157,15 @@
 		49419C331FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXGroup;
 			children = (
+				49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */,
 				49269B6C1FBD9E6300E9C208 /* Images */,
 				49419C341FBD94E000695889 /* AppDelegate.swift */,
 				49269B5A1FBD9E2F00E9C208 /* Constants.swift */,
 				49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */,
 				49269B581FBD9E2E00E9C208 /* Extensions.swift */,
-				49269B501FBD9E2A00E9C208 /* GoogleService-Info.plist */,
 				49269B5D1FBD9E3100E9C208 /* MapViewController.swift */,
 				49269B541FBD9E2C00E9C208 /* StartupsTableViewController.swift */,
+				49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */,
 				49269B551FBD9E2C00E9C208 /* StartupTableViewCell.swift */,
 				49269B571FBD9E2D00E9C208 /* style.json */,
 				49269B5B1FBD9E3000E9C208 /* TabBarController.swift */,
@@ -297,6 +299,14 @@
 					49419C301FBD94E000695889 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					49419C461FBD94E100695889 = {
 						CreatedOnToolsVersion = 9.1;
@@ -339,7 +349,7 @@
 				49269B4F1FBD9DCA00E9C208 /* LaunchScreen.storyboard in Resources */,
 				49269B741FBD9E6400E9C208 /* sjc_logo.png in Resources */,
 				49269B721FBD9E6400E9C208 /* exchange_logo.png in Resources */,
-				49269B5E1FBD9E3200E9C208 /* GoogleService-Info.plist in Resources */,
+				49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */,
 				49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */,
 				49269B651FBD9E3200E9C208 /* style.json in Resources */,
 				49269B4D1FBD9DB000E9C208 /* Main.storyboard in Resources */,
@@ -456,12 +466,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -683,6 +695,7 @@
 			baseConfigurationReference = 19B0CF4A5BEFAB36FD860739 /* Pods-ar-startup-crawl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "ar-startup-crawl/ar-startup-crawl.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
 				INFOPLIST_FILE = "ar-startup-crawl/Info.plist";
@@ -700,6 +713,7 @@
 			baseConfigurationReference = 59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "ar-startup-crawl/ar-startup-crawl.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
 				INFOPLIST_FILE = "ar-startup-crawl/Info.plist";

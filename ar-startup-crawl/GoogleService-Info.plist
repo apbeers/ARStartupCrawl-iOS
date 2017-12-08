@@ -7,9 +7,11 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>920757057234-9t15q6us80vf0be499vgt297sqkqu9lj.apps.googleusercontent.com</string>
+	<string>920757057234-g1sb70hicm26kvsm6vjv0fo7lnjhcb9g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.920757057234-9t15q6us80vf0be499vgt297sqkqu9lj</string>
+	<string>com.googleusercontent.apps.920757057234-g1sb70hicm26kvsm6vjv0fo7lnjhcb9g</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>920757057234-ab4l29l7dt357ciorcau1mhcq2n1kmgu.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAdByMJk49ldOBvW1fRJP4F7pz7cZcw9-E</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +19,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>arcu.AR-Startup-Crawl</string>
+	<string>com.arcu.ar-startup-crawl</string>
 	<key>PROJECT_ID</key>
 	<string>ar-startup-crawl</string>
 	<key>STORAGE_BUCKET</key>
@@ -27,13 +29,13 @@
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:920757057234:ios:4e2584795465e0d8</string>
+	<string>1:920757057234:ios:488c9349c801386a</string>
 	<key>DATABASE_URL</key>
 	<string>https://ar-startup-crawl.firebaseio.com</string>
 </dict>

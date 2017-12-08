@@ -9,6 +9,7 @@ target 'ar-startup-crawl' do
   pod 'GoogleMaps'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
 
   target 'ar-startup-crawlTests' do
     inherit! :search_paths
