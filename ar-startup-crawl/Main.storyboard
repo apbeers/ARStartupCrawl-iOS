@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <!--Map-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="MapViewController" customModule="AR_Startup_Crawl" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="MapViewController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,16 +26,16 @@
             </objects>
             <point key="canvasLocation" x="793" y="-890"/>
         </scene>
-        <!--Updates-->
+        <!--Announcements-->
         <scene sceneID="TT3-A9-kYe">
             <objects>
-                <tableViewController id="kBK-jy-1qU" customClass="UpdatesTableViewController" customModule="AR_Startup_Crawl" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="kBK-jy-1qU" customClass="UpdatesTableViewController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MQD-Jw-Cu2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="updateCellReuseIdentifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="updateCellReuseIdentifier" rowHeight="200" id="W4t-zz-LYQ" customClass="UpdateTableViewCell" customModule="AR_Startup_Crawl" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="updateCellReuseIdentifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="updateCellReuseIdentifier" rowHeight="200" id="W4t-zz-LYQ" customClass="UpdateTableViewCell" customModule="ar_startup_crawl" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W4t-zz-LYQ" id="nUz-Rz-Sgb">
@@ -96,7 +96,7 @@
                             <outlet property="delegate" destination="kBK-jy-1qU" id="8C7-Qw-owJ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Updates" image="ic_update" id="OLU-qS-DVY"/>
+                    <tabBarItem key="tabBarItem" title="Announcements" image="ic_announcement" id="OLU-qS-DVY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHU-vd-CIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,13 +105,13 @@
         <!--Startups-->
         <scene sceneID="LmV-Rt-hzG">
             <objects>
-                <tableViewController id="oZe-F8-Obf" customClass="StartupsTableViewController" customModule="AR_Startup_Crawl" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oZe-F8-Obf" customClass="StartupsTableViewController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LvB-Nx-85E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="startupsCellReuseIdentifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="startupsCellReuseIdentifier" rowHeight="200" id="rrX-uY-Flx" customClass="StartupTableViewCell" customModule="AR_Startup_Crawl" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="startupsCellReuseIdentifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="startupsCellReuseIdentifier" rowHeight="200" id="rrX-uY-Flx" customClass="StartupTableViewCell" customModule="ar_startup_crawl" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rrX-uY-Flx" id="b1t-1o-Epr">
@@ -166,7 +166,7 @@
         <!--Web View View Controller-->
         <scene sceneID="xNc-ru-yva">
             <objects>
-                <viewController id="4aF-mL-c46" customClass="WebViewViewController" customModule="AR_Startup_Crawl" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4aF-mL-c46" customClass="WebViewViewController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qoc-d6-buc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +198,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="AR_Startup_Crawl" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -216,8 +216,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_announcement" width="24" height="24"/>
         <image name="ic_map" width="24" height="24"/>
         <image name="ic_store" width="24" height="24"/>
-        <image name="ic_update" width="24" height="24"/>
     </resources>
 </document>

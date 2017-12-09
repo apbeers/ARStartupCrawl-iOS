@@ -29,6 +29,7 @@
 		49419C4C1FBD94E100695889 /* ar_startup_crawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C4B1FBD94E100695889 /* ar_startup_crawlTests.swift */; };
 		49419C571FBD94E100695889 /* ar_startup_crawlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */; };
 		49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */; };
+		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
 		FE5384F2275FF22630E62395 /* Pods_ar_startup_crawlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */; };
@@ -83,6 +84,7 @@
 		49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ar_startup_crawlUITests.swift; sourceTree = "<group>"; };
 		49419C581FBD94E100695889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
 		A2DD81CAC4072E873EB0AB52 /* Pods-ar-startup-crawlUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 		49419C331FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXGroup;
 			children = (
+				49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */,
 				49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */,
 				49269B6C1FBD9E6300E9C208 /* Images */,
 				49419C341FBD94E000695889 /* AppDelegate.swift */,
@@ -548,6 +551,7 @@
 				49269B641FBD9E3200E9C208 /* UpdatesTableViewController.swift in Sources */,
 				49269B6B1FBD9E3200E9C208 /* MapViewController.swift in Sources */,
 				49269B681FBD9E3200E9C208 /* Constants.swift in Sources */,
+				49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +840,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */,
+			);
+			currentVersion = 49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 49419C291FBD94E000695889 /* Project object */;
 }

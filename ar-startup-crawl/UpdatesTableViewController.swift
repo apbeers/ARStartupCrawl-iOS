@@ -7,51 +7,26 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import CoreData
 
 class UpdatesTableViewController: UITableViewController {
 
-    var ref: DatabaseReference!
     var updates: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main) { _ in
+            
+            self.refreshData()
+        }
+        self.refreshData()
         tableView.separatorStyle = .none
         tableView.rowHeight = 200
         
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Event Updates"
-        
-        ref = Database.database().reference()
-        
-        ref.child("updates").observe(.value, with: { (snapshot) in
-            self.updates.removeAll()
-            // Get user value
-            guard let values = snapshot.value as? NSDictionary else {
-                return
-            }
-            
-            let enumerator = values.objectEnumerator()
-            while let startup = enumerator.nextObject() as? NSDictionary {
-                
-                guard let title: String = startup["title"] as? String, let description: String = startup["description"] as? String, let datetime: String = startup["datetime"] as? String else {
-                    return
-                }
-                
-               self.updates.append([title, description, datetime])
-            }
-            
-            self.tableView.reloadData()
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+   
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +34,39 @@ class UpdatesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func refreshData() {
+        
+        self.updates.removeAll()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                
+                if let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? Date {
+                    
+                    let dateString: String = date.toString(dateFormat: "dd-MM")
+                    self.updates.append([title, body, dateString])
+                    
+                }
+            }
+        } catch {
+            
+            print("Failed")
+        }
+        
+        self.updates.reverse()
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,4 +139,15 @@ class UpdatesTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }
