@@ -40,18 +40,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         }
         
         mapView.settings.myLocationButton = true
- 
-        do {
-            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
-              //  mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-        
-        
+
         let screenSize = UIScreen.main.bounds
         let width = screenSize.width
         let height = screenSize.height
@@ -81,7 +70,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         
         let mapRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
-        //request.predicate = NSPredicate(format: "age = %@", "12")
         mapRequest.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(mapRequest)
