@@ -45,8 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         
+        let context = self.persistentContainer.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "Startups", in: context) else {
+            return true
+        }
+        
         ref.child("startups").observe(.value, with: { (snapshot) in
-            // Get user value
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
             guard let values = snapshot.value as? NSDictionary else {
                 return
             }
@@ -64,12 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     let title: String = startup["title"] as? String,
                     let id: Int = startup["id"] as? Int
                 else {
-                    return
-                }
-                
-                let context = self.persistentContainer.viewContext
-                
-                guard let entity = NSEntityDescription.entity(forEntityName: "Startups", in: context) else {
                     return
                 }
                 
