@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import CoreData
 
 class StartupsTableViewController: UITableViewController, UITabBarControllerDelegate {
 
@@ -24,44 +25,58 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Startups"
     
-        ref = Database.database().reference()
-        
-        ref.child("startups").observe(.value, with: { (snapshot) in
-            self.startups.removeAll()
-            self.startupsImages.removeAll()
-            // Get user value
-            guard let values = snapshot.value as? NSDictionary else {
-                return
-            }
+        NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main) { _ in
             
-            let enumerator = values.objectEnumerator()
-            while let startup = enumerator.nextObject() as? NSDictionary {
+            self.refreshData()
+        }
+        self.refreshData()
+    }
+    
+    func refreshData() {
+        
+        self.startups.removeAll()
+        self.startupsImages.removeAll()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
+
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
                 
-                guard let title: String = startup["title"] as? String, let description: String = startup["description"] as? String, let url: String = startup["url"] as? String else {
-                    return
+                guard let title: String = data.value(forKey: "title") as? String,
+                    let desc: String = data.value(forKey: "desc") as? String,
+                    let logoBase64: String = data.value(forKey: "logoBase64") as? String,
+                    let url: String = data.value(forKey: "url") as? String
+                    else {
+                        return
                 }
                 
-                guard let encodedImageData: String = startup["logoBase64"] as? String else {
-                    return
-                }
-                
-                guard let imageData = Data(base64Encoded: encodedImageData, options: Data.Base64DecodingOptions.ignoreUnknownCharacters) else {
+                guard let imageData = Data(base64Encoded: logoBase64, options: Data.Base64DecodingOptions.ignoreUnknownCharacters) else {
                     return
                 }
                 
                 guard let image = UIImage(data: imageData) else {
                     return
                 }
- 
-                self.startups.append([title, description, url])
+                
+                self.startups.append([title, desc, url])
                 self.startupsImages.append(image)
- 
             }
+            
+            self.startups.reverse()
+            self.startupsImages.reverse()
             
             self.tableView.reloadData()
             
-        }) { (error) in
-            print(error.localizedDescription)
+        } catch {
+            print("Failed")
         }
     }
 

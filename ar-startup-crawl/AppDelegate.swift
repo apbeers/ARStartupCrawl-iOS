@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         
-        ref.child("startups").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("startups").observe(.value, with: { (snapshot) in
             // Get user value
             guard let values = snapshot.value as? NSDictionary else {
                 return
