@@ -25,7 +25,7 @@ class UpdatesTableViewController: UITableViewController {
         tableView.rowHeight = 200
         
         let navBar = navigationController?.navigationBar
-        navBar?.topItem?.title = "Event Updates"
+        navBar?.topItem?.title = "Announcements"
    
     }
 
@@ -53,9 +53,8 @@ class UpdatesTableViewController: UITableViewController {
                 
                 if let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? Date {
                     
-                    let dateString: String = date.toString(dateFormat: "dd-MM")
+                    let dateString: String = date.toString(dateFormat: "dd-MM hh:mm")
                     self.updates.append([title, body, dateString])
-                    
                 }
             }
         } catch {
