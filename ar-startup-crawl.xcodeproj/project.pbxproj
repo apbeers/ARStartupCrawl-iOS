@@ -705,6 +705,7 @@
 				INFOPLIST_FILE = "ar-startup-crawl/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LLVM_LTO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arcu.ar-startup-crawl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -720,9 +721,11 @@
 				CODE_SIGN_ENTITLEMENTS = "ar-startup-crawl/ar-startup-crawl.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				INFOPLIST_FILE = "ar-startup-crawl/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LLVM_LTO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arcu.ar-startup-crawl";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

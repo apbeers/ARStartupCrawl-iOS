@@ -16,6 +16,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
+    var ref: DatabaseReference!
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GMSServices.provideAPIKey("AIzaSyDPJJiHZXPz1OW2ihD_WEIkOaF63a6s3IE")
         UIApplication.shared.registerForRemoteNotifications()
         FirebaseApp.configure()
+        
+        ref = Database.database().reference()
         
         Messaging.messaging().delegate = self
         Messaging.messaging().shouldEstablishDirectChannel = true
@@ -42,7 +45,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         
-        
+        ref.child("startups").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            guard let values = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            let enumerator = values.objectEnumerator()
+            while let startup = enumerator.nextObject() as? NSDictionary {
+                
+                guard let latitude: Double = startup["latitude"] as? Double,
+                    let longitude: Double = startup["longitude"] as? Double,
+                    let desc: String = startup["description"] as? String,
+                    let logo: String = startup["logo"] as? String,
+                    let logoBase64: String = startup["logoBase64"] as? String,
+                    let snippet: String = startup["snippet"] as? String,
+                    let url: String = startup["url"] as? String,
+                    let title: String = startup["title"] as? String,
+                    let id: Int = startup["id"] as? Int
+                else {
+                    return
+                }
+                
+                let context = self.persistentContainer.viewContext
+                
+                guard let entity = NSEntityDescription.entity(forEntityName: "Startups", in: context) else {
+                    return
+                }
+                
+                let newStartup = NSManagedObject(entity: entity, insertInto: context)
+                
+                newStartup.setValue(latitude, forKey: "latitude")
+                newStartup.setValue(longitude, forKey: "longitude")
+                newStartup.setValue(desc, forKey: "desc")
+                newStartup.setValue(logo, forKey: "logo")
+                newStartup.setValue(logoBase64, forKey: "logoBase64")
+                newStartup.setValue(snippet, forKey: "snippet")
+                newStartup.setValue(url, forKey: "url")
+                newStartup.setValue(title, forKey: "title")
+                newStartup.setValue(id, forKey: "id")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         return true
     }
@@ -190,6 +241,7 @@ extension AppDelegate : MessagingDelegate {
             print("Failed saving")
         }
         
+        /*
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
         //request.predicate = NSPredicate(format: "age = %@", "12")
         request.returnsObjectsAsFaults = false
@@ -205,6 +257,8 @@ extension AppDelegate : MessagingDelegate {
             
             print("Failed")
         }
+ 
+         */
     }
     // [END ios_10_data_message]
     
