@@ -47,14 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let context = self.persistentContainer.viewContext
         
-        guard let entity = NSEntityDescription.entity(forEntityName: "Startups", in: context) else {
+        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.StartupsEntityName, in: context) else {
             return true
         }
         
         ref.child("startups").observe(.value, with: { (snapshot) in
             
             // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.StartupsEntityName)
             
             // Create Batch Delete Request
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -176,7 +176,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "Model")
+        let container = NSPersistentContainer(name: Constants.CoreData.ModelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -229,7 +229,7 @@ extension AppDelegate : MessagingDelegate {
         
         let context = self.persistentContainer.viewContext
         
-        guard let entity = NSEntityDescription.entity(forEntityName: "Announcements", in: context) else {
+        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
             return
         }
         
@@ -252,25 +252,6 @@ extension AppDelegate : MessagingDelegate {
         } catch {
             print("Failed saving")
         }
-        
-        /*
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
-        //request.predicate = NSPredicate(format: "age = %@", "12")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "title") as? String ?? "nil")
-                print(data.value(forKey: "body") as? String ?? "nil")
-                print(data.value(forKey: "date") as? Date ?? "nil")
-            }
-            
-        } catch {
-            
-            print("Failed")
-        }
- 
-         */
     }
     // [END ios_10_data_message]
     

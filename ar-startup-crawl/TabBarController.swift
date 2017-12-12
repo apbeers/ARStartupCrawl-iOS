@@ -31,9 +31,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: item.title! as NSObject,
+            AnalyticsParameterItemID: item.title as? NSObject ?? "Invalid Tab Title",
             AnalyticsParameterContentType: Constants.Analytics.TabSelected as NSObject
-            ])
+        ])
     }
     
     override func didReceiveMemoryWarning() {

@@ -168,6 +168,11 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
             return
         }
         
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: startups[selectedRow][0] as NSObject,
+            AnalyticsParameterContentType: Constants.Analytics.StartupSelected as NSObject
+            ])
+        
         destination?.address = startups[selectedRow][2]
     }
 

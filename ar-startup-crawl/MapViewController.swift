@@ -128,6 +128,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: marker.position, addressDictionary:nil))
         
         mapItem.name = marker.title
+        
+        
+        
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: marker.title as NSObject? ?? "Invalid Title",
+            AnalyticsParameterContentType: Constants.Analytics.DirectionsRequested as NSObject
+            ])
+        
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
     }
     

@@ -10,4 +10,10 @@ import Foundation
 
 struct Constants {
     
+    struct CoreData {
+        
+        static let ModelName = "Model"
+        static let StartupsEntityName = "Startups"
+        static let AnnouncementsEntityName = "Announcements"
+    }
 }
