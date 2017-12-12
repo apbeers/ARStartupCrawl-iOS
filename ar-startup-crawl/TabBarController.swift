@@ -24,14 +24,18 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             UIApplication.shared.statusBarStyle = .lightContent
         case "Startups":
             UIApplication.shared.statusBarStyle = .default
-        case "Updates":
+        case "Announcements":
             UIApplication.shared.statusBarStyle = .default
         default:
             break
         }
         
+        guard let title: String = item.title else {
+            return
+        }
+        
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: item.title as? NSObject ?? "Invalid Tab Title",
+            AnalyticsParameterItemID: title as NSObject,
             AnalyticsParameterContentType: Constants.Analytics.TabSelected as NSObject
         ])
     }
