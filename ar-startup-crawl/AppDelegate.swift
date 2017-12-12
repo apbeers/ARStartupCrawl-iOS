@@ -10,11 +10,13 @@ import GoogleMaps
 import Firebase
 import UserNotifications
 import FirebaseMessaging
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
+    var ref: DatabaseReference!
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -24,7 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.registerForRemoteNotifications()
         FirebaseApp.configure()
         
+        ref = Database.database().reference()
+        
         Messaging.messaging().delegate = self
+        Messaging.messaging().shouldEstablishDirectChannel = true
         
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
@@ -40,7 +45,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         
+        let context = self.persistentContainer.viewContext
         
+        guard let entity = NSEntityDescription.entity(forEntityName: "Startups", in: context) else {
+            return true
+        }
+        
+        ref.child("startups").observe(.value, with: { (snapshot) in
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
+            guard let values = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            let enumerator = values.objectEnumerator()
+            while let startup = enumerator.nextObject() as? NSDictionary {
+                
+                guard let latitude: Double = startup["latitude"] as? Double,
+                    let longitude: Double = startup["longitude"] as? Double,
+                    let desc: String = startup["description"] as? String,
+                    let logo: String = startup["logo"] as? String,
+                    let logoBase64: String = startup["logoBase64"] as? String,
+                    let snippet: String = startup["snippet"] as? String,
+                    let url: String = startup["url"] as? String,
+                    let title: String = startup["title"] as? String,
+                    let id: Int = startup["id"] as? Int
+                else {
+                    return
+                }
+                
+                let newStartup = NSManagedObject(entity: entity, insertInto: context)
+                
+                newStartup.setValue(latitude, forKey: "latitude")
+                newStartup.setValue(longitude, forKey: "longitude")
+                newStartup.setValue(desc, forKey: "desc")
+                newStartup.setValue(logo, forKey: "logo")
+                newStartup.setValue(logoBase64, forKey: "logoBase64")
+                newStartup.setValue(snippet, forKey: "snippet")
+                newStartup.setValue(url, forKey: "url")
+                newStartup.setValue(title, forKey: "title")
+                newStartup.setValue(id, forKey: "id")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         return true
     }
@@ -103,6 +168,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        let container = NSPersistentContainer(name: "Model")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    // MARK: - Core Data Saving support
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 }
 
 extension AppDelegate : MessagingDelegate {
@@ -116,6 +224,54 @@ extension AppDelegate : MessagingDelegate {
     // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("Received data message: \(remoteMessage.appData)")
+        
+        //write notification data to coreData
+        
+        let context = self.persistentContainer.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "Announcements", in: context) else {
+            return
+        }
+        
+        let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+        
+        guard
+            let notification = remoteMessage.appData[AnyHashable("notification")] as? NSDictionary,
+            let body = notification["body"] as? String,
+            let title = notification["title"] as? String
+            else {
+                // handle any error here
+                return
+        }
+        newAnnouncement.setValue(title, forKey: "title")
+        newAnnouncement.setValue(body, forKey: "body")
+        newAnnouncement.setValue(Date(), forKey: "date")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+        
+        /*
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "title") as? String ?? "nil")
+                print(data.value(forKey: "body") as? String ?? "nil")
+                print(data.value(forKey: "date") as? Date ?? "nil")
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+ 
+         */
     }
     // [END ios_10_data_message]
+    
 }

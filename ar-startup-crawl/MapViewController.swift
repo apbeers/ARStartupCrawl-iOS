@@ -11,6 +11,7 @@ import GoogleMaps
 import MapKit
 import Firebase
 import FirebaseDatabase
+import CoreData
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
@@ -21,39 +22,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref = Database.database().reference()
-        
-        ref.child("startups").observeSingleEvent(of: .value, with: { (snapshot) in
-            self.mapView.clear()
-            // Get user value
-            guard let values = snapshot.value as? NSDictionary else {
-                return
-            }
-            
-            let enumerator = values.objectEnumerator()
-            while let startup = enumerator.nextObject() as? NSDictionary {
-                
-                guard let latitude: Double = startup["latitude"] as? Double, let longitude: Double = startup["longitude"] as? Double else {
-                    return
-                }
-                
-                let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                
-                guard let title: String = startup["title"] as? String, let snippet: String = startup["snippet"] as? String else {
-                    return
-                }
-             
-                let marker = GMSMarker(position: position)
-                marker.title = title
-                marker.snippet = snippet + "                                          Directrions▶"
-                marker.icon = #imageLiteral(resourceName: "Yellow-map-marker.png")
-                marker.map = self.mapView
-            }
-  
-        }) { (error) in
-            print(error.localizedDescription)
-        }
         
         let camera = GMSCameraPosition.camera(withLatitude: 36.063610, longitude: -94.162561, zoom: 15)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -91,9 +59,53 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         mapView.frame = CGRect(x: 0.0, y: view.safeAreaInsets.top , width: width, height: height - view.safeAreaInsets.top - view.safeAreaInsets.bottom)
 
         view = mapView
-    
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main) { _ in
+            
+            self.refreshData()
+        }
+        self.refreshData()
     }
 
+    func refreshData() {
+  
+        if mapView != nil {
+            mapView.clear()
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                
+                guard let snippet: String = data.value(forKey: "snippet") as? String,
+                    let title: String = data.value(forKey: "title") as? String,
+                    let latitude: Double = data.value(forKey: "latitude") as? Double,
+                    let longitude: Double = data.value(forKey: "longitude") as? Double
+                else {
+                        return
+                }
+                
+                let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                marker.title = title
+                marker.snippet = snippet + "                                          Directrions▶"
+                marker.icon = #imageLiteral(resourceName: "Yellow-map-marker.png")
+                marker.map = self.mapView
+            }
+            
+        } catch {
+            print("Failed")
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         if status == CLAuthorizationStatus.authorizedWhenInUse {
