@@ -1,0 +1,6 @@
+framework module Pods_ar_startup_crawl {
+  umbrella header "Pods-ar-startup-crawl-umbrella.h"
+
+  export *
+  module * { export * }
+}
