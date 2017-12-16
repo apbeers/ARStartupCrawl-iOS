@@ -22,7 +22,8 @@ class UpdatesTableViewController: UITableViewController {
         }
         self.refreshData()
         tableView.separatorStyle = .none
-        tableView.rowHeight = 200
+        tableview.estimatedRowHeight = 200
+        tableview.rowHeight = UITableViewAutomaticDimension
         
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Announcements"
@@ -86,7 +87,7 @@ class UpdatesTableViewController: UITableViewController {
         cell.DescriptionLabel.text = updates[indexPath.row][1]
         cell.DatetimeLabel.text = updates[indexPath.row][2]
         cell.selectionStyle = .none
-
+        
         return cell
     }
 }

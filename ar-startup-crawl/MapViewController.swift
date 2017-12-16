@@ -96,7 +96,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 let camera = GMSCameraPosition(target: location, zoom: zoom, bearing: CLLocationDirection(), viewingAngle: 0)
                 
-                mapView.animate(to: camera)
+               // mapView.animate(to: camera)
             }
             
         } catch {

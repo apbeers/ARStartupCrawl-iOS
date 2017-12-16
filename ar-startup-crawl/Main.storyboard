@@ -43,7 +43,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tl-vp-cyu" userLabel="RoundedCornerView">
-                                            <rect key="frame" x="9" y="4" width="356.5" height="190"/>
+                                            <rect key="frame" x="9" y="5" width="356.5" height="189.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMc-XB-YIQ" userLabel="TitleLabel">
                                                     <rect key="frame" x="139.5" y="15" width="78" height="39.5"/>
@@ -52,7 +52,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTl-F5-zoT" userLabel="DateTimeLabel">
-                                                    <rect key="frame" x="296" y="143" width="42" height="21"/>
+                                                    <rect key="frame" x="296" y="142.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
