@@ -24,14 +24,18 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             UIApplication.shared.statusBarStyle = .lightContent
         case "Startups":
             UIApplication.shared.statusBarStyle = .default
-        case "Updates":
+        case "Announcements":
             UIApplication.shared.statusBarStyle = .default
         default:
             break
         }
         
+        guard let title: String = item.title else {
+            return
+        }
+        
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: item.title as? NSObject ?? "Invalid Tab Title",
+            AnalyticsParameterItemID: title as NSObject,
             AnalyticsParameterContentType: Constants.Analytics.TabSelected as NSObject
         ])
     }
@@ -40,16 +44,4 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

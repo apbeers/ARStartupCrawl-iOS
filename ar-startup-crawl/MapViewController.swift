@@ -40,18 +40,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         }
         
         mapView.settings.myLocationButton = true
- 
-        do {
-            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
-                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
-        
-        
+
         let screenSize = UIScreen.main.bounds
         let width = screenSize.width
         let height = screenSize.height
@@ -79,11 +68,46 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         let context = appDelegate.persistentContainer.viewContext
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
-        //request.predicate = NSPredicate(format: "age = %@", "12")
-        request.returnsObjectsAsFaults = false
+        
+        let mapRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
+        mapRequest.returnsObjectsAsFaults = false
         do {
-            let result = try context.fetch(request)
+            let result = try context.fetch(mapRequest)
+            
+            for data in result as! [NSManagedObject] {
+                
+                guard let latitude: Double = data.value(forKey: "latitude") as? Double,
+                    let longitude: Double = data.value(forKey: "longitude") as? Double,
+                    let style: String = data.value(forKey: "style") as? String,
+                    let zoom: Float = data.value(forKey: "zoom") as? Float
+                    else {
+                        return
+                }
+                
+                var trimmedStyle = style
+                trimmedStyle = String(trimmedStyle.dropFirst(1))
+                trimmedStyle = String(trimmedStyle.dropLast(1))
+                do {
+                self.mapView.mapStyle = try GMSMapStyle(jsonString: String(trimmedStyle))
+                } catch {
+                    print("Could not parse style")
+                }
+                
+                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let camera = GMSCameraPosition(target: location, zoom: zoom, bearing: CLLocationDirection(), viewingAngle: 0)
+                
+               // mapView.animate(to: camera)
+            }
+            
+        } catch {
+            print("Failed")
+        }
+        
+        let startupsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.StartupsEntityName)
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        startupsRequest.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(startupsRequest)
             for data in result as! [NSManagedObject] {
                 
                 guard let snippet: String = data.value(forKey: "snippet") as? String,
@@ -129,8 +153,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         mapItem.name = marker.title
         
-        
-        
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
             AnalyticsParameterItemID: marker.title as NSObject? ?? "Invalid Title",
             AnalyticsParameterContentType: Constants.Analytics.DirectionsRequested as NSObject
@@ -143,7 +165,5 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

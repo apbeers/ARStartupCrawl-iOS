@@ -15,5 +15,6 @@ struct Constants {
         static let ModelName = "Model"
         static let StartupsEntityName = "Startups"
         static let AnnouncementsEntityName = "Announcements"
+        static let MapEntityName = "Map"
     }
 }
