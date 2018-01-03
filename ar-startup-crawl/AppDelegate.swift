@@ -47,7 +47,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let context = self.persistentContainer.viewContext
         
-        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.StartupsEntityName, in: context) else {
+        
+        
+        
+        
+        
+        
+        guard let mapEntity = NSEntityDescription.entity(forEntityName: Constants.CoreData.MapEntityName , in: context) else {
+            return true
+        }
+        
+        ref.child("map").observe(.value, with: { (snapshot) in
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
+            guard let values = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            let enumerator = values.objectEnumerator()
+            while let map = enumerator.nextObject() as? NSDictionary {
+                
+                
+                guard let latitude: Double = map["latitude"] as? Double,
+                    let longitude: Double = map["longitude"] as? Double,
+                    let zoom: Double = map["zoom"] as? Double,
+                    let style: String = map["style"] as? String
+                    else {
+                        return
+                }
+                
+                let newMap = NSManagedObject(entity: mapEntity, insertInto: context)
+                
+                newMap.setValue(latitude, forKey: "latitude")
+                newMap.setValue(longitude, forKey: "longitude")
+                newMap.setValue(zoom, forKey: "zoom")
+                newMap.setValue(style, forKey: "style")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+ 
+        
+        guard let startupsEntity = NSEntityDescription.entity(forEntityName: Constants.CoreData.StartupsEntityName, in: context) else {
             return true
         }
         
@@ -85,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     return
                 }
                 
-                let newStartup = NSManagedObject(entity: entity, insertInto: context)
+                let newStartup = NSManagedObject(entity: startupsEntity, insertInto: context)
                 
                 newStartup.setValue(latitude, forKey: "latitude")
                 newStartup.setValue(longitude, forKey: "longitude")
@@ -164,7 +227,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         // Print full message.
-        print(userInfo)
+      //  print(userInfo)
+        guard let aps = userInfo[AnyHashable("aps")] as? NSDictionary else {
+            return
+        }
+        guard let alert = aps["alert"] as? NSDictionary else {
+            return
+        }
+
+
+        let context = self.persistentContainer.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
+            return
+        }
+        
+        let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+        
+        guard
+            let body = alert["body"] as? String,
+            let title = alert["title"] as? String
+            else {
+                // handle any error here
+                return
+        }
+        newAnnouncement.setValue(title, forKey: "title")
+        newAnnouncement.setValue(body, forKey: "body")
+        newAnnouncement.setValue(Date(), forKey: "date")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+        
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -224,34 +320,6 @@ extension AppDelegate : MessagingDelegate {
     // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("Received data message: \(remoteMessage.appData)")
-        
-        //write notification data to coreData
-        
-        let context = self.persistentContainer.viewContext
-        
-        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
-            return
-        }
-        
-        let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
-        
-        guard
-            let notification = remoteMessage.appData[AnyHashable("notification")] as? NSDictionary,
-            let body = notification["body"] as? String,
-            let title = notification["title"] as? String
-            else {
-                // handle any error here
-                return
-        }
-        newAnnouncement.setValue(title, forKey: "title")
-        newAnnouncement.setValue(body, forKey: "body")
-        newAnnouncement.setValue(Date(), forKey: "date")
-        
-        do {
-            try context.save()
-        } catch {
-            print("Failed saving")
-        }
     }
     // [END ios_10_data_message]
     
