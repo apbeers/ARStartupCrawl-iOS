@@ -22,8 +22,7 @@ class UpdatesTableViewController: UITableViewController {
         }
         self.refreshData()
         tableView.separatorStyle = .none
-        tableview.estimatedRowHeight = 200
-        tableview.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 200
         
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Announcements"

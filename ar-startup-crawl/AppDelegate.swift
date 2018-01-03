@@ -227,7 +227,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         // Print full message.
-        print(userInfo)
+      //  print(userInfo)
+        guard let aps = userInfo[AnyHashable("aps")] as? NSDictionary else {
+            return
+        }
+        guard let alert = aps["alert"] as? NSDictionary else {
+            return
+        }
+
+
+        let context = self.persistentContainer.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
+            return
+        }
+        
+        let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+        
+        guard
+            let body = alert["body"] as? String,
+            let title = alert["title"] as? String
+            else {
+                // handle any error here
+                return
+        }
+        newAnnouncement.setValue(title, forKey: "title")
+        newAnnouncement.setValue(body, forKey: "body")
+        newAnnouncement.setValue(Date(), forKey: "date")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+        
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -287,34 +320,6 @@ extension AppDelegate : MessagingDelegate {
     // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print("Received data message: \(remoteMessage.appData)")
-        
-        //write notification data to coreData
-        
-        let context = self.persistentContainer.viewContext
-        
-        guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
-            return
-        }
-        
-        let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
-        
-        guard
-            let notification = remoteMessage.appData[AnyHashable("notification")] as? NSDictionary,
-            let body = notification["body"] as? String,
-            let title = notification["title"] as? String
-            else {
-                // handle any error here
-                return
-        }
-        newAnnouncement.setValue(title, forKey: "title")
-        newAnnouncement.setValue(body, forKey: "body")
-        newAnnouncement.setValue(Date(), forKey: "date")
-        
-        do {
-            try context.save()
-        } catch {
-            print("Failed saving")
-        }
     }
     // [END ios_10_data_message]
     
