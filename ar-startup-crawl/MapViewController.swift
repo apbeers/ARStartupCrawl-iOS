@@ -12,6 +12,8 @@ import MapKit
 import Firebase
 import FirebaseDatabase
 import CoreData
+import Alamofire
+import SwiftyJSON
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
@@ -22,6 +24,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        downloadStartups()
         
         ref = Database.database().reference()
         
@@ -78,66 +82,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 }
             }
             
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        guard let startupsEntity = NSEntityDescription.entity(forEntityName: Constants.CoreData.StartupsEntityName, in: context) else {
-            return
-        }
-        
-        ref.child("startups").observe(.value, with: { (snapshot) in
-            
-            // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.StartupsEntityName)
-            
-            // Create Batch Delete Request
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
-            do {
-                try context.execute(batchDeleteRequest)
-            } catch {
-                print("Failed")
-            }
-            
-            guard let values = snapshot.value as? NSDictionary else {
-                return
-            }
-            
-            let enumerator = values.objectEnumerator()
-            while let startup = enumerator.nextObject() as? NSDictionary {
-                
-                guard let latitude: Double = startup["latitude"] as? Double,
-                    let longitude: Double = startup["longitude"] as? Double,
-                    let desc: String = startup["description"] as? String,
-                    let logo: String = startup["logo"] as? String,
-                    let logoBase64: String = startup["logoBase64"] as? String,
-                    let snippet: String = startup["snippet"] as? String,
-                    let url: String = startup["url"] as? String,
-                    let title: String = startup["title"] as? String,
-                    let id: Int = startup["id"] as? Int
-                    else {
-                        return
-                }
-                
-                let newStartup = NSManagedObject(entity: startupsEntity, insertInto: context)
-                
-                newStartup.setValue(latitude, forKey: "latitude")
-                newStartup.setValue(longitude, forKey: "longitude")
-                newStartup.setValue(desc, forKey: "desc")
-                newStartup.setValue(logo, forKey: "logo")
-                newStartup.setValue(logoBase64, forKey: "logoBase64")
-                newStartup.setValue(snippet, forKey: "snippet")
-                newStartup.setValue(url, forKey: "url")
-                newStartup.setValue(title, forKey: "title")
-                newStartup.setValue(id, forKey: "id")
-                
-                do {
-                    try context.save()
-                } catch {
-                    print("Failed saving")
-                }
-            }
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -245,6 +189,70 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             
         } catch {
             print("Failed")
+        }
+    }
+    
+    func downloadStartups() {
+        
+        Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups", encoding: JSONEncoding.default).responseJSON { response in
+            //  print("Request: \(String(describing: response.request))")   // original url request
+            //  print("Response: \(String(describing: response.response))") // http url response
+            //  print("Result: \(response.result)")                         // response serialization result
+            
+  
+            guard let responseData = response.data else {
+                return
+            }
+            
+            let json = JSON(data: responseData)
+            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            let context = appDelegate.persistentContainer.viewContext
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.StartupsEntityName)
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
+            guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.StartupsEntityName, in: context) else {
+                return
+            }
+            
+            for (_, item) in json {
+                
+                let newStartup = NSManagedObject(entity: entity, insertInto: context)
+                
+                guard let latitude: Double = Double(item["latitude"].description),
+                    let longitude: Double = Double(item["longitude"].description) else {
+                        return
+                }
+                
+                newStartup.setValue(latitude, forKey: "latitude")
+                newStartup.setValue(longitude, forKey: "longitude")
+                newStartup.setValue(item["description"].description, forKey: "desc")
+                newStartup.setValue(item["logobase64"].description, forKey: "logoBase64")
+                newStartup.setValue(item["snippet"].description, forKey: "snippet")
+                newStartup.setValue(item["url"].description, forKey: "url")
+                newStartup.setValue(item["title"].description, forKey: "title")
+                newStartup.setValue(item["startup_id"].description, forKey: "id")
+
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+ 
         }
     }
     

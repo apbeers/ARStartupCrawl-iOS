@@ -48,20 +48,16 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func downloadAnnouncements() {
         
-        Alamofire.request("https://ar-startup-crawl.herokuapp.com/notifications/guest").responseString { responseString in
+        Alamofire.request("https://ar-startup-crawl.herokuapp.com/notifications/guest", encoding: JSONEncoding.default).responseJSON { response in
           //  print("Request: \(String(describing: response.request))")   // original url request
           //  print("Response: \(String(describing: response.response))") // http url response
           //  print("Result: \(response.result)")                         // response serialization result
             
-            guard let data: String = responseString.value else {
+            guard let responseData = response.data else {
                 return
             }
             
-            guard let json: JSON = JSON(parseJSON: data) else {
-                return
-            }
-            
-            print("JSON: \(json)") // serialized json response
+            let json = JSON(data: responseData)
             
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
