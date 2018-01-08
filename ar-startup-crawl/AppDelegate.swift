@@ -228,6 +228,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Print full message.
       //  print(userInfo)
+        
+        /*
         guard let aps = userInfo[AnyHashable("aps")] as? NSDictionary else {
             return
         }
@@ -261,8 +263,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("Failed saving")
         }
         
-        
+            */
         completionHandler(UIBackgroundFetchResult.newData)
+ 
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
