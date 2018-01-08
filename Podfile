@@ -10,6 +10,8 @@ target 'ar-startup-crawl' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
 
   target 'ar-startup-crawlTests' do
     inherit! :search_paths

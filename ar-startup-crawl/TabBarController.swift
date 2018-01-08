@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import Alamofire
+import SwiftyJSON
+import CoreData
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -25,6 +28,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         case "Startups":
             UIApplication.shared.statusBarStyle = .default
         case "Announcements":
+            
+            downloadAnnouncements()
             UIApplication.shared.statusBarStyle = .default
             UIApplication.shared.applicationIconBadgeNumber = 0
         default:
@@ -39,6 +44,63 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             AnalyticsParameterItemID: title as NSObject,
             AnalyticsParameterContentType: Constants.Analytics.TabSelected as NSObject
         ])
+    }
+    
+    func downloadAnnouncements() {
+        
+        Alamofire.request("https://ar-startup-crawl.herokuapp.com/notifications/guest").responseString { responseString in
+          //  print("Request: \(String(describing: response.request))")   // original url request
+          //  print("Response: \(String(describing: response.response))") // http url response
+          //  print("Result: \(response.result)")                         // response serialization result
+            
+            guard let data: String = responseString.value else {
+                return
+            }
+            
+            guard let json: JSON = JSON(parseJSON: data) else {
+                return
+            }
+            
+            print("JSON: \(json)") // serialized json response
+            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            let context = appDelegate.persistentContainer.viewContext
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.AnnouncementsEntityName)
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
+            guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
+                return
+            }
+            
+            for (_, item) in json {
+                
+                let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+                
+                newAnnouncement.setValue(item["title"].description, forKey: "title")
+                newAnnouncement.setValue(item["body"].description, forKey: "body")
+                newAnnouncement.setValue(item["datetime"].description, forKey: "date")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

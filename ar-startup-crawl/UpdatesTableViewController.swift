@@ -51,10 +51,9 @@ class UpdatesTableViewController: UITableViewController {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
                 
-                if let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? Date {
+                if let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? String {
                     
-                    let dateString: String = date.toString(dateFormat: "dd-MM hh:mm")
-                    self.updates.append([title, body, dateString])
+                    self.updates.append([title, body, date])
                 }
             }
         } catch {
@@ -62,7 +61,6 @@ class UpdatesTableViewController: UITableViewController {
             print("Failed")
         }
         
-        self.updates.reverse()
         self.tableView.reloadData()
     }
     
