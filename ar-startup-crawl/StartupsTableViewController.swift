@@ -8,12 +8,10 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 import CoreData
 
 class StartupsTableViewController: UITableViewController, UITabBarControllerDelegate {
 
-    var ref: DatabaseReference!
     var startups: [[String]] = []
     var startupsImages: [UIImage] = []
     
