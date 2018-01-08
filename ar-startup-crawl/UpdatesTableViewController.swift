@@ -53,7 +53,6 @@ class UpdatesTableViewController: UITableViewController {
                 
                 if let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? String {
                     
-                    
                     self.updates.append([title, body, date])
                 }
             }

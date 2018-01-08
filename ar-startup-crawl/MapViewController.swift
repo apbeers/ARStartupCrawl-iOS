@@ -23,6 +23,125 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ref = Database.database().reference()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        guard let mapEntity = NSEntityDescription.entity(forEntityName: Constants.CoreData.MapEntityName , in: context) else {
+            return
+        }
+        
+        ref.child("map").observe(.value, with: { (snapshot) in
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
+            guard let values = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            let enumerator = values.objectEnumerator()
+            while let map = enumerator.nextObject() as? NSDictionary {
+                
+                guard let latitude: Double = map["latitude"] as? Double,
+                    let longitude: Double = map["longitude"] as? Double,
+                    let zoom: Double = map["zoom"] as? Double,
+                    let style: String = map["style"] as? String
+                    else {
+                        return
+                }
+                
+                let newMap = NSManagedObject(entity: mapEntity, insertInto: context)
+                
+                newMap.setValue(latitude, forKey: "latitude")
+                newMap.setValue(longitude, forKey: "longitude")
+                newMap.setValue(zoom, forKey: "zoom")
+                newMap.setValue(style, forKey: "style")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        guard let startupsEntity = NSEntityDescription.entity(forEntityName: Constants.CoreData.StartupsEntityName, in: context) else {
+            return
+        }
+        
+        ref.child("startups").observe(.value, with: { (snapshot) in
+            
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.StartupsEntityName)
+            
+            // Create Batch Delete Request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+            } catch {
+                print("Failed")
+            }
+            
+            guard let values = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            let enumerator = values.objectEnumerator()
+            while let startup = enumerator.nextObject() as? NSDictionary {
+                
+                guard let latitude: Double = startup["latitude"] as? Double,
+                    let longitude: Double = startup["longitude"] as? Double,
+                    let desc: String = startup["description"] as? String,
+                    let logo: String = startup["logo"] as? String,
+                    let logoBase64: String = startup["logoBase64"] as? String,
+                    let snippet: String = startup["snippet"] as? String,
+                    let url: String = startup["url"] as? String,
+                    let title: String = startup["title"] as? String,
+                    let id: Int = startup["id"] as? Int
+                    else {
+                        return
+                }
+                
+                let newStartup = NSManagedObject(entity: startupsEntity, insertInto: context)
+                
+                newStartup.setValue(latitude, forKey: "latitude")
+                newStartup.setValue(longitude, forKey: "longitude")
+                newStartup.setValue(desc, forKey: "desc")
+                newStartup.setValue(logo, forKey: "logo")
+                newStartup.setValue(logoBase64, forKey: "logoBase64")
+                newStartup.setValue(snippet, forKey: "snippet")
+                newStartup.setValue(url, forKey: "url")
+                newStartup.setValue(title, forKey: "title")
+                newStartup.setValue(id, forKey: "id")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Failed saving")
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
         let camera = GMSCameraPosition.camera(withLatitude: 36.063610, longitude: -94.162561, zoom: 15)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
@@ -67,7 +186,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         }
         
         let context = appDelegate.persistentContainer.viewContext
-        
         
         let mapRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
         mapRequest.returnsObjectsAsFaults = false
