@@ -8,7 +8,6 @@ target 'ar-startup-crawl' do
   # Pods for ar-startup-crawl
   pod 'GoogleMaps'
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'SwiftyJSON'
   pod 'Alamofire'

@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import GoogleMaps
 import MapKit
+import GoogleMaps
 import Firebase
-import FirebaseDatabase
 import CoreData
 import Alamofire
 import SwiftyJSON
@@ -26,65 +25,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         super.viewDidLoad()
         
         downloadStartups()
-        
-        ref = Database.database().reference()
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        guard let mapEntity = NSEntityDescription.entity(forEntityName: Constants.CoreData.MapEntityName , in: context) else {
-            return
-        }
-        
-        ref.child("map").observe(.value, with: { (snapshot) in
-            
-            // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
-            
-            // Create Batch Delete Request
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
-            do {
-                try context.execute(batchDeleteRequest)
-            } catch {
-                print("Failed")
-            }
-            
-            guard let values = snapshot.value as? NSDictionary else {
-                return
-            }
-            
-            let enumerator = values.objectEnumerator()
-            while let map = enumerator.nextObject() as? NSDictionary {
-                
-                guard let latitude: Double = map["latitude"] as? Double,
-                    let longitude: Double = map["longitude"] as? Double,
-                    let zoom: Double = map["zoom"] as? Double,
-                    let style: String = map["style"] as? String
-                    else {
-                        return
-                }
-                
-                let newMap = NSManagedObject(entity: mapEntity, insertInto: context)
-                
-                newMap.setValue(latitude, forKey: "latitude")
-                newMap.setValue(longitude, forKey: "longitude")
-                newMap.setValue(zoom, forKey: "zoom")
-                newMap.setValue(style, forKey: "style")
-                
-                do {
-                    try context.save()
-                } catch {
-                    print("Failed saving")
-                }
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
         
         let camera = GMSCameraPosition.camera(withLatitude: 36.063610, longitude: -94.162561, zoom: 15)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -103,6 +43,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         }
         
         mapView.settings.myLocationButton = true
+        
+        do {
+            // Set the map style by passing the URL of the local file.
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
 
         let screenSize = UIScreen.main.bounds
         let width = screenSize.width
@@ -116,7 +67,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             
             self.refreshData()
         }
-        self.refreshData()
     }
 
     func refreshData() {
@@ -128,42 +78,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        
+
         let context = appDelegate.persistentContainer.viewContext
-        
-        let mapRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.MapEntityName)
-        mapRequest.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(mapRequest)
-            
-            for data in result as! [NSManagedObject] {
-                
-                guard let latitude: Double = data.value(forKey: "latitude") as? Double,
-                    let longitude: Double = data.value(forKey: "longitude") as? Double,
-                    let style: String = data.value(forKey: "style") as? String,
-                    let zoom: Float = data.value(forKey: "zoom") as? Float
-                    else {
-                        return
-                }
-                
-                var trimmedStyle = style
-                trimmedStyle = String(trimmedStyle.dropFirst(1))
-                trimmedStyle = String(trimmedStyle.dropLast(1))
-                do {
-                self.mapView.mapStyle = try GMSMapStyle(jsonString: String(trimmedStyle))
-                } catch {
-                    print("Could not parse style")
-                }
-                
-                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                let camera = GMSCameraPosition(target: location, zoom: zoom, bearing: CLLocationDirection(), viewingAngle: 0)
-                
-               // mapView.animate(to: camera)
-            }
-            
-        } catch {
-            print("Failed")
-        }
         
         let startupsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.StartupsEntityName)
         //request.predicate = NSPredicate(format: "age = %@", "12")
@@ -195,11 +111,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func downloadStartups() {
         
         Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups", encoding: JSONEncoding.default).responseJSON { response in
-            //  print("Request: \(String(describing: response.request))")   // original url request
-            //  print("Response: \(String(describing: response.response))") // http url response
-            //  print("Result: \(response.result)")                         // response serialization result
-            
-  
+
             guard let responseData = response.data else {
                 return
             }
