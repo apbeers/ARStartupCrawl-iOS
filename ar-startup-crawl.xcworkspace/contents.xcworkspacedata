@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ar-startup-crawl.xcodeproj">
+      location = "group:/Users/andrew/XcodeProjects/ar-startup-crawl/ar-startup-crawl.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
