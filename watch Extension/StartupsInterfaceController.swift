@@ -1,5 +1,5 @@
 //
-//  InterfaceController.swift
+//  StartupsInterfaceController.swift
 //  watch Extension
 //
 //  Created by Andrew Beers on 1/9/18.
@@ -10,9 +10,8 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class StartupsInterfaceController: WKInterfaceController {
 
-    @IBOutlet var table: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -27,10 +26,7 @@ class InterfaceController: WKInterfaceController {
         
         
     }
-    
-    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        <#code#>
-    }
+
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible

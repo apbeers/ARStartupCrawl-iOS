@@ -31,12 +31,14 @@
 		4986F56C20055FDD00FA0B7D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56A20055FDD00FA0B7D /* Interface.storyboard */; };
 		4986F56E20055FDD00FA0B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56D20055FDD00FA0B7D /* Assets.xcassets */; };
 		4986F57520055FDE00FA0B7D /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4986F57420055FDE00FA0B7D /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		4986F57A20055FDE00FA0B7D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986F57920055FDE00FA0B7D /* InterfaceController.swift */; };
+		4986F57A20055FDE00FA0B7D /* StartupsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986F57920055FDE00FA0B7D /* StartupsInterfaceController.swift */; };
 		4986F57C20055FDE00FA0B7D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4986F57B20055FDE00FA0B7D /* ExtensionDelegate.swift */; };
 		4986F57E20055FDE00FA0B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4986F57D20055FDE00FA0B7D /* Assets.xcassets */; };
 		4986F58220055FDE00FA0B7D /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4986F56820055FDD00FA0B7D /* watch.app */; };
 		49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */; };
 		49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6014200561E7001CB6AA /* StartupRow.swift */; };
+		49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */; };
+		49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601820056456001CB6AA /* AnnouncementRow.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
@@ -135,12 +137,14 @@
 		4986F56D20055FDD00FA0B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4986F56F20055FDD00FA0B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4986F57420055FDE00FA0B7D /* watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4986F57920055FDE00FA0B7D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		4986F57920055FDE00FA0B7D /* StartupsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupsInterfaceController.swift; sourceTree = "<group>"; };
 		4986F57B20055FDE00FA0B7D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		4986F57D20055FDE00FA0B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4986F57F20055FDE00FA0B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49EE6014200561E7001CB6AA /* StartupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupRow.swift; sourceTree = "<group>"; };
+		49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsInterfaceController.swift; sourceTree = "<group>"; };
+		49EE601820056456001CB6AA /* AnnouncementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementRow.swift; sourceTree = "<group>"; };
 		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
 		A2DD81CAC4072E873EB0AB52 /* Pods-ar-startup-crawlUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -282,11 +286,13 @@
 		4986F57820055FDE00FA0B7D /* watch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				4986F57920055FDE00FA0B7D /* InterfaceController.swift */,
+				4986F57920055FDE00FA0B7D /* StartupsInterfaceController.swift */,
+				49EE6014200561E7001CB6AA /* StartupRow.swift */,
+				49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */,
+				49EE601820056456001CB6AA /* AnnouncementRow.swift */,
 				4986F57B20055FDE00FA0B7D /* ExtensionDelegate.swift */,
 				4986F57D20055FDE00FA0B7D /* Assets.xcassets */,
 				4986F57F20055FDE00FA0B7D /* Info.plist */,
-				49EE6014200561E7001CB6AA /* StartupRow.swift */,
 			);
 			path = "watch Extension";
 			sourceTree = "<group>";
@@ -732,9 +738,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */,
+				49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */,
 				49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */,
 				4986F57C20055FDE00FA0B7D /* ExtensionDelegate.swift in Sources */,
-				4986F57A20055FDE00FA0B7D /* InterfaceController.swift in Sources */,
+				4986F57A20055FDE00FA0B7D /* StartupsInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

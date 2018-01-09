@@ -1,5 +1,5 @@
 //
-//  StartupRow.swift
+//  AnnouncementsInterfaceController.swift
 //  watch Extension
 //
 //  Created by Andrew Beers on 1/9/18.
@@ -8,7 +8,6 @@
 
 import WatchKit
 
-class StartupRow: NSObject {
-
+class AnnouncementsInterfaceController: WKInterfaceController {
 
 }
