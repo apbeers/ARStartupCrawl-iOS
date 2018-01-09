@@ -14,9 +14,27 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="Startups" customClass="StartupsInterfaceController" customModule="watch_Extension">
                     <items>
-                        <label alignment="left" text="Startups" id="mzl-5d-rtg"/>
+                        <table alignment="left" id="SI1-Cz-ZuY">
+                            <items>
+                                <tableRow identifier="StartupRow" id="rdU-9Z-GLk" customClass="StartupRow" customModule="watch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="xcY-wi-Ocp">
+                                        <items>
+                                            <label alignment="left" text="Label" id="moX-an-s6Q" userLabel="StartupLabel">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label alignment="left" text="Label" id="oKs-KQ-9nd" userLabel="BreweryLabel"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="BreweryLabel" destination="oKs-KQ-9nd" id="olp-Wq-0nT"/>
+                                        <outlet property="StartupLabel" destination="moX-an-s6Q" id="Ggq-19-pyH"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
+                        <outlet property="table" destination="SI1-Cz-ZuY" id="0Np-RZ-std"/>
                         <segue destination="51C-HX-V6s" kind="relationship" relationship="nextPage" id="LyZ-WP-JCQ"/>
                     </connections>
                 </controller>

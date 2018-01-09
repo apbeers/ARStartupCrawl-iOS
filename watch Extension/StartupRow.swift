@@ -10,5 +10,6 @@ import WatchKit
 
 class StartupRow: NSObject {
 
-
+    @IBOutlet var StartupLabel: WKInterfaceLabel!
+    @IBOutlet var BreweryLabel: WKInterfaceLabel!
 }

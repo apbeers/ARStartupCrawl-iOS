@@ -11,13 +11,14 @@ import Firebase
 import UserNotifications
 import FirebaseMessaging
 import CoreData
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
-    var ref: DatabaseReference!
     let gcmMessageIDKey = "gcm.message_id"
+    var watchConnectivityHandler: WatchConnectivityHandler?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,10 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.registerForRemoteNotifications()
         FirebaseApp.configure()
         
-        ref = Database.database().reference()
-        
         Messaging.messaging().delegate = self
         Messaging.messaging().shouldEstablishDirectChannel = true
+        
+        if WCSession.isSupported () {
+            self.watchConnectivityHandler = WatchConnectivityHandler()
+        } else {
+            NSLog("WCSession not supported (fe on iPad).")
+        }
         
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)

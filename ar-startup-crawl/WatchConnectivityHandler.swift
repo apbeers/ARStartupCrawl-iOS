@@ -6,8 +6,52 @@
 //  Copyright © 2018 Andrew Beers. All rights reserved.
 //
 
-import UIKit
+import WatchConnectivity
 
-class WatchConnectivityHandler: NSObject {
-
+class WatchConnectivityHandler: NSObject, WCSessionDelegate {
+    
+    var session = WCSession.default
+    
+    override init() {
+        super.init()
+        
+        session.delegate = self
+        session.activate()
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        switch activationState {
+        case WCSessionActivationState.activated:
+            print("iphone session activated")
+        case WCSessionActivationState.notActivated:
+            print("iphone session not activated")
+        default:
+            print("iphone default case")
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        
+        guard let messageString = message["request"] as? String else {
+            return
+        }
+        
+        switch messageString {
+        case "startup_details":
+            replyHandler(["startup_details": "heres_the_startup_details"])
+        case "announcement_details":
+            replyHandler(["announcement_details": "heres_the_announcement_details"])
+        default:
+            replyHandler(["unknown request": "unknown request"])
+        }
+    }
 }
