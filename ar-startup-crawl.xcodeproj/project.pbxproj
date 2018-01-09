@@ -39,6 +39,7 @@
 		49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6014200561E7001CB6AA /* StartupRow.swift */; };
 		49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */; };
 		49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601820056456001CB6AA /* AnnouncementRow.swift */; };
+		49EE601B20056757001CB6AA /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
@@ -145,6 +146,9 @@
 		49EE6014200561E7001CB6AA /* StartupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupRow.swift; sourceTree = "<group>"; };
 		49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsInterfaceController.swift; sourceTree = "<group>"; };
 		49EE601820056456001CB6AA /* AnnouncementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementRow.swift; sourceTree = "<group>"; };
+		49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandler.swift; sourceTree = "<group>"; };
+		49EE601C20056760001CB6AA /* watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watch Extension.entitlements"; sourceTree = "<group>"; };
+		49EE601D20056769001CB6AA /* watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watch.entitlements; sourceTree = "<group>"; };
 		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
 		A2DD81CAC4072E873EB0AB52 /* Pods-ar-startup-crawlUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 				49419C3D1FBD94E000695889 /* Assets.xcassets */,
 				49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */,
 				49419C421FBD94E000695889 /* Info.plist */,
+				49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */,
 			);
 			path = "ar-startup-crawl";
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 		4986F56920055FDD00FA0B7D /* watch */ = {
 			isa = PBXGroup;
 			children = (
+				49EE601D20056769001CB6AA /* watch.entitlements */,
 				4986F56A20055FDD00FA0B7D /* Interface.storyboard */,
 				4986F56D20055FDD00FA0B7D /* Assets.xcassets */,
 				4986F56F20055FDD00FA0B7D /* Info.plist */,
@@ -286,6 +292,7 @@
 		4986F57820055FDE00FA0B7D /* watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				49EE601C20056760001CB6AA /* watch Extension.entitlements */,
 				4986F57920055FDE00FA0B7D /* StartupsInterfaceController.swift */,
 				49EE6014200561E7001CB6AA /* StartupRow.swift */,
 				49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */,
@@ -435,6 +442,9 @@
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -456,10 +466,20 @@
 					4986F56720055FDD00FA0B7D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					4986F57320055FDE00FA0B7D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -708,6 +728,7 @@
 				49269B621FBD9E3200E9C208 /* StartupsTableViewController.swift in Sources */,
 				49269B6A1FBD9E3200E9C208 /* UpdateTableViewCell.swift in Sources */,
 				49269B631FBD9E3200E9C208 /* StartupTableViewCell.swift in Sources */,
+				49EE601B20056757001CB6AA /* WatchConnectivityHandler.swift in Sources */,
 				49269B671FBD9E3200E9C208 /* WebViewViewController.swift in Sources */,
 				49269B661FBD9E3200E9C208 /* Extensions.swift in Sources */,
 				49419C351FBD94E000695889 /* AppDelegate.swift in Sources */,
@@ -1004,6 +1025,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = watch/watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
 				IBSC_MODULE = watch_Extension;
@@ -1023,6 +1045,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = watch/watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
 				IBSC_MODULE = watch_Extension;
@@ -1041,6 +1064,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "watch Extension/watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
 				INFOPLIST_FILE = "watch Extension/Info.plist";
@@ -1059,6 +1083,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "watch Extension/watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GQQX4L6TE2;
 				INFOPLIST_FILE = "watch Extension/Info.plist";
