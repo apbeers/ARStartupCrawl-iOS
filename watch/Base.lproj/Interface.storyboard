@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watch" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="VIG-Y9-Jdr">
+                            <items>
+                                <tableRow identifier="StartupRow" id="ZSK-6c-9bk" customClass="StartupRow" customModule="watch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="tAi-gs-eOn">
+                                        <items>
+                                            <label alignment="left" text="Startup Title" id="rlM-yL-cxB" userLabel="StartupLabel">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label alignment="left" text="Brewery Title" id="HCs-IK-XlO" userLabel="BreweryLabel"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="BreweryLabel" destination="HCs-IK-XlO" id="M9N-JM-gt0"/>
+                                        <outlet property="StartupLabel" destination="rlM-yL-cxB" id="reE-Bv-T8J"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="VIG-Y9-Jdr" id="DiY-dK-dqC"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
