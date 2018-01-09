@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Constants {
+public struct Constants {
     
-    struct CoreData {
+    public struct CoreData {
         
         static let ModelName = "Model"
         static let StartupsEntityName = "Startups"

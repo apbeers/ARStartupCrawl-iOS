@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4986F56720055FDD00FA0B7D"
+               BuildableName = "watch.app"
+               BlueprintName = "watch"
+               ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "49419C301FBD94E000695889"
                BuildableName = "ar-startup-crawl.app"
                BlueprintName = "ar-startup-crawl"
@@ -33,26 +47,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "49419C461FBD94E100695889"
-               BuildableName = "ar-startup-crawlTests.xctest"
-               BlueprintName = "ar-startup-crawlTests"
-               ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "49419C511FBD94E100695889"
-               BuildableName = "ar-startup-crawlUITests.xctest"
-               BlueprintName = "ar-startup-crawlUITests"
-               ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "49EE604D200571B0001CB6AA"
                BuildableName = "DataKitTests.xctest"
                BlueprintName = "DataKitTests"
@@ -63,9 +57,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49419C301FBD94E000695889"
-            BuildableName = "ar-startup-crawl.app"
-            BlueprintName = "ar-startup-crawl"
+            BlueprintIdentifier = "4986F56720055FDD00FA0B7D"
+            BuildableName = "watch.app"
+            BlueprintName = "watch"
             ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,26 +77,27 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/AR Startup Crawl">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49419C301FBD94E000695889"
-            BuildableName = "ar-startup-crawl.app"
-            BlueprintName = "ar-startup-crawl"
+            BlueprintIdentifier = "4986F56720055FDD00FA0B7D"
+            BuildableName = "watch.app"
+            BlueprintName = "watch"
             ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-FIRAnalyticsDebugEnabled"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-FIRAnalyticsDebugDisabled"
-            isEnabled = "NO">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4986F56720055FDD00FA0B7D"
+            BuildableName = "watch.app"
+            BlueprintName = "watch"
+            ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -112,16 +107,27 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/AR Startup Crawl">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49419C301FBD94E000695889"
-            BuildableName = "ar-startup-crawl.app"
-            BlueprintName = "ar-startup-crawl"
+            BlueprintIdentifier = "4986F56720055FDD00FA0B7D"
+            BuildableName = "watch.app"
+            BlueprintName = "watch"
             ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4986F56720055FDD00FA0B7D"
+            BuildableName = "watch.app"
+            BlueprintName = "watch"
+            ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

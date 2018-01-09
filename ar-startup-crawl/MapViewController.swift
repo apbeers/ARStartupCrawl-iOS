@@ -13,18 +13,20 @@ import Firebase
 import CoreData
 import Alamofire
 import SwiftyJSON
+import DataKit
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
     var mapView: GMSMapView!
     let locationManager = CLLocationManager()
     let position = CLLocationCoordinate2D(latitude: 36.063610, longitude: -94.162561)
-    var ref: DatabaseReference!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         downloadStartups()
+        
+        let asdf = StartupManager.read()
         
         let camera = GMSCameraPosition.camera(withLatitude: 36.063610, longitude: -94.162561, zoom: 15)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)

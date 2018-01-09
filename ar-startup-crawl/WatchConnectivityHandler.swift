@@ -7,6 +7,7 @@
 //
 
 import WatchConnectivity
+import DataKit
 
 class WatchConnectivityHandler: NSObject, WCSessionDelegate {
     
@@ -47,7 +48,13 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate {
         
         switch messageString {
         case "startup_details":
-            replyHandler(["startup_details": "heres_the_startup_details"])
+            
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: StartupManager.read(), options: JSONSerialization.WritingOptions.prettyPrinted)
+                replyHandler(["startup_details": jsonData])
+            } catch {
+                replyHandler(["startup_details": ""])
+            }
         case "announcement_details":
             replyHandler(["announcement_details": "heres_the_announcement_details"])
         default:
