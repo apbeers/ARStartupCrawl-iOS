@@ -50,7 +50,13 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             
             location = locationManager.location?.coordinate
+            NotificationCenter.default.post(name: .LocationPermissionsApproved, object: nil)
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -166,4 +172,5 @@ extension Notification.Name {
     
     static let StartupsUpdated = Notification.Name("on-startups-updated")
     static let AnnouncementsUpdated = Notification.Name("on-announcements-updated")
+    static let LocationPermissionsApproved = Notification.Name("on-location=permissions-approved")
 }
