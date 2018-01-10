@@ -8,9 +8,14 @@
 
 import UIKit
 import Firebase
+import Alamofire
+import SwiftyJSON
+import CoreData
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
+    let announcementManager = AnnouncementManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +30,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         case "Startups":
             UIApplication.shared.statusBarStyle = .default
         case "Announcements":
+            
+            announcementManager.fetchAnnouncementsAPI()
             UIApplication.shared.statusBarStyle = .default
             UIApplication.shared.applicationIconBadgeNumber = 0
         default:
@@ -40,6 +47,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             AnalyticsParameterContentType: Constants.Analytics.TabSelected as NSObject
         ])
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "23E543557B16F34D39E4856738AF5ADF"
+               BlueprintIdentifier = "6A8C5D77672689F05F8282DD10BECD74"
                BuildableName = "Pods_ar_startup_crawl.framework"
                BlueprintName = "Pods-ar-startup-crawl"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "23E543557B16F34D39E4856738AF5ADF"
+            BlueprintIdentifier = "6A8C5D77672689F05F8282DD10BECD74"
             BuildableName = "Pods_ar_startup_crawl.framework"
             BlueprintName = "Pods-ar-startup-crawl"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DataKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>ar-startup-crawl.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>0</integer>
+		</dict>
+		<key>watch.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>49419C511FBD94E100695889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4986F56720055FDD00FA0B7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49EE604D200571B0001CB6AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
