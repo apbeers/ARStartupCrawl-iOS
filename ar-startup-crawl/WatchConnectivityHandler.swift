@@ -7,8 +7,6 @@
 //
 
 import WatchConnectivity
-import DataKit
-import SwiftyJSON
 
 class WatchConnectivityHandler: NSObject, WCSessionDelegate {
     
