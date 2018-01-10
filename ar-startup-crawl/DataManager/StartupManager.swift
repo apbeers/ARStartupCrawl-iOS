@@ -10,7 +10,7 @@ import CoreData
 import Alamofire
 import SwiftyJSON
 
-public struct Startup {
+struct Startup {
     var id: String!
     var title: String!
     var snippet: String!
@@ -21,11 +21,11 @@ public struct Startup {
     var url: String!
 }
 
-public class StartupManager: NSObject {
+class StartupManager: NSObject {
     
-    static let entityName = "Startups"
+    let entityName = "Startups"
     
-    public class func refreshFromAPI() {
+    func fetchStartupsAPI() {
         
         Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups", encoding: JSONEncoding.default).responseJSON { response in
             
@@ -77,10 +77,12 @@ public class StartupManager: NSObject {
                     print("Failed saving")
                 }
             }
+            
+            NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
         }
     }
     
-    public class func fetchStartups() -> [Startup] {
+    func fetchStartupsLocal() -> [Startup] {
         
         var startups: [Startup] = []
         

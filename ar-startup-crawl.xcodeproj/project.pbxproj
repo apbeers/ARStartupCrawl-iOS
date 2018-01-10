@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		485A4F3E3CDCF89CAB894667 /* Pods_DataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1513CFA80C56FBADABB9B594 /* Pods_DataKit.framework */; };
 		49269B4D1FBD9DB000E9C208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49269B4C1FBD9DAF00E9C208 /* Main.storyboard */; };
 		49269B4F1FBD9DCA00E9C208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */; };
 		49269B5F1FBD9E3200E9C208 /* Constants+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */; };
@@ -41,13 +40,6 @@
 		49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */; };
 		49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601820056456001CB6AA /* AnnouncementRow.swift */; };
 		49EE601B20056757001CB6AA /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */; };
-		49EE604F200571B0001CB6AA /* DataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE6046200571B0001CB6AA /* DataKit.framework */; };
-		49EE6056200571B0001CB6AA /* DataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6055200571B0001CB6AA /* DataKitTests.swift */; };
-		49EE6058200571B0001CB6AA /* DataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 49EE6048200571B0001CB6AA /* DataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49EE605B200571B0001CB6AA /* DataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE6046200571B0001CB6AA /* DataKit.framework */; };
-		49EE605C200571B0001CB6AA /* DataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE6046200571B0001CB6AA /* DataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		49EE6065200571E0001CB6AA /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6064200571E0001CB6AA /* DataKit.swift */; };
-		49EE606920057234001CB6AA /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE606820057234001CB6AA /* StartupManager.swift */; };
 		49EE606D20059403001CB6AA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE606C20059403001CB6AA /* DataManager.swift */; };
 		49EE60762005A33E001CB6AA /* DetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE60752005A33E001CB6AA /* DetailInterfaceController.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
@@ -86,27 +78,6 @@
 			remoteGlobalIDString = 4986F56720055FDD00FA0B7D;
 			remoteInfo = watch;
 		};
-		49EE6050200571B0001CB6AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49419C291FBD94E000695889 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49EE6045200571B0001CB6AA;
-			remoteInfo = DataKit;
-		};
-		49EE6052200571B0001CB6AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49419C291FBD94E000695889 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49419C301FBD94E000695889;
-			remoteInfo = "ar-startup-crawl";
-		};
-		49EE6059200571B0001CB6AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49419C291FBD94E000695889 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49EE6045200571B0001CB6AA;
-			remoteInfo = DataKit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -138,7 +109,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49EE605C200571B0001CB6AA /* DataKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,12 +164,6 @@
 		49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandler.swift; sourceTree = "<group>"; };
 		49EE601C20056760001CB6AA /* watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watch Extension.entitlements"; sourceTree = "<group>"; };
 		49EE601D20056769001CB6AA /* watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watch.entitlements; sourceTree = "<group>"; };
-		49EE6046200571B0001CB6AA /* DataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49EE6048200571B0001CB6AA /* DataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataKit.h; sourceTree = "<group>"; };
-		49EE6049200571B0001CB6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49EE604E200571B0001CB6AA /* DataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49EE6055200571B0001CB6AA /* DataKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKitTests.swift; sourceTree = "<group>"; };
-		49EE6057200571B0001CB6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49EE6064200571E0001CB6AA /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
 		49EE606820057234001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		49EE606B200578CE001CB6AA /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */,
-				49EE605B200571B0001CB6AA /* DataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,22 +213,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8EAD8199454D1232B8D7ACD /* Pods_watch_Extension.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49EE6042200571B0001CB6AA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				485A4F3E3CDCF89CAB894667 /* Pods_DataKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49EE604B200571B0001CB6AA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49EE604F200571B0001CB6AA /* DataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +246,6 @@
 				49419C551FBD94E100695889 /* ar-startup-crawlUITests */,
 				4986F56920055FDD00FA0B7D /* watch */,
 				4986F57820055FDE00FA0B7D /* watch Extension */,
-				49EE6047200571B0001CB6AA /* DataKit */,
-				49EE6054200571B0001CB6AA /* DataKitTests */,
 				49419C321FBD94E000695889 /* Products */,
 				5476EDA380D47EA680A30E6F /* Pods */,
 				AAA014E38CC788EB6BD82363 /* Frameworks */,
@@ -315,8 +260,6 @@
 				49419C521FBD94E100695889 /* ar-startup-crawlUITests.xctest */,
 				4986F56820055FDD00FA0B7D /* watch.app */,
 				4986F57420055FDE00FA0B7D /* watch Extension.appex */,
-				49EE6046200571B0001CB6AA /* DataKit.framework */,
-				49EE604E200571B0001CB6AA /* DataKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,6 +267,7 @@
 		49419C331FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXGroup;
 			children = (
+				49EE60772005AEAE001CB6AA /* DataManager */,
 				49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */,
 				49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */,
 				49269B6C1FBD9E6300E9C208 /* Images */,
@@ -395,24 +339,13 @@
 			path = "watch Extension";
 			sourceTree = "<group>";
 		};
-		49EE6047200571B0001CB6AA /* DataKit */ = {
+		49EE60772005AEAE001CB6AA /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
-				49EE6048200571B0001CB6AA /* DataKit.h */,
-				49EE6049200571B0001CB6AA /* Info.plist */,
 				49EE6064200571E0001CB6AA /* DataKit.swift */,
 				49EE606820057234001CB6AA /* StartupManager.swift */,
 			);
-			path = DataKit;
-			sourceTree = "<group>";
-		};
-		49EE6054200571B0001CB6AA /* DataKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				49EE6055200571B0001CB6AA /* DataKitTests.swift */,
-				49EE6057200571B0001CB6AA /* Info.plist */,
-			);
-			path = DataKitTests;
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		5476EDA380D47EA680A30E6F /* Pods */ = {
@@ -447,17 +380,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		49EE6043200571B0001CB6AA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49EE6058200571B0001CB6AA /* DataKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		49419C301FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXNativeTarget;
@@ -476,7 +398,6 @@
 			);
 			dependencies = (
 				4986F58120055FDE00FA0B7D /* PBXTargetDependency */,
-				49EE605A200571B0001CB6AA /* PBXTargetDependency */,
 			);
 			name = "ar-startup-crawl";
 			productName = "ar-startup-crawl";
@@ -563,45 +484,6 @@
 			productReference = 4986F57420055FDE00FA0B7D /* watch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
-		49EE6045200571B0001CB6AA /* DataKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49EE6061200571B0001CB6AA /* Build configuration list for PBXNativeTarget "DataKit" */;
-			buildPhases = (
-				9DA565D14D8C3395C83CED39 /* [CP] Check Pods Manifest.lock */,
-				49EE6041200571B0001CB6AA /* Sources */,
-				49EE6042200571B0001CB6AA /* Frameworks */,
-				49EE6043200571B0001CB6AA /* Headers */,
-				49EE6044200571B0001CB6AA /* Resources */,
-				CB19C080909B53D7507039D4 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DataKit;
-			productName = DataKit;
-			productReference = 49EE6046200571B0001CB6AA /* DataKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		49EE604D200571B0001CB6AA /* DataKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49EE6063200571B0001CB6AA /* Build configuration list for PBXNativeTarget "DataKitTests" */;
-			buildPhases = (
-				49EE604A200571B0001CB6AA /* Sources */,
-				49EE604B200571B0001CB6AA /* Frameworks */,
-				49EE604C200571B0001CB6AA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49EE6051200571B0001CB6AA /* PBXTargetDependency */,
-				49EE6053200571B0001CB6AA /* PBXTargetDependency */,
-			);
-			name = DataKitTests;
-			productName = DataKitTests;
-			productReference = 49EE604E200571B0001CB6AA /* DataKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -655,16 +537,6 @@
 							};
 						};
 					};
-					49EE6045200571B0001CB6AA = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
-					};
-					49EE604D200571B0001CB6AA = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 49419C301FBD94E000695889;
-					};
 				};
 			};
 			buildConfigurationList = 49419C2C1FBD94E000695889 /* Build configuration list for PBXProject "ar-startup-crawl" */;
@@ -685,8 +557,6 @@
 				49419C511FBD94E100695889 /* ar-startup-crawlUITests */,
 				4986F56720055FDD00FA0B7D /* watch */,
 				4986F57320055FDE00FA0B7D /* watch Extension */,
-				49EE6045200571B0001CB6AA /* DataKit */,
-				49EE604D200571B0001CB6AA /* DataKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -736,20 +606,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4986F57E20055FDE00FA0B7D /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49EE6044200571B0001CB6AA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49EE604C200571B0001CB6AA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,24 +729,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9DA565D14D8C3395C83CED39 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DataKit-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A55C4086171B00A28C41AE35 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -948,21 +786,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB19C080909B53D7507039D4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataKit/Pods-DataKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F51A8C16D187D8BDC30BA7A0 /* [CP] Copy Pods Resources */ = {
@@ -1053,23 +876,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49EE6041200571B0001CB6AA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49EE6065200571E0001CB6AA /* DataKit.swift in Sources */,
-				49EE606920057234001CB6AA /* StartupManager.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49EE604A200571B0001CB6AA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49EE6056200571B0001CB6AA /* DataKitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1092,21 +898,6 @@
 			isa = PBXTargetDependency;
 			target = 4986F56720055FDD00FA0B7D /* watch */;
 			targetProxy = 4986F58020055FDE00FA0B7D /* PBXContainerItemProxy */;
-		};
-		49EE6051200571B0001CB6AA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49EE6045200571B0001CB6AA /* DataKit */;
-			targetProxy = 49EE6050200571B0001CB6AA /* PBXContainerItemProxy */;
-		};
-		49EE6053200571B0001CB6AA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49419C301FBD94E000695889 /* ar-startup-crawl */;
-			targetProxy = 49EE6052200571B0001CB6AA /* PBXContainerItemProxy */;
-		};
-		49EE605A200571B0001CB6AA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49EE6045200571B0001CB6AA /* DataKit */;
-			targetProxy = 49EE6059200571B0001CB6AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1420,95 +1211,6 @@
 			};
 			name = Release;
 		};
-		49EE605D200571B0001CB6AA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C7B07C40A2F18AF89FFB823 /* Pods-DataKit.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = GQQX4L6TE2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DataKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcu.DataKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		49EE605E200571B0001CB6AA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7592C364F096D4CD45D562CA /* Pods-DataKit.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = GQQX4L6TE2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DataKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcu.DataKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		49EE605F200571B0001CB6AA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GQQX4L6TE2;
-				INFOPLIST_FILE = DataKitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcu.DataKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ar-startup-crawl.app/ar-startup-crawl";
-			};
-			name = Debug;
-		};
-		49EE6060200571B0001CB6AA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GQQX4L6TE2;
-				INFOPLIST_FILE = DataKitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcu.DataKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ar-startup-crawl.app/ar-startup-crawl";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1562,24 +1264,6 @@
 			buildConfigurations = (
 				4986F58320055FDE00FA0B7D /* Debug */,
 				4986F58420055FDE00FA0B7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49EE6061200571B0001CB6AA /* Build configuration list for PBXNativeTarget "DataKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49EE605D200571B0001CB6AA /* Debug */,
-				49EE605E200571B0001CB6AA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49EE6063200571B0001CB6AA /* Build configuration list for PBXNativeTarget "DataKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49EE605F200571B0001CB6AA /* Debug */,
-				49EE6060200571B0001CB6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

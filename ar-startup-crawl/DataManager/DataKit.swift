@@ -8,10 +8,9 @@
 
 import CoreData
 
-class DataManager: NSObject {
+class DataKit: NSObject {
 
-    static let sharedInstance = DataManager()
-    
+    static let sharedInstance = DataKit()
     private override init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -56,4 +55,10 @@ class DataManager: NSObject {
             }
         }
     }
+}
+
+extension Notification.Name {
+    
+    static let StartupsUpdated = Notification.Name("on-startups-updated")
+    static let AnnouncementsUpdated = Notification.Name("on-announcements-updated")
 }
