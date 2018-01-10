@@ -48,9 +48,11 @@
 		49EE6065200571E0001CB6AA /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6064200571E0001CB6AA /* DataKit.swift */; };
 		49EE60672005720E001CB6AA /* Startup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE60662005720E001CB6AA /* Startup.swift */; };
 		49EE606920057234001CB6AA /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE606820057234001CB6AA /* StartupManager.swift */; };
+		49EE606D20059403001CB6AA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE606C20059403001CB6AA /* DataManager.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
+		E8EAD8199454D1232B8D7ACD /* Pods_watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72A45478055C485108515A3 /* Pods_watch_Extension.framework */; };
 		FE5384F2275FF22630E62395 /* Pods_ar_startup_crawlTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +146,7 @@
 
 /* Begin PBXFileReference section */
 		19B0CF4A5BEFAB36FD860739 /* Pods-ar-startup-crawl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.debug.xcconfig"; sourceTree = "<group>"; };
+		43DE8DE57E6F31008D04A0F5 /* Pods-watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawlTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ar-startup-crawl.entitlements"; sourceTree = "<group>"; };
 		49269B4C1FBD9DAF00E9C208 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -198,7 +201,10 @@
 		49EE6064200571E0001CB6AA /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
 		49EE60662005720E001CB6AA /* Startup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Startup.swift; sourceTree = "<group>"; };
 		49EE606820057234001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
+		49EE606B200578CE001CB6AA /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49EE606C20059403001CB6AA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		55D387BB06B4926BF67B361A /* Pods-watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
 		A2DD81CAC4072E873EB0AB52 /* Pods-ar-startup-crawlUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +212,7 @@
 		C479192A50665F03583F7821 /* Pods-ar-startup-crawlTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlTests/Pods-ar-startup-crawlTests.release.xcconfig"; sourceTree = "<group>"; };
 		D3ED8A1607DEC56C289FA659 /* Pods-ar-startup-crawlTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawlTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawlTests/Pods-ar-startup-crawlTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawlUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F72A45478055C485108515A3 /* Pods_watch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8EAD8199454D1232B8D7ACD /* Pods_watch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +261,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EE604F200571B0001CB6AA /* DataKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD9624BB153E801B86F47CF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +384,7 @@
 				4986F57B20055FDE00FA0B7D /* ExtensionDelegate.swift */,
 				4986F57D20055FDE00FA0B7D /* Assets.xcassets */,
 				4986F57F20055FDE00FA0B7D /* Info.plist */,
+				49EE606C20059403001CB6AA /* DataManager.swift */,
 			);
 			path = "watch Extension";
 			sourceTree = "<group>";
@@ -403,6 +419,8 @@
 				C479192A50665F03583F7821 /* Pods-ar-startup-crawlTests.release.xcconfig */,
 				AC8E2E50E0AA2909CE22002E /* Pods-ar-startup-crawlUITests.debug.xcconfig */,
 				A2DD81CAC4072E873EB0AB52 /* Pods-ar-startup-crawlUITests.release.xcconfig */,
+				43DE8DE57E6F31008D04A0F5 /* Pods-watch Extension.debug.xcconfig */,
+				55D387BB06B4926BF67B361A /* Pods-watch Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -410,9 +428,11 @@
 		AAA014E38CC788EB6BD82363 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49EE606B200578CE001CB6AA /* SwiftyJSON.framework */,
 				A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */,
 				466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */,
 				E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */,
+				F72A45478055C485108515A3 /* Pods_watch_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -503,6 +523,7 @@
 			buildPhases = (
 				4986F56620055FDD00FA0B7D /* Resources */,
 				4986F58820055FDE00FA0B7D /* Embed App Extensions */,
+				DD9624BB153E801B86F47CF6 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -518,9 +539,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4986F58720055FDE00FA0B7D /* Build configuration list for PBXNativeTarget "watch Extension" */;
 			buildPhases = (
+				088CC69394189EA6D3F8A64A /* [CP] Check Pods Manifest.lock */,
 				4986F57020055FDE00FA0B7D /* Sources */,
 				4986F57120055FDE00FA0B7D /* Frameworks */,
 				4986F57220055FDE00FA0B7D /* Resources */,
+				F85F9A4C5C7473D344065B54 /* [CP] Embed Pods Frameworks */,
+				8CE6F8330FB2DBEE7D9D3333 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -722,6 +746,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		088CC69394189EA6D3F8A64A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-watch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		11FEC916ED5E4E0EFDD5A285 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -806,6 +848,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8CE6F8330FB2DBEE7D9D3333 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A55C4086171B00A28C41AE35 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -813,11 +870,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -826,7 +882,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -882,6 +937,26 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F85F9A4C5C7473D344065B54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-watchOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-watchOS/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -926,6 +1001,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */,
+				49EE606D20059403001CB6AA /* DataManager.swift in Sources */,
 				49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */,
 				49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */,
 				4986F57C20055FDE00FA0B7D /* ExtensionDelegate.swift in Sources */,
@@ -1263,6 +1339,7 @@
 		};
 		4986F58520055FDE00FA0B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43DE8DE57E6F31008D04A0F5 /* Pods-watch Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "watch Extension/watch Extension.entitlements";
@@ -1282,6 +1359,7 @@
 		};
 		4986F58620055FDE00FA0B7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55D387BB06B4926BF67B361A /* Pods-watch Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "watch Extension/watch Extension.entitlements";

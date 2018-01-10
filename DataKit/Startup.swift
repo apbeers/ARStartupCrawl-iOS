@@ -11,16 +11,16 @@ import MapKit
 
 public class Startup: NSObject {
     
-    private var id: String!
-    private var title: String!
-    private var snippet: String!
-    private var desc: String!
-    private var latitude: Double!
-    private var longitude: Double!
-    private var logoBase64: String!
-    private var url: String!
+    public var id: String!
+    var title: String!
+    var snippet: String!
+    var desc: String!
+    var latitude: Double!
+    var longitude: Double!
+    var logoBase64: String?
+    var url: String!
     
-    init(id: String, title: String, snippet: String, desc: String, latitude: Double, longitude: Double, logoBase64: String, url: String) {
+    init(id: String, title: String, snippet: String, desc: String, latitude: Double, longitude: Double, logoBase64: String = String(), url: String) {
         
         self.id = id
         self.title = title
@@ -55,7 +55,11 @@ public class Startup: NSObject {
     
     func getLogo() -> UIImage {
         
-        guard let imageData = Data(base64Encoded: logoBase64, options: Data.Base64DecodingOptions.ignoreUnknownCharacters) else {
+        guard let logoString = logoBase64 else {
+            return UIImage()
+        }
+        
+        guard let imageData = Data(base64Encoded: logoString, options: Data.Base64DecodingOptions.ignoreUnknownCharacters) else {
             return UIImage()
         }
         

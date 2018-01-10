@@ -10,22 +10,26 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 import MapKit
-
-struct StartupData {
-    let title: String
-    let brewery: String
-    let latitude: Double
-    let longitude: Double
-}
+import SwiftyJSON
+import Alamofire
 
 class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
 
     var session: WCSession!
-    var startups: [StartupData] = []
+    var startups: [Startup] = []
+    let dataManager = DataManager.sharedInstance
     @IBOutlet var table: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        dataManager.refreshStartupsFromAPI()
+        
+        NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
+            
+            self.startups = self.dataManager.getStartups()
+            self.reloadTable()
+        }
         
         // Configure interface objects here.
     }
@@ -37,7 +41,6 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         session = WCSession.default
         session.delegate = self
         session.activate()
-        reloadTable()
     }
     
     override func didDeactivate() {
@@ -57,7 +60,7 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
             }
             
             row.StartupLabel.setText(startup.title)
-            row.BreweryLabel.setText(startup.brewery)
+            row.BreweryLabel.setText(startup.snippet)
             
             index += 1
         }
@@ -87,11 +90,8 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         
         session.sendMessage(["request": "startup_details"], replyHandler: { response in
             print("reponse: \(response)")
-            self.reloadTable()
         }, errorHandler: { error in
             print("error: \(error)")
         })
     }
-    
-    
 }

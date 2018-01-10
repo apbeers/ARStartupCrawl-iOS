@@ -21,7 +21,39 @@ public class StartupManager: NSObject {
         
     }
     
-    public class func read() -> [Startup] {
+    public class func getDetails() -> [Startup] {
+        
+        var startups: [Startup] = []
+        
+        let startupsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        startupsRequest.returnsObjectsAsFaults = false
+        do {
+            let result = try DataKit.sharedInstance.persistentContainer.viewContext.fetch(startupsRequest)
+            for data in result as! [NSManagedObject] {
+                
+                guard let snippet: String = data.value(forKey: "snippet") as? String,
+                    let title: String = data.value(forKey: "title") as? String,
+                    let latitude: Double = data.value(forKey: "latitude") as? Double,
+                    let longitude: Double = data.value(forKey: "longitude") as? Double,
+                    let desc: String = data.value(forKey: "desc") as? String,
+                    let url: String = data.value(forKey: "url") as? String,
+                    let id: String = data.value(forKey: "id") as? String
+                    else {
+                        return startups
+                }
+                
+                startups.append(Startup(id: id, title: title, snippet: snippet, desc: desc, latitude: latitude, longitude: longitude, url: url))
+            }
+            
+        } catch {
+            print("Failed")
+        }
+        
+        return startups
+    }
+    
+    public class func getEntireObject() -> [Startup] {
         
         var startups: [Startup] = []
         

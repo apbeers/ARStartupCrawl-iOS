@@ -26,8 +26,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         downloadStartups()
         
-        let asdf = StartupManager.read()
-        
         let camera = GMSCameraPosition.camera(withLatitude: 36.063610, longitude: -94.162561, zoom: 15)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
