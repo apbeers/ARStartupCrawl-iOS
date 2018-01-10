@@ -17,6 +17,12 @@ use_frameworks!
       pod 'Alamofire'
   end
 
+target 'DataKit' do
+    platform :ios, '11.0'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
+end
+
   target 'ar-startup-crawlTests' do
     platform :ios, '11.0'
     inherit! :search_paths

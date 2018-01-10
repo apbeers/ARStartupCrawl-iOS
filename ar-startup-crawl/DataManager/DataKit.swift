@@ -8,16 +8,11 @@
 
 import CoreData
 
-class DataKit: NSObject {
+class DataManager: NSObject {
+
+    static let sharedInstance = DataManager()
     
-    let sharedAppGroup:String = "group.com.makeandbuild.activitybuilder"
-    
-    public class var sharedInstance : DataKit {
-        struct Static {
-            static let instance : DataKit = DataKit()
-        }
-        return Static.instance
-    }
+    private override init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*
