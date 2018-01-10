@@ -19,7 +19,7 @@ class DetailInterfaceController: WKInterfaceController {
         guard let announcement = context as? Announcement else {
             return
         }
-        
+    
         TitleLabel.setText(announcement.title)
         DescriptionLabel.setText(announcement.desc)
     }

@@ -32,7 +32,7 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Brewery" id="Bgf-lx-ge8" userLabel="SortButton">
+                        <button width="1" alignment="left" title="Distance" id="Bgf-lx-ge8" userLabel="SortButton">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" pointSize="19"/>
@@ -49,6 +49,52 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="130" y="159"/>
+        </scene>
+        <!--Distance Interface Controller-->
+        <scene sceneID="r0G-T0-cuY">
+            <objects>
+                <controller identifier="DistanceInterfaceController" id="pzt-PO-8Dy" userLabel="Distance Interface Controller" customClass="DistanceInterfaceController" customModule="watch_Extension">
+                    <items>
+                        <label alignment="left" text="Startup Title" id="L0L-Xn-tGg" userLabel="TitleLabel">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <separator alignment="left" id="wVA-2G-g9i"/>
+                        <group width="1" alignment="left" id="atS-Zf-DiB">
+                            <items>
+                                <label width="75" alignment="left" text="0.3 mi" textAlignment="center" id="Yb9-Kb-SXi" userLabel="DistanceLabel">
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </label>
+                                <label width="61" alignment="right" text="SW" textAlignment="center" id="zbx-rG-3ub" userLabel="DirectionLabel">
+                                    <fontDescription key="font" type="system" weight="light" pointSize="27"/>
+                                </label>
+                            </items>
+                        </group>
+                        <label alignment="left" text="Nearest road name" textAlignment="center" id="uSp-uE-6Gh" userLabel="RoadNameLabel">
+                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Enable Location" id="yTR-B3-LHf" userLabel="EnableLocationButton">
+                            <connections>
+                                <action selector="EnableLocationButtonTapped" destination="pzt-PO-8Dy" id="Cjv-f1-bfs"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Get Directions" id="UL2-hm-0kl" userLabel="DirectionsButton">
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="TappedDirectionsButton" destination="pzt-PO-8Dy" id="WXT-Zp-iZt"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="DirectionLabel" destination="zbx-rG-3ub" id="sB4-Pc-qIe"/>
+                        <outlet property="DirectionsButton" destination="UL2-hm-0kl" id="U99-rf-gCf"/>
+                        <outlet property="DistanceLabel" destination="Yb9-Kb-SXi" id="JEp-nn-wZP"/>
+                        <outlet property="EnableLocationButton" destination="yTR-B3-LHf" id="IJj-cf-R6f"/>
+                        <outlet property="RoadNameLabel" destination="uSp-uE-6Gh" id="U3N-e6-ljB"/>
+                        <outlet property="TitleLabel" destination="L0L-Xn-tGg" id="Uof-Tr-c2G"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="130" y="460"/>
         </scene>
         <!--Announcements-->
         <scene sceneID="8sW-RH-O0g">
@@ -77,7 +123,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="370" y="159"/>
+            <point key="canvasLocation" x="401" y="159"/>
         </scene>
         <!--Detail Interface Controller-->
         <scene sceneID="yBi-B5-eyC">
@@ -96,7 +142,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="592" y="163"/>
+            <point key="canvasLocation" x="666" y="159"/>
         </scene>
     </scenes>
 </document>

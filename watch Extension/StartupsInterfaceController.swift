@@ -49,17 +49,31 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
                 self.startups[i].brewery = words[0] + " " + words[1]
             }
             
-            self.sortTable()
+            self.sortData()
         }
-        SortButton.setTitle("Distance")
         
-        location = locationManager.location?.coordinate
+        NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
+            
+            self.startups = self.dataManager.getStartups()
+            
+            for i in 0 ..< self.startups.count {
+                
+                let words = self.startups[i].brewery.components(separatedBy: " ")
+                self.startups[i].brewery = words[0] + " " + words[1]
+            }
+            
+            if locationTrigger == LocationTriggerInterface.StartpsInterfaceController {
+                self.currentSortType = .Startup
+                self.SortButtonTapped()
+            }
+        }
+        
+        SortButton.setTitle("Distance")
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
     }
     
     override func didDeactivate() {
@@ -67,25 +81,16 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         super.didDeactivate()
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        if status == CLAuthorizationStatus.authorizedWhenInUse {
-            
-            location = locationManager.location?.coordinate
-            currentSortType = .Startup
-            SortButtonTapped()
-        }
-    }
-    
     @IBAction func SortButtonTapped() {
         
         switch currentSortType {
         case .Startup:
-            if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
                 
                 currentSortType = .Distance
                 SortButton.setTitle("Brewery")
             } else {
+                locationTrigger = LocationTriggerInterface.StartpsInterfaceController
                 locationManager.requestWhenInUseAuthorization()
             }
         case .Distance:
@@ -96,10 +101,10 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             SortButton.setTitle("Distance")
         }
 
-        sortTable()
+        sortData()
     }
     
-    func sortTable() {
+    func sortData() {
         
         switch currentSortType {
         case .Startup:
@@ -107,35 +112,11 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         case .Brewery:
             startups = startups.sorted(by: {$0.brewery < $1.brewery})
         case .Distance:
-            
-            guard let latitude = location?.latitude, let longitude = location?.longitude else {
-                return
-            }
-            
-            let userLocation = CLLocation(latitude: latitude, longitude: longitude)
-            
-            for i in 0 ..< startups.count {
-                
-                let startupLocation = CLLocation(latitude: startups[i].latitude, longitude: startups[i].longitude)
-                
-                var distance = startupLocation.distance(from: userLocation)
-                
-                if distance < 0 {
-                    distance = distance * -1
-                }
-                
-                startups[i].distance = distance
-            }
-            
             startups = startups.sorted(by: {$0.distance < $1.distance})
         }
         
         SortButton.setEnabled(true)
         reloadTable()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locationManager.location?.coordinate
     }
     
     func reloadTable() {
@@ -158,12 +139,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         
-        let coordinate = CLLocationCoordinate2D(latitude: startups[rowIndex].latitude, longitude: startups[rowIndex].longitude)
-        
-        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
-        
-        mapItem.name = startups[rowIndex].title
-        
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
+        presentController(withName: "DistanceInterfaceController", context: startups[rowIndex])
     }
 }
