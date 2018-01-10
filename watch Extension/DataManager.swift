@@ -9,6 +9,7 @@
 import Alamofire
 import SwiftyJSON
 import WatchConnectivity
+import MapKit
 
 struct Startup {
     var id: String
@@ -17,6 +18,7 @@ struct Startup {
     var latitude: Double
     var longitude: Double
     var distance: Double
+    var nearestRoad: String
 }
 
 struct Announcement {
@@ -25,11 +27,13 @@ struct Announcement {
     var datetime: String
 }
 
-class DataManager: NSObject, WCSessionDelegate {
+class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
 
     private var startups: [Startup] = []
     private var announcements: [Announcement] = []
     private var session: WCSession!
+    private let locationManager = CLLocationManager()
+    private var location: CLLocationCoordinate2D?
     static let sharedInstance = DataManager()
     
     private override init() {
@@ -37,6 +41,16 @@ class DataManager: NSObject, WCSessionDelegate {
         session = WCSession.default
         session.delegate = self
         session.activate()
+        locationManager.delegate = self
+        location = locationManager.location?.coordinate
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        if status == CLAuthorizationStatus.authorizedWhenInUse {
+            
+            location = locationManager.location?.coordinate
+        }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -86,7 +100,7 @@ class DataManager: NSObject, WCSessionDelegate {
                         return
                 }
                 
-                self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, brewery: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0))
+                self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, brewery: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0, nearestRoad: ""))
             }
             
             NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
@@ -94,6 +108,31 @@ class DataManager: NSObject, WCSessionDelegate {
     }
     
     func getStartups() -> [Startup] {
+        
+        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+        
+            location = locationManager.location?.coordinate
+            
+            guard let latitude = location?.latitude, let longitude = location?.longitude else {
+                return startups
+            }
+            
+            let userLocation = CLLocation(latitude: latitude, longitude: longitude)
+            
+            for i in 0 ..< startups.count {
+                
+                let startupLocation = CLLocation(latitude: startups[i].latitude, longitude: startups[i].longitude)
+                
+                var distance = startupLocation.distance(from: userLocation)
+                
+                if distance < 0 {
+                    distance = distance * -1
+                }
+                
+                startups[i].distance = distance
+            }
+        }
+        
         return startups
     }
     

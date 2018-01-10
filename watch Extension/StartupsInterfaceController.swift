@@ -107,26 +107,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         case .Brewery:
             startups = startups.sorted(by: {$0.brewery < $1.brewery})
         case .Distance:
-            
-            guard let latitude = location?.latitude, let longitude = location?.longitude else {
-                return
-            }
-            
-            let userLocation = CLLocation(latitude: latitude, longitude: longitude)
-            
-            for i in 0 ..< startups.count {
-                
-                let startupLocation = CLLocation(latitude: startups[i].latitude, longitude: startups[i].longitude)
-                
-                var distance = startupLocation.distance(from: userLocation)
-                
-                if distance < 0 {
-                    distance = distance * -1
-                }
-                
-                startups[i].distance = distance
-            }
-            
             startups = startups.sorted(by: {$0.distance < $1.distance})
         }
         
@@ -158,12 +138,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         
-        let coordinate = CLLocationCoordinate2D(latitude: startups[rowIndex].latitude, longitude: startups[rowIndex].longitude)
-        
-        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
-        
-        mapItem.name = startups[rowIndex].title
-        
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
+        presentController(withName: "DistanceInterfaceController", context: startups[rowIndex])
     }
 }
