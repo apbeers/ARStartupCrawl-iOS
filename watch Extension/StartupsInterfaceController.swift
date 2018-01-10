@@ -41,34 +41,32 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         
         NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
-            self.startups = self.dataManager.getStartups()
-            
-            for i in 0 ..< self.startups.count {
-                
-                let words = self.startups[i].brewery.components(separatedBy: " ")
-                self.startups[i].brewery = words[0] + " " + words[1]
-            }
-            
+            self.getLocalData()
             self.sortData()
         }
         
         NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
             
-            self.startups = self.dataManager.getStartups()
-            
-            for i in 0 ..< self.startups.count {
-                
-                let words = self.startups[i].brewery.components(separatedBy: " ")
-                self.startups[i].brewery = words[0] + " " + words[1]
-            }
+            self.getLocalData()
             
             if locationTrigger != LocationTriggerInterface.DistanceInterfaceController {
                 self.currentSortType = .Startup
                 self.SortButtonTapped()
             }
         }
-        
+    
         SortButton.setTitle("Distance")
+    }
+    
+    func getLocalData() {
+        
+        self.startups = self.dataManager.getStartups()
+        
+        for i in 0 ..< self.startups.count {
+            
+            let words = self.startups[i].brewery.components(separatedBy: " ")
+            self.startups[i].brewery = words[0] + " " + words[1]
+        }
     }
     
     override func willActivate() {
