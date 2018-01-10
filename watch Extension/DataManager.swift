@@ -13,7 +13,7 @@ import WatchConnectivity
 struct Startup {
     var id: String
     var title: String
-    var snippet: String
+    var brewery: String
     var latitude: Double
     var longitude: Double
     var distance: Double
@@ -86,7 +86,7 @@ class DataManager: NSObject, WCSessionDelegate {
                         return
                 }
                 
-                self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, snippet: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0))
+                self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, brewery: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0))
             }
             
             NotificationCenter.default.post(name: .StartupsUpdated, object: nil)

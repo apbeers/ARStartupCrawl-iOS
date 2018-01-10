@@ -42,6 +42,13 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
             self.startups = self.dataManager.getStartups()
+            
+            for i in 0 ..< self.startups.count {
+                
+                let words = self.startups[i].brewery.components(separatedBy: " ")
+                self.startups[i].brewery = words[0] + " " + words[1]
+            }
+            
             self.sortTable()
         }
         SortButton.setTitle("Distance")
@@ -98,7 +105,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         case .Startup:
             startups = startups.sorted(by: {$0.title < $1.title})
         case .Brewery:
-            startups = startups.sorted(by: {$0.snippet < $1.snippet})
+            startups = startups.sorted(by: {$0.brewery < $1.brewery})
         case .Distance:
             
             guard let latitude = location?.latitude, let longitude = location?.longitude else {
@@ -143,7 +150,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             }
             
             row.StartupLabel.setText(startup.title)
-            row.BreweryLabel.setText(startup.snippet)
+            row.BreweryLabel.setText(startup.brewery)
             
             index += 1
         }
