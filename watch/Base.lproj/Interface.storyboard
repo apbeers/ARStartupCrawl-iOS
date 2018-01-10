@@ -39,17 +39,55 @@
                     </connections>
                 </controller>
             </objects>
+            <point key="canvasLocation" x="130" y="159"/>
         </scene>
         <!--Announcements-->
         <scene sceneID="8sW-RH-O0g">
             <objects>
                 <controller id="51C-HX-V6s" userLabel="Announcements" customClass="AnnouncementsInterfaceController" customModule="watch_Extension">
                     <items>
-                        <label alignment="left" text="Announcements" id="reX-Sk-ZGT"/>
+                        <table alignment="left" id="izC-jS-Psn">
+                            <items>
+                                <tableRow identifier="AnnouncementRow" id="ne5-0U-bdU" customClass="AnnouncementRow" customModule="watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="uKR-v4-yag">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="Announcement" textAlignment="center" numberOfLines="2" id="VuT-0C-eaQ" userLabel="AnnouncementTitleLabel">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="AnnouncementTitleLabel" destination="VuT-0C-eaQ" id="34D-fb-jru"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
+                    <connections>
+                        <outlet property="table" destination="izC-jS-Psn" id="2JR-BX-oBj"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="419" y="127"/>
+            <point key="canvasLocation" x="370" y="159"/>
+        </scene>
+        <!--Detail Interface Controller-->
+        <scene sceneID="yBi-B5-eyC">
+            <objects>
+                <controller identifier="DetailInterfaceController" id="A10-sU-TAo" userLabel="Detail Interface Controller" customClass="DetailInterfaceController" customModule="watch_Extension">
+                    <items>
+                        <label alignment="left" text="Announcement" id="vTC-CN-JPZ" userLabel="TitleLabel">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <separator alignment="left" id="V4x-N8-SPN"/>
+                        <label alignment="left" text="Body" numberOfLines="12" id="ADJ-nl-Pmx" userLabel="DescriptionLabel"/>
+                    </items>
+                    <connections>
+                        <outlet property="DescriptionLabel" destination="ADJ-nl-Pmx" id="ei0-mr-cvJ"/>
+                        <outlet property="TitleLabel" destination="vTC-CN-JPZ" id="wfi-3U-NwK"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="592" y="163"/>
         </scene>
     </scenes>
 </document>

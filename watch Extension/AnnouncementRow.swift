@@ -6,8 +6,9 @@
 //  Copyright © 2018 Andrew Beers. All rights reserved.
 //
 
-import UIKit
+import WatchKit
 
 class AnnouncementRow: NSObject {
 
+    @IBOutlet var AnnouncementTitleLabel: WKInterfaceLabel!
 }

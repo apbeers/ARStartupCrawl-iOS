@@ -34,7 +34,7 @@ class DataManager: NSObject {
     
     func refreshStartupsFromAPI() {
         
-        Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups", encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups/nopics", encoding: JSONEncoding.default).responseJSON { response in
             
             guard let responseData = response.data else {
                 return
@@ -76,7 +76,7 @@ class DataManager: NSObject {
             
             for (_, item) in json {
                 
-                self.announcements.append(Announcement(title: item["title"].description, desc: item["description"].description, datetime: item["datetime"].description))
+                self.announcements.append(Announcement(title: item["title"].description, desc: item["body"].description, datetime: item["datetime"].description))
             }
             
             NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)

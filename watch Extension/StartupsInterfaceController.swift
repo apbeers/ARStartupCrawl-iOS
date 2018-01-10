@@ -24,6 +24,7 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.awake(withContext: context)
         
         dataManager.refreshStartupsFromAPI()
+        dataManager.refreshAnnouncementsFromAPI()
         
         NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
