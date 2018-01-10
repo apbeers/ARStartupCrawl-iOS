@@ -53,7 +53,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         }
         
         NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
-        
+            
             self.startups = self.dataManager.getStartups()
             
             for i in 0 ..< self.startups.count {
@@ -62,8 +62,10 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
                 self.startups[i].brewery = words[0] + " " + words[1]
             }
             
-            self.currentSortType = .Startup
-            self.SortButtonTapped()
+            if locationTrigger == LocationTriggerInterface.StartpsInterfaceController {
+                self.currentSortType = .Startup
+                self.SortButtonTapped()
+            }
         }
         
         SortButton.setTitle("Distance")
@@ -88,6 +90,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
                 currentSortType = .Distance
                 SortButton.setTitle("Brewery")
             } else {
+                locationTrigger = LocationTriggerInterface.StartpsInterfaceController
                 locationManager.requestWhenInUseAuthorization()
             }
         case .Distance:

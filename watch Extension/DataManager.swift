@@ -11,6 +11,14 @@ import SwiftyJSON
 import WatchConnectivity
 import MapKit
 
+enum LocationTriggerInterface: Int {
+    case StartpsInterfaceController
+    case DistanceInterfaceController
+    case Invalid
+}
+
+var locationTrigger: LocationTriggerInterface?
+
 struct Startup {
     var id: String
     var title: String
@@ -59,6 +67,10 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         
         location = locationManager.location?.coordinate
         NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("\(error)")
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -130,7 +142,6 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
             for i in 0 ..< startups.count {
 
                 let startupLocation = CLLocation(latitude: startups[i].latitude, longitude: startups[i].longitude)
-                startups[i].distance = startupLocation.distance(from: userLocation)
                 
                 let yDiff = userLocation.coordinate.latitude - startupLocation.coordinate.latitude
                 let xDiff = userLocation.coordinate.longitude - startupLocation.coordinate.longitude
@@ -209,6 +220,10 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
                     startups[i].direction = "X"
                 }
                 print(startups[i].direction)
+                
+                let distance: Double = startupLocation.distance(from: userLocation)
+                
+                startups[i].distance = distance
             }
         }
         

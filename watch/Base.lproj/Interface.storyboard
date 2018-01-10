@@ -61,18 +61,24 @@
                         <separator alignment="left" id="wVA-2G-g9i"/>
                         <group width="1" alignment="left" id="atS-Zf-DiB">
                             <items>
-                                <label alignment="left" text="0.3 mi" id="Yb9-Kb-SXi" userLabel="DistanceLabel">
-                                    <fontDescription key="font" type="system" pointSize="23"/>
+                                <label width="75" alignment="left" text="0.3 mi" textAlignment="center" id="Yb9-Kb-SXi" userLabel="DistanceLabel">
+                                    <fontDescription key="font" type="system" pointSize="25"/>
                                 </label>
-                                <label alignment="right" text="SW" id="zbx-rG-3ub" userLabel="DirectionLabel">
-                                    <fontDescription key="font" type="system" weight="light" pointSize="23"/>
+                                <label width="61" alignment="right" text="SW" textAlignment="center" id="zbx-rG-3ub" userLabel="DirectionLabel">
+                                    <fontDescription key="font" type="system" weight="light" pointSize="27"/>
                                 </label>
                             </items>
                         </group>
-                        <label alignment="left" text="Nearest road name" id="uSp-uE-6Gh" userLabel="RoadNameLabel">
+                        <label alignment="left" text="Nearest road name" textAlignment="center" id="uSp-uE-6Gh" userLabel="RoadNameLabel">
                             <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
                         </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Enable Location" id="yTR-B3-LHf" userLabel="EnableLocationButton">
+                            <connections>
+                                <action selector="EnableLocationButtonTapped" destination="pzt-PO-8Dy" id="Cjv-f1-bfs"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Get Directions" id="UL2-hm-0kl" userLabel="DirectionsButton">
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="TappedDirectionsButton" destination="pzt-PO-8Dy" id="WXT-Zp-iZt"/>
                             </connections>
@@ -82,12 +88,13 @@
                         <outlet property="DirectionLabel" destination="zbx-rG-3ub" id="sB4-Pc-qIe"/>
                         <outlet property="DirectionsButton" destination="UL2-hm-0kl" id="U99-rf-gCf"/>
                         <outlet property="DistanceLabel" destination="Yb9-Kb-SXi" id="JEp-nn-wZP"/>
+                        <outlet property="EnableLocationButton" destination="yTR-B3-LHf" id="IJj-cf-R6f"/>
                         <outlet property="RoadNameLabel" destination="uSp-uE-6Gh" id="U3N-e6-ljB"/>
                         <outlet property="TitleLabel" destination="L0L-Xn-tGg" id="Uof-Tr-c2G"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="130" y="461"/>
+            <point key="canvasLocation" x="130" y="460"/>
         </scene>
         <!--Announcements-->
         <scene sceneID="8sW-RH-O0g">

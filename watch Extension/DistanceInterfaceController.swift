@@ -14,9 +14,12 @@ class DistanceInterfaceController: WKInterfaceController {
     @IBOutlet var DistanceLabel: WKInterfaceLabel!
     @IBOutlet var DirectionLabel: WKInterfaceLabel!
     @IBOutlet var RoadNameLabel: WKInterfaceLabel!
+    @IBOutlet var EnableLocationButton: WKInterfaceButton!
     @IBOutlet var DirectionsButton: WKInterfaceButton!
     
     var startup: Startup!
+    let dataManager = DataManager.sharedInstance
+    let locationManager = CLLocationManager()
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -24,8 +27,53 @@ class DistanceInterfaceController: WKInterfaceController {
         startup = context as? Startup
         
         TitleLabel.setText(startup.title)
+        if startup.distance == 0 {
+            DistanceLabel.setText("")
+        } else {
+            
+            var distanceMiles = round((startup.distance/0.014472) * 100) / 100
+            
+            if distanceMiles < 0 {
+                distanceMiles = distanceMiles * -1
+            }
+            
+            if distanceMiles > 99 {
+                distanceMiles = Double.infinity
+            }
+            DistanceLabel.setText(String(distanceMiles) + " mi")
+        }
+        DirectionLabel.setText(startup.direction)
+        RoadNameLabel.setText(startup.nearestRoad)
         
-        // Configure interface objects here.
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            EnableLocationButton.setHidden(true)
+        } else {
+            EnableLocationButton.setHidden(false)
+        }
+        
+        NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
+            
+            self.EnableLocationButton.setHidden(true)
+            
+            for s in self.dataManager.getStartups() {
+                if self.startup.id == s.id {
+                    
+                    var distanceMiles = round((s.distance/0.014472) * 100) / 100
+                    
+                    if distanceMiles < 0 {
+                        distanceMiles = distanceMiles * -1
+                    }
+                    
+                    if distanceMiles > 99 {
+                        distanceMiles = Double.infinity
+                    }
+                    
+                    self.DistanceLabel.setText(String(distanceMiles) + " mi")
+                    self.DirectionLabel.setText(s.direction)
+                    self.RoadNameLabel.setText(s.nearestRoad)
+                }
+            }
+        }
     }
 
     override func willActivate() {
@@ -38,6 +86,12 @@ class DistanceInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    @IBAction func EnableLocationButtonTapped() {
+        
+        locationTrigger = LocationTriggerInterface.DistanceInterfaceController
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
     @IBAction func TappedDirectionsButton() {
         
         let coordinate = CLLocationCoordinate2D(latitude: startup.latitude, longitude: startup.longitude)
@@ -47,6 +101,5 @@ class DistanceInterfaceController: WKInterfaceController {
         mapItem.name = startup.title
         
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
-        
     }
 }
