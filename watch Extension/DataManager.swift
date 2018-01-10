@@ -6,9 +6,9 @@
 //  Copyright © 2018 Andrew Beers. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import SwiftyJSON
+import WatchConnectivity
 
 struct Startup {
     var id: String
@@ -24,13 +24,47 @@ struct Announcement {
     var datetime: String
 }
 
-class DataManager: NSObject {
+class DataManager: NSObject, WCSessionDelegate {
 
-    static let sharedInstance = DataManager()
-    private override init() {}
-    
     private var startups: [Startup] = []
     private var announcements: [Announcement] = []
+    private var session: WCSession!
+    static let sharedInstance = DataManager()
+    
+    private override init() {
+        super.init()
+        session = WCSession.default
+        session.delegate = self
+        session.activate()
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        switch activationState {
+        case WCSessionActivationState.activated:
+            print("watch session activated")
+        case WCSessionActivationState.notActivated:
+            print("watch session not activated")
+        default:
+            print("watch default case")
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        
+        guard let messageString = message["request"] as? String else {
+            return
+        }
+        
+        switch messageString {
+        case "startups_updated":
+            refreshStartupsFromAPI()
+        case "announcements_updated":
+            refreshAnnouncementsFromAPI()
+        default:
+            print("Uknown Message")
+        }
+    }
     
     func refreshStartupsFromAPI() {
         

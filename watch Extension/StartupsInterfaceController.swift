@@ -13,9 +13,8 @@ import MapKit
 import SwiftyJSON
 import Alamofire
 
-class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
+class StartupsInterfaceController: WKInterfaceController {
 
-    var session: WCSession!
     var startups: [Startup] = []
     let dataManager = DataManager.sharedInstance
     @IBOutlet var table: WKInterfaceTable!
@@ -39,9 +38,6 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        session = WCSession.default
-        session.delegate = self
-        session.activate()
     }
     
     override func didDeactivate() {
@@ -76,23 +72,5 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         mapItem.name = startups[rowIndex].title
         
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
-    }
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-        switch activationState {
-        case WCSessionActivationState.activated:
-            print("watch session activated")
-        case WCSessionActivationState.notActivated:
-            print("watch session not activated")
-        default:
-            print("watch default case")
-        }
-        
-        session.sendMessage(["request": "startup_details"], replyHandler: { response in
-            print("reponse: \(response)")
-        }, errorHandler: { error in
-            print("error: \(error)")
-        })
     }
 }

@@ -33,6 +33,18 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate {
         }
     }
     
+    func startupsUpdated() {
+        
+    }
+    
+    func announcementsUpdated() {
+        session.sendMessage(["request": "announcements_updated"], replyHandler: { reply in
+            
+        }, errorHandler: { error in
+            
+        })
+    }
+    
     func sessionDidBecomeInactive(_ session: WCSession) {
         
     }
@@ -40,46 +52,4 @@ class WatchConnectivityHandler: NSObject, WCSessionDelegate {
     func sessionDidDeactivate(_ session: WCSession) {
         
     }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        session.transferUserInfo(["startup_details": StartupManager.getDetails().toDictionary {$0.id}])
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        
-        guard let messageString = message["request"] as? String else {
-            return
-        }
-        
-        switch messageString {
-        case "startup_details":
-            
-            replyHandler(["startup_details": NSDictionary()])
-            
-        case "announcement_details":
-            replyHandler(["announcement_details": "heres_the_announcement_details"])
-        default:
-            replyHandler(["unknown request": "unknown request"])
-        }
-    }
-    
-    /*
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        
-        guard let messageString = message["request"] as? String else {
-            return
-        }
-        
-        switch messageString {
-        case "startup_details":
-
-                session
-            
-        case "announcement_details":
-            replyHandler(["announcement_details": "heres_the_announcement_details"])
-        default:
-            replyHandler(["unknown request": "unknown request"])
-        }
-    }
-    */
 }

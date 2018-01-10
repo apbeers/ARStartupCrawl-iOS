@@ -88,6 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("Message ID: \(messageID)")
         }
         
+        watchConnectivityHandler?.announcementsUpdated()
+        
         // Print full message.
         print(userInfo)
     }
@@ -107,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         completionHandler(UIBackgroundFetchResult.newData)
- 
+        watchConnectivityHandler?.announcementsUpdated()
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
