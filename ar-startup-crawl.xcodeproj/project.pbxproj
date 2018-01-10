@@ -42,6 +42,9 @@
 		49EE601B20056757001CB6AA /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */; };
 		49EE606D20059403001CB6AA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE606C20059403001CB6AA /* DataManager.swift */; };
 		49EE60762005A33E001CB6AA /* DetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE60752005A33E001CB6AA /* DetailInterfaceController.swift */; };
+		49EE607A2005B3A9001CB6AA /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6064200571E0001CB6AA /* DataKit.swift */; };
+		49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607C2005B3F7001CB6AA /* StartupManager.swift */; };
+		49EE607F2005B6DF001CB6AA /* AnnouncementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
@@ -165,10 +168,11 @@
 		49EE601C20056760001CB6AA /* watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watch Extension.entitlements"; sourceTree = "<group>"; };
 		49EE601D20056769001CB6AA /* watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watch.entitlements; sourceTree = "<group>"; };
 		49EE6064200571E0001CB6AA /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
-		49EE606820057234001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		49EE606B200578CE001CB6AA /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EE606C20059403001CB6AA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		49EE60752005A33E001CB6AA /* DetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInterfaceController.swift; sourceTree = "<group>"; };
+		49EE607C2005B3F7001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
+		49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementManager.swift; sourceTree = "<group>"; };
 		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		55D387BB06B4926BF67B361A /* Pods-watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,11 +271,13 @@
 		49419C331FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXGroup;
 			children = (
-				49EE60772005AEAE001CB6AA /* DataManager */,
 				49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */,
 				49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */,
 				49269B6C1FBD9E6300E9C208 /* Images */,
 				49419C341FBD94E000695889 /* AppDelegate.swift */,
+				49EE607C2005B3F7001CB6AA /* StartupManager.swift */,
+				49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */,
+				49EE6064200571E0001CB6AA /* DataKit.swift */,
 				49269B5A1FBD9E2F00E9C208 /* Constants.swift */,
 				49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */,
 				49269B581FBD9E2E00E9C208 /* Extensions.swift */,
@@ -337,15 +343,6 @@
 				49EE606C20059403001CB6AA /* DataManager.swift */,
 			);
 			path = "watch Extension";
-			sourceTree = "<group>";
-		};
-		49EE60772005AEAE001CB6AA /* DataManager */ = {
-			isa = PBXGroup;
-			children = (
-				49EE6064200571E0001CB6AA /* DataKit.swift */,
-				49EE606820057234001CB6AA /* StartupManager.swift */,
-			);
-			path = DataManager;
 			sourceTree = "<group>";
 		};
 		5476EDA380D47EA680A30E6F /* Pods */ = {
@@ -831,6 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49269B5F1FBD9E3200E9C208 /* Constants+Analytics.swift in Sources */,
+				49EE607A2005B3A9001CB6AA /* DataKit.swift in Sources */,
 				49269B691FBD9E3200E9C208 /* TabBarController.swift in Sources */,
 				49269B621FBD9E3200E9C208 /* StartupsTableViewController.swift in Sources */,
 				49269B6A1FBD9E3200E9C208 /* UpdateTableViewCell.swift in Sources */,
@@ -839,8 +837,10 @@
 				49269B671FBD9E3200E9C208 /* WebViewViewController.swift in Sources */,
 				49269B661FBD9E3200E9C208 /* Extensions.swift in Sources */,
 				49419C351FBD94E000695889 /* AppDelegate.swift in Sources */,
+				49EE607F2005B6DF001CB6AA /* AnnouncementManager.swift in Sources */,
 				49269B641FBD9E3200E9C208 /* UpdatesTableViewController.swift in Sources */,
 				49269B6B1FBD9E3200E9C208 /* MapViewController.swift in Sources */,
+				49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */,
 				49269B681FBD9E3200E9C208 /* Constants.swift in Sources */,
 				49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */,
 			);

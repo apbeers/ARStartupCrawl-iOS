@@ -22,7 +22,9 @@ struct Startup {
 }
 
 class StartupManager: NSObject {
-    
+
+    private override init() { }
+    static let sharedInstance = StartupManager()
     let entityName = "Startups"
     
     func fetchStartupsAPI() {
@@ -38,7 +40,7 @@ class StartupManager: NSObject {
             let context = DataKit.sharedInstance.persistentContainer.viewContext
             
             // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
             
             // Create Batch Delete Request
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -49,7 +51,7 @@ class StartupManager: NSObject {
                 print("Failed")
             }
             
-            guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
+            guard let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: context) else {
                 return
             }
             
