@@ -10,22 +10,26 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 import MapKit
+import SwiftyJSON
+import Alamofire
 
-struct StartupData {
-    let title: String
-    let brewery: String
-    let latitude: Double
-    let longitude: Double
-}
+class StartupsInterfaceController: WKInterfaceController {
 
-class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
-
-    var session: WCSession!
-    var startups: [StartupData] = []
+    var startups: [Startup] = []
+    let dataManager = DataManager.sharedInstance
     @IBOutlet var table: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        dataManager.refreshStartupsFromAPI()
+        dataManager.refreshAnnouncementsFromAPI()
+        
+        NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
+            
+            self.startups = self.dataManager.getStartups()
+            self.reloadTable()
+        }
         
         // Configure interface objects here.
     }
@@ -34,10 +38,6 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        session = WCSession.default
-        session.delegate = self
-        session.activate()
-        reloadTable()
     }
     
     override func didDeactivate() {
@@ -57,7 +57,7 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
             }
             
             row.StartupLabel.setText(startup.title)
-            row.BreweryLabel.setText(startup.brewery)
+            row.BreweryLabel.setText(startup.snippet)
             
             index += 1
         }
@@ -73,25 +73,4 @@ class StartupsInterfaceController: WKInterfaceController, WCSessionDelegate {
         
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
     }
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-        switch activationState {
-        case WCSessionActivationState.activated:
-            print("watch session activated")
-        case WCSessionActivationState.notActivated:
-            print("watch session not activated")
-        default:
-            print("watch default case")
-        }
-        
-        session.sendMessage(["request": "startup_details"], replyHandler: { response in
-            print("reponse: \(response)")
-            self.reloadTable()
-        }, errorHandler: { error in
-            print("error: \(error)")
-        })
-    }
-    
-    
 }

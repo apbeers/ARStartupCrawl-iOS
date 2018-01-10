@@ -49,6 +49,16 @@
                ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "49EE604D200571B0001CB6AA"
+               BuildableName = "DataKitTests.xctest"
+               BlueprintName = "DataKitTests"
+               ReferencedContainer = "container:ar-startup-crawl.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

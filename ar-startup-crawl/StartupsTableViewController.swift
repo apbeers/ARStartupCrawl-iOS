@@ -8,12 +8,12 @@
 
 import UIKit
 import Firebase
-import CoreData
 
 class StartupsTableViewController: UITableViewController, UITabBarControllerDelegate {
 
     var startups: [[String]] = []
     var startupsImages: [UIImage] = []
+    let startupManager = StartupManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Startups"
     
-        NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main) { _ in
+        NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
             self.refreshData()
         }
@@ -34,48 +34,16 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
         
         self.startups.removeAll()
         self.startupsImages.removeAll()
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
+ 
+        for startup in startupManager.fetchStartupsLocal() {
+            self.startups.append([startup.title, startup.desc, startup.url])
+            self.startupsImages.append(startup.logo)
         }
         
-        let context = appDelegate.persistentContainer.viewContext
+        self.startups.reverse()
+        self.startupsImages.reverse()
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Startups")
-
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                
-                guard let title: String = data.value(forKey: "title") as? String,
-                    let desc: String = data.value(forKey: "desc") as? String,
-                    let logoBase64: String = data.value(forKey: "logoBase64") as? String,
-                    let url: String = data.value(forKey: "url") as? String
-                    else {
-                        return
-                }
-                
-                guard let imageData = Data(base64Encoded: logoBase64, options: Data.Base64DecodingOptions.ignoreUnknownCharacters) else {
-                    return
-                }
-                
-                guard let image = UIImage(data: imageData) else {
-                    return
-                }
-                
-                self.startups.append([title, desc, url])
-                self.startupsImages.append(image)
-            }
-            
-            self.startups.reverse()
-            self.startupsImages.reverse()
-            
-            self.tableView.reloadData()
-            
-        } catch {
-            print("Failed")
-        }
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

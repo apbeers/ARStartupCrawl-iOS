@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import CoreData
 
 class UpdatesTableViewController: UITableViewController {
 
-    var updates: [[String]] = []
+    var announcements: [Announcement] = []
+    let announcementManager = AnnouncementManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.main) { _ in
+        NotificationCenter.default.addObserver(forName: .AnnouncementsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
             self.refreshData()
         }
@@ -36,31 +36,7 @@ class UpdatesTableViewController: UITableViewController {
 
     func refreshData() {
         
-        self.updates.removeAll()
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
-        
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                
-                if let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? String {
-                    
-                    self.updates.append([title, body, date])
-                }
-            }
-        } catch {
-            
-            print("Failed")
-        }
-        
+        announcements = announcementManager.fetchAnnouncementsLocal()
         self.tableView.reloadData()
     }
     
@@ -71,7 +47,7 @@ class UpdatesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return updates.count
+        return announcements.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,9 +56,9 @@ class UpdatesTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        cell.TitleLabel.text = updates[indexPath.row][0]
-        cell.DescriptionLabel.text = updates[indexPath.row][1]
-        cell.DatetimeLabel.text = updates[indexPath.row][2]
+        cell.TitleLabel.text = announcements[indexPath.row].title
+        cell.DescriptionLabel.text = announcements[indexPath.row].desc
+        cell.DatetimeLabel.text = announcements[indexPath.row].datetime
         cell.selectionStyle = .none
         
         return cell

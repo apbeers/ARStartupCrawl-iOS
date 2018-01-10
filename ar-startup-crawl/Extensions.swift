@@ -9,5 +9,10 @@
 import Foundation
 import UIKit
 
+extension Notification.Name {
+    
+    static let StartupsUpdated = Notification.Name("on-startups-updated")
+    static let AnnouncementsUpdated = Notification.Name("on-announcements-updated")
+}
 
 
