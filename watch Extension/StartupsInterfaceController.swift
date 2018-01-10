@@ -62,7 +62,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
                 self.startups[i].brewery = words[0] + " " + words[1]
             }
             
-            if locationTrigger == LocationTriggerInterface.StartpsInterfaceController {
+            if locationTrigger != LocationTriggerInterface.DistanceInterfaceController {
                 self.currentSortType = .Startup
                 self.SortButtonTapped()
             }

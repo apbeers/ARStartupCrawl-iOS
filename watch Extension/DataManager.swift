@@ -109,21 +109,26 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
                 return
             }
             
-            let json = JSON(data: responseData)
-            
-            self.startups.removeAll()
-            
-            for (_, item) in json {
+            do {
+                let json = try JSON(data: responseData)
                 
-                guard let latitude: Double = Double(item["latitude"].description),
-                    let longitude: Double = Double(item["longitude"].description) else {
-                        return
+                self.startups.removeAll()
+                
+                for (_, item) in json {
+                    
+                    guard let latitude: Double = Double(item["latitude"].description),
+                        let longitude: Double = Double(item["longitude"].description) else {
+                            return
+                    }
+                    
+                    self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, brewery: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0, direction: "", nearestRoad: ""))
                 }
                 
-                self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, brewery: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0, direction: "", nearestRoad: ""))
+                NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
+                
+            } catch {
+                print("Invalid Startups JSON")
             }
-            
-            NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
         }
     }
     
@@ -238,16 +243,22 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
                 return
             }
             
-            let json = JSON(data: responseData)
-            
-            self.announcements.removeAll()
-            
-            for (_, item) in json {
+            do {
+             
+                let json = try JSON(data: responseData)
                 
-                self.announcements.append(Announcement(title: item["title"].description, desc: item["body"].description, datetime: item["datetime"].description))
+                self.announcements.removeAll()
+                
+                for (_, item) in json {
+                    
+                    self.announcements.append(Announcement(title: item["title"].description, desc: item["body"].description, datetime: item["datetime"].description))
+                }
+                
+                NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)
+                
+            } catch {
+                print("Invalid Announcements JSON")
             }
-            
-            NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)
         }
     }
     

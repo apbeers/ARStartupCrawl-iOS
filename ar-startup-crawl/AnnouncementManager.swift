@@ -29,42 +29,48 @@ class AnnouncementManager: NSObject {
                 return
             }
             
-            let json = JSON(data: responseData)
-
-            let context = DataKit.sharedInstance.persistentContainer.viewContext
-            
-            // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.AnnouncementsEntityName)
-            
-            // Create Batch Delete Request
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
             do {
-                try context.execute(batchDeleteRequest)
-            } catch {
-                print("Failed")
-            }
-            
-            guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
-                return
-            }
-            
-            for (_, item) in json {
+             
+                let json = try JSON(data: responseData)
                 
-                let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+                let context = DataKit.sharedInstance.persistentContainer.viewContext
                 
-                newAnnouncement.setValue(item["title"].description, forKey: "title")
-                newAnnouncement.setValue(item["body"].description, forKey: "body")
-                newAnnouncement.setValue(item["datetime"].description, forKey: "date")
+                // Create Fetch Request
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.CoreData.AnnouncementsEntityName)
+                
+                // Create Batch Delete Request
+                let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
                 
                 do {
-                    try context.save()
+                    try context.execute(batchDeleteRequest)
                 } catch {
-                    print("Failed saving")
+                    print("Failed")
                 }
+                
+                guard let entity = NSEntityDescription.entity(forEntityName: Constants.CoreData.AnnouncementsEntityName, in: context) else {
+                    return
+                }
+                
+                for (_, item) in json {
+                    
+                    let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+                    
+                    newAnnouncement.setValue(item["title"].description, forKey: "title")
+                    newAnnouncement.setValue(item["body"].description, forKey: "body")
+                    newAnnouncement.setValue(item["datetime"].description, forKey: "date")
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Failed saving")
+                    }
+                }
+                
+                NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)
+                
+            } catch {
+                print("Invalid Announcement JSON")
             }
-            
-            NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)
         }
     }
     

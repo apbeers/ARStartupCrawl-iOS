@@ -35,52 +35,58 @@ class StartupManager: NSObject {
                 return
             }
             
-            let json = JSON(data: responseData)
-            
-            let context = DataKit.sharedInstance.persistentContainer.viewContext
-            
-            // Create Fetch Request
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
-            
-            // Create Batch Delete Request
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
             do {
-                try context.execute(batchDeleteRequest)
-            } catch {
-                print("Failed")
-            }
-            
-            guard let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: context) else {
-                return
-            }
-            
-            for (_, item) in json {
                 
-                let newStartup = NSManagedObject(entity: entity, insertInto: context)
+                let json = try JSON(data: responseData)
                 
-                guard let latitude: Double = Double(item["latitude"].description),
-                    let longitude: Double = Double(item["longitude"].description) else {
-                        return
-                }
+                let context = DataKit.sharedInstance.persistentContainer.viewContext
                 
-                newStartup.setValue(latitude, forKey: "latitude")
-                newStartup.setValue(longitude, forKey: "longitude")
-                newStartup.setValue(item["description"].description, forKey: "desc")
-                newStartup.setValue(item["logobase64"].description, forKey: "logoBase64")
-                newStartup.setValue(item["snippet"].description, forKey: "snippet")
-                newStartup.setValue(item["url"].description, forKey: "url")
-                newStartup.setValue(item["title"].description, forKey: "title")
-                newStartup.setValue(item["startup_id"].description, forKey: "id")
+                // Create Fetch Request
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.entityName)
+                
+                // Create Batch Delete Request
+                let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
                 
                 do {
-                    try context.save()
+                    try context.execute(batchDeleteRequest)
                 } catch {
-                    print("Failed saving")
+                    print("Failed")
                 }
+                
+                guard let entity = NSEntityDescription.entity(forEntityName: self.entityName, in: context) else {
+                    return
+                }
+                
+                for (_, item) in json {
+                    
+                    let newStartup = NSManagedObject(entity: entity, insertInto: context)
+                    
+                    guard let latitude: Double = Double(item["latitude"].description),
+                        let longitude: Double = Double(item["longitude"].description) else {
+                            return
+                    }
+                    
+                    newStartup.setValue(latitude, forKey: "latitude")
+                    newStartup.setValue(longitude, forKey: "longitude")
+                    newStartup.setValue(item["description"].description, forKey: "desc")
+                    newStartup.setValue(item["logobase64"].description, forKey: "logoBase64")
+                    newStartup.setValue(item["snippet"].description, forKey: "snippet")
+                    newStartup.setValue(item["url"].description, forKey: "url")
+                    newStartup.setValue(item["title"].description, forKey: "title")
+                    newStartup.setValue(item["startup_id"].description, forKey: "id")
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Failed saving")
+                    }
+                }
+                
+                NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
+                
+            } catch {
+                
             }
-            
-            NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
         }
     }
     
