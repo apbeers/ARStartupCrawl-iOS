@@ -25,6 +25,8 @@ class AnnouncementsInterfaceController: WKInterfaceController {
             self.announcements = self.dataManager.getAnnouncements()
             self.reloadTable()
         }
+        self.announcements = self.dataManager.getAnnouncements()
+        self.reloadTable()
     }
     
     override func willActivate() {

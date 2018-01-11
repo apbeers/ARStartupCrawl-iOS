@@ -28,6 +28,8 @@
 		49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49419C3D1FBD94E000695889 /* Assets.xcassets */; };
 		49419C4C1FBD94E100695889 /* ar_startup_crawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C4B1FBD94E100695889 /* ar_startup_crawlTests.swift */; };
 		49419C571FBD94E100695889 /* ar_startup_crawlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */; };
+		49596F8A2006E8700049A81F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49596F882006E8700049A81F /* Model.xcdatamodeld */; };
+		49596F8C2006E8960049A81F /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49596F8B2006E8960049A81F /* DataKit.swift */; };
 		4986F56C20055FDD00FA0B7D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56A20055FDD00FA0B7D /* Interface.storyboard */; };
 		4986F56E20055FDD00FA0B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56D20055FDD00FA0B7D /* Assets.xcassets */; };
 		4986F57520055FDE00FA0B7D /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4986F57420055FDE00FA0B7D /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -152,6 +154,8 @@
 		49419C521FBD94E100695889 /* ar-startup-crawlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ar-startup-crawlUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ar_startup_crawlUITests.swift; sourceTree = "<group>"; };
 		49419C581FBD94E100695889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49596F892006E8700049A81F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		49596F8B2006E8960049A81F /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
 		4986F56820055FDD00FA0B7D /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4986F56B20055FDD00FA0B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		4986F56D20055FDD00FA0B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -344,6 +348,8 @@
 				4986F57D20055FDE00FA0B7D /* Assets.xcassets */,
 				4986F57F20055FDE00FA0B7D /* Info.plist */,
 				49EE606C20059403001CB6AA /* DataManager.swift */,
+				49596F882006E8700049A81F /* Model.xcdatamodeld */,
+				49596F8B2006E8960049A81F /* DataKit.swift */,
 			);
 			path = "watch Extension";
 			sourceTree = "<group>";
@@ -874,6 +880,8 @@
 				49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */,
 				49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */,
 				49EE60832005DED8001CB6AA /* DistanceInterfaceController.swift in Sources */,
+				49596F8A2006E8700049A81F /* Model.xcdatamodeld in Sources */,
+				49596F8C2006E8960049A81F /* DataKit.swift in Sources */,
 				4986F57C20055FDE00FA0B7D /* ExtensionDelegate.swift in Sources */,
 				4986F57A20055FDE00FA0B7D /* StartupsInterfaceController.swift in Sources */,
 				49EE60762005A33E001CB6AA /* DetailInterfaceController.swift in Sources */,
@@ -1275,6 +1283,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		49596F882006E8700049A81F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				49596F892006E8700049A81F /* Model.xcdatamodel */,
+			);
+			currentVersion = 49596F892006E8700049A81F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

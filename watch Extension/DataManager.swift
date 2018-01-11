@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import WatchConnectivity
 import MapKit
+import CoreData
 
 enum LocationTriggerInterface: Int {
     case StartpsInterfaceController
@@ -38,12 +39,13 @@ struct Announcement {
 
 class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
 
-    private var startups: [Startup] = []
-    private var announcements: [Announcement] = []
+   // private var startups: [Startup] = []
     private var session: WCSession!
     private let locationManager = CLLocationManager()
     private var location: CLLocationCoordinate2D?
     static let sharedInstance = DataManager()
+    private let startupEntityName = "Startups"
+    private let announcementEnitityName = "Announcements"
     
     private override init() {
         super.init()
@@ -112,16 +114,44 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
             do {
                 let json = try JSON(data: responseData)
                 
-                self.startups.removeAll()
+                let context = DataKit.sharedInstance.persistentContainer.viewContext
+                
+                // Create Fetch Request
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.startupEntityName)
+                
+                // Create Batch Delete Request
+                let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                
+                do {
+                    try context.execute(batchDeleteRequest)
+                } catch {
+                    print("Failed")
+                }
+                
+                guard let entity = NSEntityDescription.entity(forEntityName: self.startupEntityName, in: context) else {
+                    return
+                }
                 
                 for (_, item) in json {
+                    
+                    let newStartup = NSManagedObject(entity: entity, insertInto: context)
                     
                     guard let latitude: Double = Double(item["latitude"].description),
                         let longitude: Double = Double(item["longitude"].description) else {
                             return
                     }
                     
-                    self.startups.append(Startup(id: item["startup_id"].description, title: item["title"].description, brewery: item["snippet"].description, latitude: latitude, longitude: longitude, distance: 0, direction: "", nearestRoad: ""))
+                    newStartup.setValue(latitude, forKey: "latitude")
+                    newStartup.setValue(longitude, forKey: "longitude")
+                    newStartup.setValue(item["snippet"].description, forKey: "snippet")
+                    newStartup.setValue(item["title"].description, forKey: "title")
+                    newStartup.setValue(item["startup_id"].description, forKey: "id")
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Failed saving")
+                    }
                 }
                 
                 NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
@@ -134,8 +164,35 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
     
     func getStartups() -> [Startup] {
         
-        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+        var startups: [Startup] = []
         
+        let startupsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: startupEntityName)
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        startupsRequest.returnsObjectsAsFaults = false
+        do {
+            let result = try DataKit.sharedInstance.persistentContainer.viewContext.fetch(startupsRequest)
+            for data in result as! [NSManagedObject] {
+                
+                guard let snippet: String = data.value(forKey: "snippet") as? String,
+                    let title: String = data.value(forKey: "title") as? String,
+                    let latitude: Double = data.value(forKey: "latitude") as? Double,
+                    let longitude: Double = data.value(forKey: "longitude") as? Double,
+                    let id: String = data.value(forKey: "id") as? String
+                    else {
+                        return startups
+                }
+
+                startups.append(Startup(id: id, title: title, brewery: snippet, latitude: latitude, longitude: longitude, distance: 0, direction: "", nearestRoad: ""))
+                
+            }
+            
+        } catch {
+            print("Failed")
+        }
+        
+        
+        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            
             location = locationManager.location?.coordinate
             
             guard let latitude = location?.latitude, let longitude = location?.longitude else {
@@ -143,7 +200,7 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
             }
  
             let userLocation = CLLocation(latitude: latitude, longitude: longitude)
-            
+
             for i in 0 ..< startups.count {
 
                 let startupLocation = CLLocation(latitude: startups[i].latitude, longitude: startups[i].longitude)
@@ -247,22 +304,67 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
              
                 let json = try JSON(data: responseData)
                 
-                self.announcements.removeAll()
+                let context = DataKit.sharedInstance.persistentContainer.viewContext
+                
+                // Create Fetch Request
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.announcementEnitityName)
+                
+                // Create Batch Delete Request
+                let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                
+                do {
+                    try context.execute(batchDeleteRequest)
+                } catch {
+                    print("Failed")
+                }
+                
+                guard let entity = NSEntityDescription.entity(forEntityName: self.announcementEnitityName, in: context) else {
+                    return
+                }
                 
                 for (_, item) in json {
                     
-                    self.announcements.append(Announcement(title: item["title"].description, desc: item["body"].description, datetime: item["datetime"].description))
+                    let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
+                    
+                    newAnnouncement.setValue(item["title"].description, forKey: "title")
+                    newAnnouncement.setValue(item["body"].description, forKey: "body")
+                    newAnnouncement.setValue(item["datetime"].description, forKey: "date")
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Failed saving")
+                    }
                 }
                 
                 NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)
                 
             } catch {
-                print("Invalid Announcements JSON")
+                print("Invalid Announcement JSON")
             }
         }
     }
     
     func getAnnouncements() -> [Announcement] {
+        
+        var announcements: [Announcement] = []
+        let context = DataKit.sharedInstance.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                
+                guard let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? String else {
+                    return announcements
+                }
+                announcements.append(Announcement(title: title, desc: body, datetime: date))
+                
+            }
+        } catch {
+            print("Failed")
+        }
         return announcements
     }
 }

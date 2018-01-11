@@ -34,44 +34,33 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        SortButton.setEnabled(false)
+        SortButton.setHidden(true)
         
         dataManager.refreshStartupsFromAPI()
         dataManager.refreshAnnouncementsFromAPI()
         
         NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
-            self.getLocalData()
-            self.sortData()
+            self.reloadTable()
         }
         
         NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
             
-            self.getLocalData()
-            
-            if locationTrigger != LocationTriggerInterface.DistanceInterfaceController {
+            if locationTrigger != LocationTriggerInterface.StartpsInterfaceController {
                 self.currentSortType = .Startup
                 self.SortButtonTapped()
             }
         }
     
         SortButton.setTitle("Distance")
-    }
-    
-    func getLocalData() {
-        
-        self.startups = self.dataManager.getStartups()
-        
-        for i in 0 ..< self.startups.count {
-            
-            let words = self.startups[i].brewery.components(separatedBy: " ")
-            self.startups[i].brewery = words[0] + " " + words[1]
-        }
+        reloadTable()
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        reloadTable()
     }
     
     override func didDeactivate() {
@@ -84,7 +73,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         switch currentSortType {
         case .Startup:
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                
                 currentSortType = .Distance
                 SortButton.setTitle("Brewery")
             } else {
@@ -99,10 +87,18 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             SortButton.setTitle("Distance")
         }
 
-        sortData()
+        reloadTable()
     }
     
-    func sortData() {
+    func reloadTable() {
+        
+        self.startups = self.dataManager.getStartups()
+        
+        for i in 0 ..< self.startups.count {
+            
+            let words = self.startups[i].brewery.components(separatedBy: " ")
+            self.startups[i].brewery = words[0] + " " + words[1]
+        }
         
         switch currentSortType {
         case .Startup:
@@ -112,12 +108,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         case .Distance:
             startups = startups.sorted(by: {$0.distance < $1.distance})
         }
-        
-        SortButton.setEnabled(true)
-        reloadTable()
-    }
-    
-    func reloadTable() {
         
         table.setNumberOfRows(startups.count, withRowType: "StartupRow")
         
@@ -133,6 +123,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             
             index += 1
         }
+        SortButton.setHidden(false)
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
