@@ -15,6 +15,7 @@ use_frameworks!
       platform :watchos, '4.0'
       pod 'SwiftyJSON'
       pod 'Alamofire'
+      pod 'EMTLoadingIndicator'
   end
 
   target 'ar-startup-crawlTests' do

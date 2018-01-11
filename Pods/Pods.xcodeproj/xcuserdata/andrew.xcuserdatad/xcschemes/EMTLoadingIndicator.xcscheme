@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "82AF87AF9C9C0BC79BCBCFFEF3C6AE6A"
-               BuildableName = "Pods_watch_Extension.framework"
-               BlueprintName = "Pods-watch Extension"
+               BlueprintIdentifier = "6F5C9740297569AEB5F39CBCDC3FBF78"
+               BuildableName = "EMTLoadingIndicator.framework"
+               BlueprintName = "EMTLoadingIndicator"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "82AF87AF9C9C0BC79BCBCFFEF3C6AE6A"
-            BuildableName = "Pods_watch_Extension.framework"
-            BlueprintName = "Pods-watch Extension"
+            BlueprintIdentifier = "6F5C9740297569AEB5F39CBCDC3FBF78"
+            BuildableName = "EMTLoadingIndicator.framework"
+            BlueprintName = "EMTLoadingIndicator"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

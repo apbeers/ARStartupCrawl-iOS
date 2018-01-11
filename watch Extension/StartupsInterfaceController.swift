@@ -12,6 +12,7 @@ import WatchConnectivity
 import MapKit
 import SwiftyJSON
 import Alamofire
+import EMTLoadingIndicator
 
 enum Sort: Int {
     case Startup
@@ -27,14 +28,18 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     var currentSortType = Sort.Startup
     let dataManager = DataManager.sharedInstance
     let locationManager = CLLocationManager()
+    var indicator: EMTLoadingIndicator!
     var location: CLLocationCoordinate2D?
     @IBOutlet var table: WKInterfaceTable!
     @IBOutlet var SortButton: WKInterfaceButton!
+    @IBOutlet var LoadingIndicatorImage: WKInterfaceImage!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
         SortButton.setHidden(true)
+        
+        indicator = EMTLoadingIndicator(interfaceController: self, interfaceImage: LoadingIndicatorImage, width: 40, height: 40, style: .line)
         
         dataManager.refreshStartupsFromAPI()
         dataManager.refreshAnnouncementsFromAPI()
@@ -95,7 +100,14 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         startups = dataManager.getStartups()
         
         if startups.count > 0 {
+            table.setHidden(false)
+            LoadingIndicatorImage.setHidden(true)
             SortButton.setHidden(false)
+            indicator.hide()
+        } else {
+            table.setHidden(true)
+            LoadingIndicatorImage.setHidden(false)
+            indicator.showWait()
         }
         
         for i in 0 ..< startups.count {
