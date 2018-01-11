@@ -32,7 +32,7 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Set Sort Type" id="Bgf-lx-ge8" userLabel="SortButton">
+                        <button width="1" alignment="left" hidden="YES" title="Set Sort Type" id="Bgf-lx-ge8" userLabel="SortButton">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" pointSize="19"/>

@@ -46,7 +46,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         
         NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
             
-            if locationTrigger != LocationTriggerInterface.StartpsInterfaceController {
+            if locationTrigger == LocationTriggerInterface.StartpsInterfaceController {
                 self.currentSortType = .Startup
                 self.SortButtonTapped()
             }
@@ -92,12 +92,16 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     
     func reloadTable() {
         
-        self.startups = self.dataManager.getStartups()
+        startups = dataManager.getStartups()
         
-        for i in 0 ..< self.startups.count {
+        if startups.count > 0 {
+            SortButton.setHidden(false)
+        }
+        
+        for i in 0 ..< startups.count {
             
-            let words = self.startups[i].brewery.components(separatedBy: " ")
-            self.startups[i].brewery = words[0] + " " + words[1]
+            let words = startups[i].brewery.components(separatedBy: " ")
+            startups[i].brewery = words[0] + " " + words[1]
         }
         
         switch currentSortType {
@@ -123,7 +127,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             
             index += 1
         }
-        SortButton.setHidden(false)
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
