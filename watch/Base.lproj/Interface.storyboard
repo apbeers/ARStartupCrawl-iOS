@@ -14,6 +14,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" userLabel="Startups" customClass="StartupsInterfaceController" customModule="watch_Extension">
                     <items>
+                        <imageView alignment="center" verticalAlignment="center" hidden="YES" id="lzI-hU-5rm" userLabel="LoadingIndicatorImage"/>
                         <table alignment="left" id="SI1-Cz-ZuY">
                             <items>
                                 <tableRow identifier="StartupRow" id="rdU-9Z-GLk" customClass="StartupRow" customModule="watch_Extension">
@@ -32,7 +33,7 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Set Sort Type" id="Bgf-lx-ge8" userLabel="SortButton">
+                        <button width="1" alignment="left" hidden="YES" title="Set Sort Type" id="Bgf-lx-ge8" userLabel="SortButton">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" pointSize="19"/>
@@ -42,6 +43,7 @@
                         </button>
                     </items>
                     <connections>
+                        <outlet property="LoadingIndicatorImage" destination="lzI-hU-5rm" id="lRU-cE-041"/>
                         <outlet property="SortButton" destination="Bgf-lx-ge8" id="xjz-MX-NMk"/>
                         <outlet property="table" destination="SI1-Cz-ZuY" id="0Np-RZ-std"/>
                         <segue destination="51C-HX-V6s" kind="relationship" relationship="nextPage" id="LyZ-WP-JCQ"/>
@@ -101,6 +103,7 @@
             <objects>
                 <controller id="51C-HX-V6s" userLabel="Announcements" customClass="AnnouncementsInterfaceController" customModule="watch_Extension">
                     <items>
+                        <imageView alignment="center" verticalAlignment="center" hidden="YES" id="G8e-0w-qyf" userLabel="LoadingIndicatorImage"/>
                         <table alignment="left" id="izC-jS-Psn">
                             <items>
                                 <tableRow identifier="AnnouncementRow" id="ne5-0U-bdU" customClass="AnnouncementRow" customModule="watch_Extension">
@@ -119,6 +122,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="LoadingIndicatorImage" destination="G8e-0w-qyf" id="qCK-h7-1EC"/>
                         <outlet property="table" destination="izC-jS-Psn" id="2JR-BX-oBj"/>
                     </connections>
                 </controller>

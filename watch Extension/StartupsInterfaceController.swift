@@ -12,6 +12,7 @@ import WatchConnectivity
 import MapKit
 import SwiftyJSON
 import Alamofire
+import EMTLoadingIndicator
 
 enum Sort: Int {
     case Startup
@@ -27,14 +28,18 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     var currentSortType = Sort.Startup
     let dataManager = DataManager.sharedInstance
     let locationManager = CLLocationManager()
+    var indicator: EMTLoadingIndicator!
     var location: CLLocationCoordinate2D?
     @IBOutlet var table: WKInterfaceTable!
     @IBOutlet var SortButton: WKInterfaceButton!
+    @IBOutlet var LoadingIndicatorImage: WKInterfaceImage!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
         SortButton.setHidden(true)
+        
+        indicator = EMTLoadingIndicator(interfaceController: self, interfaceImage: LoadingIndicatorImage, width: 40, height: 40, style: .line)
         
         dataManager.refreshStartupsFromAPI()
         dataManager.refreshAnnouncementsFromAPI()
@@ -46,7 +51,7 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         
         NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
             
-            if locationTrigger != LocationTriggerInterface.StartpsInterfaceController {
+            if locationTrigger == LocationTriggerInterface.StartpsInterfaceController {
                 self.currentSortType = .Startup
                 self.SortButtonTapped()
             }
@@ -92,12 +97,23 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     
     func reloadTable() {
         
-        self.startups = self.dataManager.getStartups()
+        startups = dataManager.getStartups()
         
-        for i in 0 ..< self.startups.count {
+        if startups.count > 0 {
+            table.setHidden(false)
+            LoadingIndicatorImage.setHidden(true)
+            SortButton.setHidden(false)
+            indicator.hide()
+        } else {
+            table.setHidden(true)
+            LoadingIndicatorImage.setHidden(false)
+            indicator.showWait()
+        }
+        
+        for i in 0 ..< startups.count {
             
-            let words = self.startups[i].brewery.components(separatedBy: " ")
-            self.startups[i].brewery = words[0] + " " + words[1]
+            let words = startups[i].brewery.components(separatedBy: " ")
+            startups[i].brewery = words[0] + " " + words[1]
         }
         
         switch currentSortType {
@@ -123,7 +139,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             
             index += 1
         }
-        SortButton.setHidden(false)
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {

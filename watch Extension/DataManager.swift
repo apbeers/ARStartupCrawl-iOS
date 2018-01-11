@@ -53,21 +53,25 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         session.delegate = self
         session.activate()
         locationManager.delegate = self
-        location = locationManager.location?.coordinate
+        
+        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             
-            location = locationManager.location?.coordinate
+            location = manager.location?.coordinate
             NotificationCenter.default.post(name: .LocationPermissionsApproved, object: nil)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        location = locationManager.location?.coordinate
+        location = manager.location?.coordinate
         NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
     }
     
@@ -192,8 +196,6 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         
         
         if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            
-            location = locationManager.location?.coordinate
             
             guard let latitude = location?.latitude, let longitude = location?.longitude else {
                 return startups
