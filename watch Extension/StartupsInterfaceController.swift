@@ -12,6 +12,7 @@ import WatchConnectivity
 import MapKit
 import SwiftyJSON
 import Alamofire
+import EMTLoadingIndicator
 
 enum Sort: Int {
     case Startup
@@ -27,51 +28,44 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     var currentSortType = Sort.Startup
     let dataManager = DataManager.sharedInstance
     let locationManager = CLLocationManager()
+    var indicator: EMTLoadingIndicator!
     var location: CLLocationCoordinate2D?
     @IBOutlet var table: WKInterfaceTable!
     @IBOutlet var SortButton: WKInterfaceButton!
+    @IBOutlet var LoadingIndicatorImage: WKInterfaceImage!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        SortButton.setEnabled(false)
+        SortButton.setHidden(true)
+        
+        indicator = EMTLoadingIndicator(interfaceController: self, interfaceImage: LoadingIndicatorImage, width: 40, height: 40, style: .line)
         
         dataManager.refreshStartupsFromAPI()
         dataManager.refreshAnnouncementsFromAPI()
         
         NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
-            self.getLocalData()
-            self.sortData()
+            self.reloadTable()
         }
         
         NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
             
-            self.getLocalData()
-            
-            if locationTrigger != LocationTriggerInterface.DistanceInterfaceController {
+            if locationTrigger == LocationTriggerInterface.StartpsInterfaceController {
                 self.currentSortType = .Startup
                 self.SortButtonTapped()
             }
         }
     
         SortButton.setTitle("Distance")
-    }
-    
-    func getLocalData() {
-        
-        self.startups = self.dataManager.getStartups()
-        
-        for i in 0 ..< self.startups.count {
-            
-            let words = self.startups[i].brewery.components(separatedBy: " ")
-            self.startups[i].brewery = words[0] + " " + words[1]
-        }
+        reloadTable()
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        reloadTable()
     }
     
     override func didDeactivate() {
@@ -84,7 +78,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         switch currentSortType {
         case .Startup:
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                
                 currentSortType = .Distance
                 SortButton.setTitle("Brewery")
             } else {
@@ -99,10 +92,29 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
             SortButton.setTitle("Distance")
         }
 
-        sortData()
+        reloadTable()
     }
     
-    func sortData() {
+    func reloadTable() {
+        
+        startups = dataManager.getStartups()
+        
+        if startups.count > 0 {
+            table.setHidden(false)
+            LoadingIndicatorImage.setHidden(true)
+            SortButton.setHidden(false)
+            indicator.hide()
+        } else {
+            table.setHidden(true)
+            LoadingIndicatorImage.setHidden(false)
+            indicator.showWait()
+        }
+        
+        for i in 0 ..< startups.count {
+            
+            let words = startups[i].brewery.components(separatedBy: " ")
+            startups[i].brewery = words[0] + " " + words[1]
+        }
         
         switch currentSortType {
         case .Startup:
@@ -112,12 +124,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         case .Distance:
             startups = startups.sorted(by: {$0.distance < $1.distance})
         }
-        
-        SortButton.setEnabled(true)
-        reloadTable()
-    }
-    
-    func reloadTable() {
         
         table.setNumberOfRows(startups.count, withRowType: "StartupRow")
         

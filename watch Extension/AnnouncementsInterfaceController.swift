@@ -8,23 +8,28 @@
 
 import WatchKit
 import WatchConnectivity
+import EMTLoadingIndicator
 
 class AnnouncementsInterfaceController: WKInterfaceController {
 
     var announcements: [Announcement] = []
     let dataManager = DataManager.sharedInstance
+    var indicator: EMTLoadingIndicator!
     @IBOutlet var table: WKInterfaceTable!
+    @IBOutlet var LoadingIndicatorImage: WKInterfaceImage!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        indicator = EMTLoadingIndicator(interfaceController: self, interfaceImage: LoadingIndicatorImage, width: 40, height: 40, style: .line)
         
         dataManager.refreshAnnouncementsFromAPI()
         
         NotificationCenter.default.addObserver(forName: .AnnouncementsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
-            self.announcements = self.dataManager.getAnnouncements()
             self.reloadTable()
         }
+        self.reloadTable()
     }
     
     override func willActivate() {
@@ -39,6 +44,18 @@ class AnnouncementsInterfaceController: WKInterfaceController {
     }
     
     func reloadTable() {
+        
+        announcements = dataManager.getAnnouncements()
+        
+        if announcements.count > 0 {
+            table.setHidden(false)
+            LoadingIndicatorImage.setHidden(true)
+            indicator.hide()
+        } else {
+            table.setHidden(true)
+            LoadingIndicatorImage.setHidden(false)
+            indicator.showWait()
+        }
         
         table.setNumberOfRows(announcements.count, withRowType: "AnnouncementRow")
         
