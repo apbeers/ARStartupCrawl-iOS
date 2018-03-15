@@ -51,6 +51,10 @@ class AnnouncementManager: NSObject {
                     return
                 }
                 
+                if json.isEmpty {
+                    return
+                }
+                
                 for (_, item) in json {
                     
                     let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)

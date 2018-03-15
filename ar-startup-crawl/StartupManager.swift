@@ -23,13 +23,15 @@ struct Startup {
 
 class StartupManager: NSObject {
 
+
+    
     private override init() { }
     static let sharedInstance = StartupManager()
     let entityName = "Startups"
     
     func fetchStartupsAPI() {
-        
-        Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups", encoding: JSONEncoding.default).responseJSON { response in
+  
+        Alamofire.request("https://ar-startup-crawl.firebaseio.com/startups.json", encoding: JSONEncoding.default).responseJSON { response in
             
             guard let responseData = response.data else {
                 return
@@ -57,6 +59,10 @@ class StartupManager: NSObject {
                     return
                 }
                 
+                if json.isEmpty {
+                    return
+                }
+                
                 for (_, item) in json {
                     
                     let newStartup = NSManagedObject(entity: entity, insertInto: context)
@@ -69,11 +75,11 @@ class StartupManager: NSObject {
                     newStartup.setValue(latitude, forKey: "latitude")
                     newStartup.setValue(longitude, forKey: "longitude")
                     newStartup.setValue(item["description"].description, forKey: "desc")
-                    newStartup.setValue(item["logobase64"].description, forKey: "logoBase64")
+                    newStartup.setValue(item["logoBase64"].description, forKey: "logoBase64")
                     newStartup.setValue(item["snippet"].description, forKey: "snippet")
                     newStartup.setValue(item["url"].description, forKey: "url")
                     newStartup.setValue(item["title"].description, forKey: "title")
-                    newStartup.setValue(item["startup_id"].description, forKey: "id")
+                    newStartup.setValue(item["id"].description, forKey: "id")
                     
                     do {
                         try context.save()
@@ -88,6 +94,7 @@ class StartupManager: NSObject {
                 
             }
         }
+ 
     }
     
     func fetchStartupsLocal() -> [Startup] {
