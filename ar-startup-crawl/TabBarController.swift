@@ -31,7 +31,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             UIApplication.shared.statusBarStyle = .default
         case "Announcements":
             
-            announcementManager.fetchAnnouncementsAPI()
             UIApplication.shared.statusBarStyle = .default
             UIApplication.shared.applicationIconBadgeNumber = 0
         default:

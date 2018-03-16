@@ -17,6 +17,7 @@ import WatchConnectivity
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
+    let announcementManager = AnnouncementManager.sharedInstance
     let gcmMessageIDKey = "gcm.message_id"
     var watchConnectivityHandler: WatchConnectivityHandler?
     
@@ -107,6 +108,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        
+        guard let aps = userInfo[AnyHashable("aps")] as? NSDictionary else {
+            return
+        }
+        guard let alert = aps["alert"] as? NSDictionary else {
+            return
+        }
+        
+        guard
+            let body = alert["body"] as? String,
+            let title = alert["title"] as? String
+            else {
+                return
+        }
+
+        announcementManager.addAnnouncement(title: title, body: body)
+        
+        print(userInfo)
+        
         
         completionHandler(UIBackgroundFetchResult.newData)
         watchConnectivityHandler?.announcementsUpdated()
