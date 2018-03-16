@@ -85,17 +85,4 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
             AnalyticsParameterContentType: Constants.Analytics.StartupSelected as NSObject
             ])
     }
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destination = segue.destination as? WebViewViewController
-        
-        guard let selectedRow: Int = tableView.indexPathForSelectedRow?.row else {
-            return
-        }
-        
-        destination?.address = startups[selectedRow][2]
-    }
 }

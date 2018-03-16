@@ -43,7 +43,7 @@ class DistanceInterfaceController: WKInterfaceController {
             DistanceLabel.setText(String(distanceMiles) + " mi")
         }
         DirectionLabel.setText(startup.direction)
-        RoadNameLabel.setText(startup.nearestRoad)
+        RoadNameLabel.setText(startup.street)
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             EnableLocationButton.setHidden(true)
@@ -51,14 +51,14 @@ class DistanceInterfaceController: WKInterfaceController {
             EnableLocationButton.setHidden(false)
         }
         
-        NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
+        NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
             self.EnableLocationButton.setHidden(true)
             
             for s in self.dataManager.getStartups() {
                 if self.startup.id == s.id {
                     
-                    var distanceMiles = round((s.distance/0.014472) * 100) / 100
+                    var distanceMiles = round((s.distance*0.0006215040398) * 100) / 100
                     
                     if distanceMiles < 0 {
                         distanceMiles = distanceMiles * -1
@@ -70,7 +70,7 @@ class DistanceInterfaceController: WKInterfaceController {
                     
                     self.DistanceLabel.setText(String(distanceMiles) + " mi")
                     self.DirectionLabel.setText(s.direction)
-                    self.RoadNameLabel.setText(s.nearestRoad)
+                    self.RoadNameLabel.setText(s.street)
                 }
             }
         }
@@ -79,6 +79,26 @@ class DistanceInterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+
+        for s in self.dataManager.getStartups() {
+            if self.startup.id == s.id {
+                
+                var distanceMiles = round((s.distance*0.0006215040398) * 100) / 100
+                
+                if distanceMiles < 0 {
+                    distanceMiles = distanceMiles * -1
+                }
+                
+                if distanceMiles > 99 {
+                    distanceMiles = Double.infinity
+                }
+                
+                self.DistanceLabel.setText(String(distanceMiles) + " mi")
+                self.DirectionLabel.setText(s.direction)
+                self.RoadNameLabel.setText(s.street)
+            }
+        }
     }
 
     override func didDeactivate() {

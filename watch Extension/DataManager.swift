@@ -28,13 +28,7 @@ struct Startup {
     var longitude: Double
     var distance: Double
     var direction: String
-    var nearestRoad: String
-}
-
-struct Announcement {
-    var title: String
-    var desc: String
-    var datetime: String
+    var street: String
 }
 
 class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
@@ -45,7 +39,6 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
     private var location: CLLocationCoordinate2D?
     static let sharedInstance = DataManager()
     private let startupEntityName = "Startups"
-    private let announcementEnitityName = "Announcements"
     
     private override init() {
         super.init()
@@ -53,9 +46,9 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         session.delegate = self
         session.activate()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         
         if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
     }
@@ -64,14 +57,14 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             
-            location = manager.location?.coordinate
+            locationManager.startUpdatingLocation()
             NotificationCenter.default.post(name: .LocationPermissionsApproved, object: nil)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        location = manager.location?.coordinate
+        location = locations[0].coordinate
         NotificationCenter.default.post(name: .StartupsUpdated, object: nil)
     }
     
@@ -100,8 +93,6 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         switch messageString {
         case "startups_updated":
             refreshStartupsFromAPI()
-        case "announcements_updated":
-            refreshAnnouncementsFromAPI()
         default:
             print("Uknown Message")
         }
@@ -109,7 +100,7 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
     
     func refreshStartupsFromAPI() {
         
-        Alamofire.request("https://ar-startup-crawl.herokuapp.com/startups/nopics", encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request("https://ar-startup-crawl.firebaseio.com/startups.json", encoding: JSONEncoding.default).responseJSON { response in
             
             guard let responseData = response.data else {
                 return
@@ -136,6 +127,10 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
                     return
                 }
                 
+                if json.isEmpty {
+                    return
+                }
+                
                 for (_, item) in json {
                     
                     let newStartup = NSManagedObject(entity: entity, insertInto: context)
@@ -149,7 +144,8 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
                     newStartup.setValue(longitude, forKey: "longitude")
                     newStartup.setValue(item["snippet"].description, forKey: "snippet")
                     newStartup.setValue(item["title"].description, forKey: "title")
-                    newStartup.setValue(item["startup_id"].description, forKey: "id")
+                    newStartup.setValue(item["id"].description, forKey: "id")
+                    newStartup.setValue(item["street"].description, forKey: "street")
                     
                     do {
                         try context.save()
@@ -181,19 +177,19 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
                     let title: String = data.value(forKey: "title") as? String,
                     let latitude: Double = data.value(forKey: "latitude") as? Double,
                     let longitude: Double = data.value(forKey: "longitude") as? Double,
-                    let id: String = data.value(forKey: "id") as? String
+                    let id: String = data.value(forKey: "id") as? String,
+                    let street: String = data.value(forKey: "street") as? String
                     else {
                         return startups
                 }
 
-                startups.append(Startup(id: id, title: title, brewery: snippet, latitude: latitude, longitude: longitude, distance: 0, direction: "", nearestRoad: ""))
+                startups.append(Startup(id: id, title: title, brewery: snippet, latitude: latitude, longitude: longitude, distance: 0, direction: "", street: street))
                 
             }
             
         } catch {
             print("Failed")
         }
-        
         
         if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             
@@ -293,87 +289,10 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         
         return startups
     }
-    
-    func refreshAnnouncementsFromAPI() {
-        
-        Alamofire.request("https://ar-startup-crawl.herokuapp.com/notifications/guest", encoding: JSONEncoding.default).responseJSON { response in
-            
-            guard let responseData = response.data else {
-                return
-            }
-            
-            do {
-             
-                let json = try JSON(data: responseData)
-                
-                let context = DataKit.sharedInstance.persistentContainer.viewContext
-                
-                // Create Fetch Request
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: self.announcementEnitityName)
-                
-                // Create Batch Delete Request
-                let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                
-                do {
-                    try context.execute(batchDeleteRequest)
-                } catch {
-                    print("Failed")
-                }
-                
-                guard let entity = NSEntityDescription.entity(forEntityName: self.announcementEnitityName, in: context) else {
-                    return
-                }
-                
-                for (_, item) in json {
-                    
-                    let newAnnouncement = NSManagedObject(entity: entity, insertInto: context)
-                    
-                    newAnnouncement.setValue(item["title"].description, forKey: "title")
-                    newAnnouncement.setValue(item["body"].description, forKey: "body")
-                    newAnnouncement.setValue(item["datetime"].description, forKey: "date")
-                    
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Failed saving")
-                    }
-                }
-                
-                NotificationCenter.default.post(name: .AnnouncementsUpdated, object: nil)
-                
-            } catch {
-                print("Invalid Announcement JSON")
-            }
-        }
-    }
-    
-    func getAnnouncements() -> [Announcement] {
-        
-        var announcements: [Announcement] = []
-        let context = DataKit.sharedInstance.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Announcements")
-        
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                
-                guard let title = data.value(forKey: "title") as? String ,let body = data.value(forKey: "body") as? String ,let date = data.value(forKey: "date") as? String else {
-                    return announcements
-                }
-                announcements.append(Announcement(title: title, desc: body, datetime: date))
-                
-            }
-        } catch {
-            print("Failed")
-        }
-        return announcements
-    }
 }
 
 extension Notification.Name {
     
     static let StartupsUpdated = Notification.Name("on-startups-updated")
-    static let AnnouncementsUpdated = Notification.Name("on-announcements-updated")
     static let LocationPermissionsApproved = Notification.Name("on-location=permissions-approved")
 }

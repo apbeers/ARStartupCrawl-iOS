@@ -58,7 +58,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTl-F5-zoT" userLabel="DateTimeLabel">
-                                                    <rect key="frame" x="289" y="140" width="49" height="23.5"/>
+                                                    <rect key="frame" x="289" y="151" width="49" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -74,7 +74,7 @@
                                             <constraints>
                                                 <constraint firstItem="oMc-XB-YIQ" firstAttribute="centerX" secondItem="4Tl-vp-cyu" secondAttribute="centerX" id="4GM-6a-HJg"/>
                                                 <constraint firstItem="hQ7-1R-faI" firstAttribute="centerY" secondItem="4Tl-vp-cyu" secondAttribute="centerY" id="BOJ-AC-Xpd"/>
-                                                <constraint firstAttribute="bottom" secondItem="LTl-F5-zoT" secondAttribute="bottom" constant="26" id="HZn-rA-0fy"/>
+                                                <constraint firstAttribute="bottom" secondItem="LTl-F5-zoT" secondAttribute="bottom" constant="15" id="HZn-rA-0fy" userLabel="bottom = DateTimeLabel.bottom + 15"/>
                                                 <constraint firstAttribute="trailing" secondItem="LTl-F5-zoT" secondAttribute="trailing" constant="18.5" id="KOA-LA-v9M"/>
                                                 <constraint firstItem="hQ7-1R-faI" firstAttribute="centerX" secondItem="4Tl-vp-cyu" secondAttribute="centerX" id="grX-o6-r7W"/>
                                                 <constraint firstItem="oMc-XB-YIQ" firstAttribute="top" secondItem="4Tl-vp-cyu" secondAttribute="top" constant="15" id="mcV-1b-nqz"/>
@@ -170,7 +170,6 @@
                                 <connections>
                                     <outlet property="LogoImageView" destination="AhO-bV-fR0" id="Gwg-Tc-r4h"/>
                                     <outlet property="ShortDescriptionLabel" destination="Vfg-5e-zXn" id="3LN-tE-hug"/>
-                                    <segue destination="4aF-mL-c46" kind="show" id="g0m-AX-hdT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -185,21 +184,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="276-Ct-eUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1519" y="-4"/>
-        </scene>
-        <!--Web View View Controller-->
-        <scene sceneID="xNc-ru-yva">
-            <objects>
-                <viewController id="4aF-mL-c46" customClass="WebViewViewController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qoc-d6-buc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="aA4-ur-81i"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S0W-ZJ-YSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2265" y="-4"/>
         </scene>
         <!--Item-->
         <scene sceneID="Kzz-hi-2dr">
