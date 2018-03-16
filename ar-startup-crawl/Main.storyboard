@@ -149,7 +149,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vfg-5e-zXn" userLabel="Short Description Label">
-                                            <rect key="frame" x="-1" y="90" width="375" height="110"/>
+                                            <rect key="frame" x="27" y="90" width="319" height="110"/>
                                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus, dui vel elementum consectetur, leo neque interdum nibh, id scelerisque metus ligula id tortor. Praesent egestas leo a fringilla dignissim.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -159,7 +159,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Vfg-5e-zXn" secondAttribute="bottom" constant="-0.5" id="HkQ-KG-bDH"/>
-                                        <constraint firstItem="Vfg-5e-zXn" firstAttribute="width" secondItem="b1t-1o-Epr" secondAttribute="width" id="ITD-w8-rd3"/>
+                                        <constraint firstItem="Vfg-5e-zXn" firstAttribute="width" secondItem="b1t-1o-Epr" secondAttribute="width" multiplier="0.85" id="ITD-w8-rd3"/>
                                         <constraint firstItem="AhO-bV-fR0" firstAttribute="centerX" secondItem="b1t-1o-Epr" secondAttribute="centerX" id="KKX-bS-TFi"/>
                                         <constraint firstItem="AhO-bV-fR0" firstAttribute="width" secondItem="b1t-1o-Epr" secondAttribute="width" multiplier="0.6" id="Uf7-VH-ns8"/>
                                         <constraint firstItem="AhO-bV-fR0" firstAttribute="top" secondItem="b1t-1o-Epr" secondAttribute="top" constant="10" id="nXD-Zw-xFO"/>

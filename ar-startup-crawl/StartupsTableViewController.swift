@@ -18,7 +18,7 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 200
+        tableView.rowHeight = 230
         
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Startups"
