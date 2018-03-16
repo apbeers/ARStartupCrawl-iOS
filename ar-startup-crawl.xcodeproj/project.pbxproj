@@ -39,11 +39,8 @@
 		4986F58220055FDE00FA0B7D /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4986F56820055FDD00FA0B7D /* watch.app */; };
 		49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */; };
 		49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6014200561E7001CB6AA /* StartupRow.swift */; };
-		49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */; };
-		49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601820056456001CB6AA /* AnnouncementRow.swift */; };
 		49EE601B20056757001CB6AA /* WatchConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */; };
 		49EE606D20059403001CB6AA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE606C20059403001CB6AA /* DataManager.swift */; };
-		49EE60762005A33E001CB6AA /* DetailInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE60752005A33E001CB6AA /* DetailInterfaceController.swift */; };
 		49EE607A2005B3A9001CB6AA /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6064200571E0001CB6AA /* DataKit.swift */; };
 		49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607C2005B3F7001CB6AA /* StartupManager.swift */; };
 		49EE607F2005B6DF001CB6AA /* AnnouncementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */; };
@@ -167,15 +164,12 @@
 		4986F57F20055FDE00FA0B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49EE6014200561E7001CB6AA /* StartupRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupRow.swift; sourceTree = "<group>"; };
-		49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsInterfaceController.swift; sourceTree = "<group>"; };
-		49EE601820056456001CB6AA /* AnnouncementRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementRow.swift; sourceTree = "<group>"; };
 		49EE601A20056757001CB6AA /* WatchConnectivityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityHandler.swift; sourceTree = "<group>"; };
 		49EE601C20056760001CB6AA /* watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watch Extension.entitlements"; sourceTree = "<group>"; };
 		49EE601D20056769001CB6AA /* watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watch.entitlements; sourceTree = "<group>"; };
 		49EE6064200571E0001CB6AA /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
 		49EE606B200578CE001CB6AA /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EE606C20059403001CB6AA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		49EE60752005A33E001CB6AA /* DetailInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInterfaceController.swift; sourceTree = "<group>"; };
 		49EE607C2005B3F7001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementManager.swift; sourceTree = "<group>"; };
 		49EE60822005DED8001CB6AA /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DistanceInterfaceController.swift; path = "/Users/andrew/XcodeProjects/ar-startup-crawl/watch Extension/DistanceInterfaceController.swift"; sourceTree = "<absolute>"; };
@@ -340,9 +334,6 @@
 				49EE601C20056760001CB6AA /* watch Extension.entitlements */,
 				4986F57920055FDE00FA0B7D /* StartupsInterfaceController.swift */,
 				49EE6014200561E7001CB6AA /* StartupRow.swift */,
-				49EE601620056420001CB6AA /* AnnouncementsInterfaceController.swift */,
-				49EE601820056456001CB6AA /* AnnouncementRow.swift */,
-				49EE60752005A33E001CB6AA /* DetailInterfaceController.swift */,
 				49EE60822005DED8001CB6AA /* DistanceInterfaceController.swift */,
 				4986F57B20055FDE00FA0B7D /* ExtensionDelegate.swift */,
 				4986F57D20055FDE00FA0B7D /* Assets.xcassets */,
@@ -877,16 +868,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49EE601720056420001CB6AA /* AnnouncementsInterfaceController.swift in Sources */,
 				49EE606D20059403001CB6AA /* DataManager.swift in Sources */,
-				49EE601920056456001CB6AA /* AnnouncementRow.swift in Sources */,
 				49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */,
 				49EE60832005DED8001CB6AA /* DistanceInterfaceController.swift in Sources */,
 				49596F8A2006E8700049A81F /* Model.xcdatamodeld in Sources */,
 				49596F8C2006E8960049A81F /* DataKit.swift in Sources */,
 				4986F57C20055FDE00FA0B7D /* ExtensionDelegate.swift in Sources */,
 				4986F57A20055FDE00FA0B7D /* StartupsInterfaceController.swift in Sources */,
-				49EE60762005A33E001CB6AA /* DetailInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
