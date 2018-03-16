@@ -11,6 +11,7 @@ import UIKit
 class UpdatesTableViewController: UITableViewController {
 
     var announcements: [Announcement] = []
+    var noAnnouncementsLabel: UILabel!
     let announcementManager = AnnouncementManager.sharedInstance
     
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ class UpdatesTableViewController: UITableViewController {
     func refreshData() {
         
         announcements = announcementManager.fetchAnnouncementsLocal()
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source

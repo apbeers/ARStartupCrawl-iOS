@@ -71,6 +71,22 @@ class AnnouncementManager: NSObject {
         } catch {
             print("Failed")
         }
+        
+        if announcements.isEmpty {
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.dateFormat = "h:mm a"
+            formatter.amSymbol = "AM"
+            formatter.pmSymbol = "PM"
+            
+            let dateString = formatter.string(from: Date())
+            
+            announcements.append(Announcement(title: "Welcome!", desc: "Announcements will appear here when the event starts", datetime: dateString))
+        }
+        
+        announcements.reverse()
+        
         return announcements
     }
 }

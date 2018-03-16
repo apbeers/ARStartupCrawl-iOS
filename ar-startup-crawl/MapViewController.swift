@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import GoogleMaps
 import Firebase
-import Alamofire
-import SwiftyJSON
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
@@ -24,8 +22,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         super.viewDidLoad()
         
         startupManager.fetchStartupsAPI()
-        let camera = GMSCameraPosition.camera(withLatitude: 36.063610, longitude: -94.162561, zoom: 15)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+
+        mapView = GMSMapView()
         mapView.delegate = self
         locationManager.delegate = self
         
@@ -76,6 +74,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         let startups = startupManager.fetchStartupsLocal()
         
+        var bounds = GMSCoordinateBounds()
+        
         for startup in startups {
             
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: startup.latitude, longitude: startup.longitude))
@@ -83,6 +83,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             marker.snippet = startup.snippet + "                                          Directrions▶"
             marker.icon = #imageLiteral(resourceName: "Yellow-map-marker.png")
             marker.map = self.mapView
+            
+            bounds = bounds.includingCoordinate(marker.position)
+            let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
+            mapView.animate(with: update)
         }
     }
     
