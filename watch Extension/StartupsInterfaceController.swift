@@ -42,7 +42,6 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         indicator = EMTLoadingIndicator(interfaceController: self, interfaceImage: LoadingIndicatorImage, width: 40, height: 40, style: .line)
         
         dataManager.refreshStartupsFromAPI()
-        dataManager.refreshAnnouncementsFromAPI()
         
         NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
@@ -141,8 +140,8 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         }
     }
     
-    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         
-        presentController(withName: "DistanceInterfaceController", context: startups[rowIndex])
+        return startups[rowIndex]
     }
 }

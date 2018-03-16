@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
+    <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -25,6 +25,9 @@
                                             </label>
                                             <label alignment="left" text="Label" id="oKs-KQ-9nd" userLabel="BreweryLabel"/>
                                         </items>
+                                        <connections>
+                                            <segue destination="pzt-PO-8Dy" kind="push" identifier="DistanceScreenSegue" id="ied-1O-xIB"/>
+                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="BreweryLabel" destination="oKs-KQ-9nd" id="olp-Wq-0nT"/>
@@ -46,7 +49,6 @@
                         <outlet property="LoadingIndicatorImage" destination="lzI-hU-5rm" id="lRU-cE-041"/>
                         <outlet property="SortButton" destination="Bgf-lx-ge8" id="xjz-MX-NMk"/>
                         <outlet property="table" destination="SI1-Cz-ZuY" id="0Np-RZ-std"/>
-                        <segue destination="51C-HX-V6s" kind="relationship" relationship="nextPage" id="LyZ-WP-JCQ"/>
                     </connections>
                 </controller>
             </objects>
@@ -63,16 +65,16 @@
                         <separator alignment="left" id="wVA-2G-g9i"/>
                         <group width="1" alignment="left" id="atS-Zf-DiB">
                             <items>
-                                <label width="75" alignment="left" text="0.3 mi" textAlignment="center" id="Yb9-Kb-SXi" userLabel="DistanceLabel">
+                                <label alignment="left" text="0.3 mi" textAlignment="center" id="Yb9-Kb-SXi" userLabel="DistanceLabel">
                                     <fontDescription key="font" type="system" pointSize="25"/>
                                 </label>
-                                <label width="61" alignment="right" text="SW" textAlignment="center" id="zbx-rG-3ub" userLabel="DirectionLabel">
+                                <label alignment="right" text="SW" textAlignment="center" id="zbx-rG-3ub" userLabel="DirectionLabel">
                                     <fontDescription key="font" type="system" weight="light" pointSize="27"/>
                                 </label>
                             </items>
                         </group>
-                        <label alignment="left" text="Nearest road name" textAlignment="center" id="uSp-uE-6Gh" userLabel="RoadNameLabel">
-                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                        <label alignment="center" verticalAlignment="bottom" text="Nearest road name" textAlignment="center" id="uSp-uE-6Gh" userLabel="RoadNameLabel">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Enable Location" id="yTR-B3-LHf" userLabel="EnableLocationButton">
                             <connections>
@@ -96,57 +98,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="130" y="460"/>
-        </scene>
-        <!--Announcements-->
-        <scene sceneID="8sW-RH-O0g">
-            <objects>
-                <controller id="51C-HX-V6s" userLabel="Announcements" customClass="AnnouncementsInterfaceController" customModule="watch_Extension">
-                    <items>
-                        <imageView alignment="center" verticalAlignment="center" hidden="YES" id="G8e-0w-qyf" userLabel="LoadingIndicatorImage"/>
-                        <table alignment="left" id="izC-jS-Psn">
-                            <items>
-                                <tableRow identifier="AnnouncementRow" id="ne5-0U-bdU" customClass="AnnouncementRow" customModule="watch_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="uKR-v4-yag">
-                                        <items>
-                                            <label alignment="center" verticalAlignment="center" text="Announcement" textAlignment="center" numberOfLines="2" id="VuT-0C-eaQ" userLabel="AnnouncementTitleLabel">
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
-                                        </items>
-                                    </group>
-                                    <connections>
-                                        <outlet property="AnnouncementTitleLabel" destination="VuT-0C-eaQ" id="34D-fb-jru"/>
-                                    </connections>
-                                </tableRow>
-                            </items>
-                        </table>
-                    </items>
-                    <connections>
-                        <outlet property="LoadingIndicatorImage" destination="G8e-0w-qyf" id="qCK-h7-1EC"/>
-                        <outlet property="table" destination="izC-jS-Psn" id="2JR-BX-oBj"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="401" y="159"/>
-        </scene>
-        <!--Detail Interface Controller-->
-        <scene sceneID="yBi-B5-eyC">
-            <objects>
-                <controller identifier="DetailInterfaceController" id="A10-sU-TAo" userLabel="Detail Interface Controller" customClass="DetailInterfaceController" customModule="watch_Extension">
-                    <items>
-                        <label alignment="left" text="Announcement" id="vTC-CN-JPZ" userLabel="TitleLabel">
-                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                        </label>
-                        <separator alignment="left" id="V4x-N8-SPN"/>
-                        <label alignment="left" text="Body of the announcement. this will be at most a scentence or two." numberOfLines="12" id="ADJ-nl-Pmx" userLabel="DescriptionLabel"/>
-                    </items>
-                    <connections>
-                        <outlet property="DescriptionLabel" destination="ADJ-nl-Pmx" id="ei0-mr-cvJ"/>
-                        <outlet property="TitleLabel" destination="vTC-CN-JPZ" id="wfi-3U-NwK"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="666" y="159"/>
+            <point key="canvasLocation" x="129.89743589743591" y="591.51282051282055"/>
         </scene>
     </scenes>
 </document>

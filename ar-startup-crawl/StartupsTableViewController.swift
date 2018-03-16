@@ -18,7 +18,7 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 200
+        tableView.rowHeight = 230
         
         let navBar = navigationController?.navigationBar
         navBar?.topItem?.title = "Startups"
@@ -84,18 +84,5 @@ class StartupsTableViewController: UITableViewController, UITabBarControllerDele
             AnalyticsParameterItemID: startups[indexPath.row][0] as NSObject,
             AnalyticsParameterContentType: Constants.Analytics.StartupSelected as NSObject
             ])
-    }
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destination = segue.destination as? WebViewViewController
-        
-        guard let selectedRow: Int = tableView.indexPathForSelectedRow?.row else {
-            return
-        }
-        
-        destination?.address = startups[selectedRow][2]
     }
 }
