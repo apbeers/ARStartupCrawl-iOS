@@ -140,8 +140,8 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         }
     }
     
-    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-    
-        presentController(withName: "DistanceInterfaceController", context: startups[rowIndex])
+    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+        
+        return startups[rowIndex]
     }
 }

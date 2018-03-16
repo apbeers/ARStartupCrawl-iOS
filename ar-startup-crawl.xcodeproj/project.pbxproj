@@ -15,7 +15,6 @@
 		49269B641FBD9E3200E9C208 /* UpdatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B561FBD9E2D00E9C208 /* UpdatesTableViewController.swift */; };
 		49269B651FBD9E3200E9C208 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 49269B571FBD9E2D00E9C208 /* style.json */; };
 		49269B661FBD9E3200E9C208 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B581FBD9E2E00E9C208 /* Extensions.swift */; };
-		49269B671FBD9E3200E9C208 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B591FBD9E2E00E9C208 /* WebViewViewController.swift */; };
 		49269B681FBD9E3200E9C208 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5A1FBD9E2F00E9C208 /* Constants.swift */; };
 		49269B691FBD9E3200E9C208 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5B1FBD9E3000E9C208 /* TabBarController.swift */; };
 		49269B6A1FBD9E3200E9C208 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5C1FBD9E3000E9C208 /* UpdateTableViewCell.swift */; };
@@ -132,7 +131,6 @@
 		49269B561FBD9E2D00E9C208 /* UpdatesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatesTableViewController.swift; sourceTree = "<group>"; };
 		49269B571FBD9E2D00E9C208 /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		49269B581FBD9E2E00E9C208 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		49269B591FBD9E2E00E9C208 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		49269B5A1FBD9E2F00E9C208 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49269B5B1FBD9E3000E9C208 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		49269B5C1FBD9E3000E9C208 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 				49269B5B1FBD9E3000E9C208 /* TabBarController.swift */,
 				49269B561FBD9E2D00E9C208 /* UpdatesTableViewController.swift */,
 				49269B5C1FBD9E3000E9C208 /* UpdateTableViewCell.swift */,
-				49269B591FBD9E2E00E9C208 /* WebViewViewController.swift */,
 				49269B4C1FBD9DAF00E9C208 /* Main.storyboard */,
 				49419C3D1FBD94E000695889 /* Assets.xcassets */,
 				49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */,
@@ -836,7 +833,6 @@
 				49269B6A1FBD9E3200E9C208 /* UpdateTableViewCell.swift in Sources */,
 				49269B631FBD9E3200E9C208 /* StartupTableViewCell.swift in Sources */,
 				49EE601B20056757001CB6AA /* WatchConnectivityHandler.swift in Sources */,
-				49269B671FBD9E3200E9C208 /* WebViewViewController.swift in Sources */,
 				49269B661FBD9E3200E9C208 /* Extensions.swift in Sources */,
 				49419C351FBD94E000695889 /* AppDelegate.swift in Sources */,
 				49EE607F2005B6DF001CB6AA /* AnnouncementManager.swift in Sources */,

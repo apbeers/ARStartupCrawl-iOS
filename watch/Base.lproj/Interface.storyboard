@@ -25,6 +25,9 @@
                                             </label>
                                             <label alignment="left" text="Label" id="oKs-KQ-9nd" userLabel="BreweryLabel"/>
                                         </items>
+                                        <connections>
+                                            <segue destination="pzt-PO-8Dy" kind="push" identifier="DistanceScreenSegue" id="ied-1O-xIB"/>
+                                        </connections>
                                     </group>
                                     <connections>
                                         <outlet property="BreweryLabel" destination="oKs-KQ-9nd" id="olp-Wq-0nT"/>
