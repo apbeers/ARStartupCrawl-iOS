@@ -51,14 +51,14 @@ class DistanceInterfaceController: WKInterfaceController {
             EnableLocationButton.setHidden(false)
         }
         
-        NotificationCenter.default.addObserver(forName: .LocationPermissionsApproved, object: nil, queue: OperationQueue.main) { _ in
+        NotificationCenter.default.addObserver(forName: .StartupsUpdated, object: nil, queue: OperationQueue.main) { _ in
             
             self.EnableLocationButton.setHidden(true)
             
             for s in self.dataManager.getStartups() {
                 if self.startup.id == s.id {
                     
-                    var distanceMiles = round((s.distance/0.014472) * 100) / 100
+                    var distanceMiles = round((s.distance*0.0006215040398) * 100) / 100
                     
                     if distanceMiles < 0 {
                         distanceMiles = distanceMiles * -1

@@ -57,6 +57,7 @@ class DataManager: NSObject, WCSessionDelegate, CLLocationManagerDelegate {
         
         if status == CLAuthorizationStatus.authorizedWhenInUse {
             
+            locationManager.startUpdatingLocation()
             NotificationCenter.default.post(name: .LocationPermissionsApproved, object: nil)
         }
     }
