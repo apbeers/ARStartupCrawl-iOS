@@ -19,15 +19,12 @@
 		49269B691FBD9E3200E9C208 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5B1FBD9E3000E9C208 /* TabBarController.swift */; };
 		49269B6A1FBD9E3200E9C208 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5C1FBD9E3000E9C208 /* UpdateTableViewCell.swift */; };
 		49269B6B1FBD9E3200E9C208 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5D1FBD9E3100E9C208 /* MapViewController.swift */; };
-		49269B711FBD9E6400E9C208 /* Yellow-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 49269B6D1FBD9E6300E9C208 /* Yellow-map-marker.png */; };
-		49269B721FBD9E6400E9C208 /* exchange_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49269B6E1FBD9E6300E9C208 /* exchange_logo.png */; };
-		49269B731FBD9E6400E9C208 /* fayetteville_first_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49269B6F1FBD9E6300E9C208 /* fayetteville_first_logo.jpg */; };
-		49269B741FBD9E6400E9C208 /* sjc_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49269B701FBD9E6300E9C208 /* sjc_logo.png */; };
 		49328B5120EAE4120039EA71 /* DistanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */; };
 		49419C351FBD94E000695889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C341FBD94E000695889 /* AppDelegate.swift */; };
 		49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49419C3D1FBD94E000695889 /* Assets.xcassets */; };
 		49419C4C1FBD94E100695889 /* ar_startup_crawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C4B1FBD94E100695889 /* ar_startup_crawlTests.swift */; };
 		49419C571FBD94E100695889 /* ar_startup_crawlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */; };
+		4943E44420EAE53600B83A1D /* images in Resources */ = {isa = PBXBuildFile; fileRef = 4943E44320EAE53600B83A1D /* images */; };
 		49596F8A2006E8700049A81F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49596F882006E8700049A81F /* Model.xcdatamodeld */; };
 		49596F8C2006E8960049A81F /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49596F8B2006E8960049A81F /* DataKit.swift */; };
 		4986F56C20055FDD00FA0B7D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56A20055FDD00FA0B7D /* Interface.storyboard */; };
@@ -135,10 +132,6 @@
 		49269B5B1FBD9E3000E9C208 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		49269B5C1FBD9E3000E9C208 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
 		49269B5D1FBD9E3100E9C208 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		49269B6D1FBD9E6300E9C208 /* Yellow-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-map-marker.png"; sourceTree = "<group>"; };
-		49269B6E1FBD9E6300E9C208 /* exchange_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_logo.png; sourceTree = "<group>"; };
-		49269B6F1FBD9E6300E9C208 /* fayetteville_first_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fayetteville_first_logo.jpg; sourceTree = "<group>"; };
-		49269B701FBD9E6300E9C208 /* sjc_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjc_logo.png; sourceTree = "<group>"; };
 		49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceInterfaceController.swift; sourceTree = "<group>"; };
 		49419C311FBD94E000695889 /* ar-startup-crawl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ar-startup-crawl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49419C341FBD94E000695889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +143,7 @@
 		49419C521FBD94E100695889 /* ar-startup-crawlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ar-startup-crawlUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49419C561FBD94E100695889 /* ar_startup_crawlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ar_startup_crawlUITests.swift; sourceTree = "<group>"; };
 		49419C581FBD94E100695889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4943E44320EAE53600B83A1D /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		49596F892006E8700049A81F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		49596F8B2006E8960049A81F /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
 		4986F56820055FDD00FA0B7D /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,18 +222,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49269B6C1FBD9E6300E9C208 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				49269B6D1FBD9E6300E9C208 /* Yellow-map-marker.png */,
-				49269B6E1FBD9E6300E9C208 /* exchange_logo.png */,
-				49269B6F1FBD9E6300E9C208 /* fayetteville_first_logo.jpg */,
-				49269B701FBD9E6300E9C208 /* sjc_logo.png */,
-			);
-			name = Images;
-			path = "../../AR Startup Crawl copy/AR Startup Crawl/Images";
-			sourceTree = "<group>";
-		};
 		49419C281FBD94E000695889 = {
 			isa = PBXGroup;
 			children = (
@@ -269,9 +251,9 @@
 		49419C331FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXGroup;
 			children = (
+				4943E44320EAE53600B83A1D /* images */,
 				49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */,
 				49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */,
-				49269B6C1FBD9E6300E9C208 /* Images */,
 				49419C341FBD94E000695889 /* AppDelegate.swift */,
 				49EE607C2005B3F7001CB6AA /* StartupManager.swift */,
 				49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */,
@@ -555,15 +537,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49269B711FBD9E6400E9C208 /* Yellow-map-marker.png in Resources */,
+				4943E44420EAE53600B83A1D /* images in Resources */,
 				49269B4F1FBD9DCA00E9C208 /* LaunchScreen.storyboard in Resources */,
-				49269B741FBD9E6400E9C208 /* sjc_logo.png in Resources */,
-				49269B721FBD9E6400E9C208 /* exchange_logo.png in Resources */,
 				49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */,
 				49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */,
 				49269B651FBD9E3200E9C208 /* style.json in Resources */,
 				49269B4D1FBD9DB000E9C208 /* Main.storyboard in Resources */,
-				49269B731FBD9E6400E9C208 /* fayetteville_first_logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
