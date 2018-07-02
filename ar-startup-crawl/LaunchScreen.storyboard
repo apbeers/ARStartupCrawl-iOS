@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,32 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sjc_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wpc-2Y-7QM">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fayetteville_first_logo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="nYw-e5-ujU">
-                                <rect key="frame" x="67" y="457" width="240" height="128"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exchange_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ecc-yt-zMp">
-                                <rect key="frame" x="0.0" y="110" width="375" height="81"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="81" id="ey8-ng-qX9"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startup-junkie.png" translatesAutoresizingMaskIntoConstraints="NO" id="y8U-bj-wce">
+                                <rect key="frame" x="75" y="40" width="225" height="607"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Wpc-2Y-7QM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9H9-qz-SBW"/>
-                            <constraint firstItem="Ecc-yt-zMp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="J5h-zc-uVY"/>
-                            <constraint firstItem="Ecc-yt-zMp" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OAg-EQ-flh"/>
-                            <constraint firstItem="nYw-e5-ujU" firstAttribute="top" secondItem="Wpc-2Y-7QM" secondAttribute="bottom" constant="60" id="a0O-bo-Gkv"/>
-                            <constraint firstItem="Wpc-2Y-7QM" firstAttribute="top" secondItem="Ecc-yt-zMp" secondAttribute="bottom" constant="78" id="fC1-62-F28"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nYw-e5-ujU" secondAttribute="bottom" constant="82" id="kQz-Mk-Tdg"/>
-                            <constraint firstItem="Ecc-yt-zMp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="nvl-NX-Zb2"/>
-                            <constraint firstItem="Wpc-2Y-7QM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="o2W-HO-rJS"/>
-                            <constraint firstItem="Wpc-2Y-7QM" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-10.5" id="tML-pz-XN6"/>
-                            <constraint firstItem="nYw-e5-ujU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tdw-vd-Sx0"/>
-                            <constraint firstItem="Wpc-2Y-7QM" firstAttribute="leading" secondItem="nYw-e5-ujU" secondAttribute="leading" id="x41-Vc-g37"/>
+                            <constraint firstItem="y8U-bj-wce" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="SsI-V2-iaQ"/>
+                            <constraint firstItem="y8U-bj-wce" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="tz2-go-gds"/>
+                            <constraint firstItem="y8U-bj-wce" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ujR-xF-pst"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -53,8 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="exchange_logo.png" width="662" height="179"/>
-        <image name="fayetteville_first_logo.jpg" width="660" height="440"/>
-        <image name="sjc_logo.png" width="946" height="356"/>
+        <image name="startup-junkie.png" width="529" height="607"/>
     </resources>
 </document>
