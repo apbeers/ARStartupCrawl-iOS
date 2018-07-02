@@ -23,6 +23,7 @@
 		49269B721FBD9E6400E9C208 /* exchange_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49269B6E1FBD9E6300E9C208 /* exchange_logo.png */; };
 		49269B731FBD9E6400E9C208 /* fayetteville_first_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49269B6F1FBD9E6300E9C208 /* fayetteville_first_logo.jpg */; };
 		49269B741FBD9E6400E9C208 /* sjc_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49269B701FBD9E6300E9C208 /* sjc_logo.png */; };
+		49328B5120EAE4120039EA71 /* DistanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */; };
 		49419C351FBD94E000695889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C341FBD94E000695889 /* AppDelegate.swift */; };
 		49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49419C3D1FBD94E000695889 /* Assets.xcassets */; };
 		49419C4C1FBD94E100695889 /* ar_startup_crawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C4B1FBD94E100695889 /* ar_startup_crawlTests.swift */; };
@@ -43,7 +44,6 @@
 		49EE607A2005B3A9001CB6AA /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6064200571E0001CB6AA /* DataKit.swift */; };
 		49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607C2005B3F7001CB6AA /* StartupManager.swift */; };
 		49EE607F2005B6DF001CB6AA /* AnnouncementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */; };
-		49EE60832005DED8001CB6AA /* DistanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE60822005DED8001CB6AA /* DistanceInterfaceController.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		7B67AA344FE00FBD85E6F6F6 /* Pods_ar_startup_crawlUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432F464C9E08536554B9C64 /* Pods_ar_startup_crawlUITests.framework */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
@@ -139,6 +139,7 @@
 		49269B6E1FBD9E6300E9C208 /* exchange_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_logo.png; sourceTree = "<group>"; };
 		49269B6F1FBD9E6300E9C208 /* fayetteville_first_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fayetteville_first_logo.jpg; sourceTree = "<group>"; };
 		49269B701FBD9E6300E9C208 /* sjc_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sjc_logo.png; sourceTree = "<group>"; };
+		49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceInterfaceController.swift; sourceTree = "<group>"; };
 		49419C311FBD94E000695889 /* ar-startup-crawl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ar-startup-crawl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49419C341FBD94E000695889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49419C3D1FBD94E000695889 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,7 +171,6 @@
 		49EE606C20059403001CB6AA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		49EE607C2005B3F7001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementManager.swift; sourceTree = "<group>"; };
-		49EE60822005DED8001CB6AA /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DistanceInterfaceController.swift; path = "/Users/andrew/XcodeProjects/ar-startup-crawl/watch Extension/DistanceInterfaceController.swift"; sourceTree = "<absolute>"; };
 		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		55D387BB06B4926BF67B361A /* Pods-watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
@@ -328,10 +328,10 @@
 		4986F57820055FDE00FA0B7D /* watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */,
 				49EE601C20056760001CB6AA /* watch Extension.entitlements */,
 				4986F57920055FDE00FA0B7D /* StartupsInterfaceController.swift */,
 				49EE6014200561E7001CB6AA /* StartupRow.swift */,
-				49EE60822005DED8001CB6AA /* DistanceInterfaceController.swift */,
 				4986F57B20055FDE00FA0B7D /* ExtensionDelegate.swift */,
 				4986F57D20055FDE00FA0B7D /* Assets.xcassets */,
 				4986F57F20055FDE00FA0B7D /* Info.plist */,
@@ -406,8 +406,6 @@
 				49419C431FBD94E100695889 /* Sources */,
 				49419C441FBD94E100695889 /* Frameworks */,
 				49419C451FBD94E100695889 /* Resources */,
-				4448C2C3F706885519A7A61C /* [CP] Embed Pods Frameworks */,
-				6A070E9166153C3AE58A6057 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -427,8 +425,6 @@
 				49419C4E1FBD94E100695889 /* Sources */,
 				49419C4F1FBD94E100695889 /* Frameworks */,
 				49419C501FBD94E100695889 /* Resources */,
-				C48020988E5EF94C8CB1E9F1 /* [CP] Embed Pods Frameworks */,
-				F51A8C16D187D8BDC30BA7A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -467,7 +463,6 @@
 				4986F57120055FDE00FA0B7D /* Frameworks */,
 				4986F57220055FDE00FA0B7D /* Resources */,
 				F85F9A4C5C7473D344065B54 /* [CP] Embed Pods Frameworks */,
-				8CE6F8330FB2DBEE7D9D3333 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -660,36 +655,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4448C2C3F706885519A7A61C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawlTests/Pods-ar-startup-crawlTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6A070E9166153C3AE58A6057 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawlTests/Pods-ar-startup-crawlTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		73CF98F01CCA065F6A4A0DD4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -706,21 +671,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8CE6F8330FB2DBEE7D9D3333 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55C4086171B00A28C41AE35 /* [CP] Embed Pods Frameworks */ = {
@@ -765,36 +715,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C48020988E5EF94C8CB1E9F1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F51A8C16D187D8BDC30BA7A0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ar-startup-crawlUITests/Pods-ar-startup-crawlUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F85F9A4C5C7473D344065B54 /* [CP] Embed Pods Frameworks */ = {
@@ -866,7 +786,7 @@
 			files = (
 				49EE606D20059403001CB6AA /* DataManager.swift in Sources */,
 				49EE6015200561E7001CB6AA /* StartupRow.swift in Sources */,
-				49EE60832005DED8001CB6AA /* DistanceInterfaceController.swift in Sources */,
+				49328B5120EAE4120039EA71 /* DistanceInterfaceController.swift in Sources */,
 				49596F8A2006E8700049A81F /* Model.xcdatamodeld in Sources */,
 				49596F8C2006E8960049A81F /* DataKit.swift in Sources */,
 				4986F57C20055FDE00FA0B7D /* ExtensionDelegate.swift in Sources */,
