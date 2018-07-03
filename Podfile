@@ -6,7 +6,6 @@ use_frameworks!
     platform :ios, '11.0'
     pod 'GoogleMaps'
     pod 'Firebase/Core'
-    pod 'Firebase/Messaging'
     pod 'SwiftyJSON'
     pod 'Alamofire'
   end
@@ -18,16 +17,5 @@ use_frameworks!
       pod 'EMTLoadingIndicator'
   end
 
-  target 'ar-startup-crawlTests' do
-    platform :ios, '11.0'
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'ar-startup-crawlUITests' do
-    platform :ios, '11.0'
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 

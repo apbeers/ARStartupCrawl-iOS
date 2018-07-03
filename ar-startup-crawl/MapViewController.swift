@@ -39,17 +39,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         }
         
         mapView.settings.myLocationButton = true
-        
-        do {
-            // Set the map style by passing the URL of the local file.
-            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
-                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-            } else {
-                NSLog("Unable to find style.json")
-            }
-        } catch {
-            NSLog("One or more of the map styles failed to load. \(error)")
-        }
 
         let screenSize = UIScreen.main.bounds
         let width = screenSize.width
@@ -81,7 +70,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: startup.latitude, longitude: startup.longitude))
             marker.title = startup.title
             marker.snippet = startup.snippet + "                                                                                                                     Tap For Directrions▶"
-            //marker.icon = #imageLiteral(resourceName: "yellow_map_marker.png")
+            marker.icon = UIImage(named: "yellow_map_marker.png")
             marker.map = self.mapView
             
             bounds = bounds.includingCoordinate(marker.position)

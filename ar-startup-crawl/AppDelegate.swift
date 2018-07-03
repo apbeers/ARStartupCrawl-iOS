@@ -8,16 +8,13 @@
 import UIKit
 import GoogleMaps
 import Firebase
-import UserNotifications
-import FirebaseMessaging
 import CoreData
 import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let announcementManager = AnnouncementManager.sharedInstance
     let gcmMessageIDKey = "gcm.message_id"
     var watchConnectivityHandler: WatchConnectivityHandler?
     
@@ -25,30 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         GMSServices.provideAPIKey("AIzaSyDPJJiHZXPz1OW2ihD_WEIkOaF63a6s3IE")
-        UIApplication.shared.registerForRemoteNotifications()
+
         FirebaseApp.configure()
-        
-        Messaging.messaging().delegate = self
-        Messaging.messaging().shouldEstablishDirectChannel = true
+  
         
         if WCSession.isSupported () {
             self.watchConnectivityHandler = WatchConnectivityHandler()
         } else {
             NSLog("WCSession not supported (fe on iPad).")
-        }
-        
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
         }
 
         return true
@@ -89,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("Message ID: \(messageID)")
         }
         
-        watchConnectivityHandler?.announcementsUpdated()
+  
         
         // Print full message.
         print(userInfo)
@@ -105,31 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         
         // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        
-        guard let aps = userInfo[AnyHashable("aps")] as? NSDictionary else {
-            return
-        }
-        guard let alert = aps["alert"] as? NSDictionary else {
-            return
-        }
-        
-        guard
-            let body = alert["body"] as? String,
-            let title = alert["title"] as? String
-            else {
-                return
-        }
-
-        announcementManager.addAnnouncement(title: title, body: body)
-        
-        print(userInfo)
-        
-        
-        completionHandler(UIBackgroundFetchResult.newData)
-        watchConnectivityHandler?.announcementsUpdated()
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -174,20 +130,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
     }
-}
-
-extension AppDelegate : MessagingDelegate {
-    // [START refresh_token]
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Firebase registration token: \(fcmToken)")
-    }
-    // [END refresh_token]
-    // [START ios_10_data_message]
-    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
-    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("Received data message: \(remoteMessage.appData)")
-    }
-    // [END ios_10_data_message]
-    
 }
