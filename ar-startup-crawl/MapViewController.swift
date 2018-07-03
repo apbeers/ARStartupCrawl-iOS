@@ -80,7 +80,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: startup.latitude, longitude: startup.longitude))
             marker.title = startup.title
-            marker.snippet = startup.snippet + "                                          Tap For Directrions▶"
+            marker.snippet = startup.snippet + "                                                                                                                     Tap For Directrions▶"
             //marker.icon = #imageLiteral(resourceName: "yellow_map_marker.png")
             marker.map = self.mapView
             
