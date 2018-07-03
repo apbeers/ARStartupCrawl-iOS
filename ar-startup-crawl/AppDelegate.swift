@@ -178,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
-    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
     }
     // [END refresh_token]
