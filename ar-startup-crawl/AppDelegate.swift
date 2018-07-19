@@ -9,10 +9,12 @@ import UIKit
 import GoogleMaps
 import Firebase
 import CoreData
+import UserNotifications
+import FirebaseMessaging
 import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
@@ -22,9 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         GMSServices.provideAPIKey("AIzaSyDPJJiHZXPz1OW2ihD_WEIkOaF63a6s3IE")
-
+        UIApplication.shared.registerForRemoteNotifications()
         FirebaseApp.configure()
   
+        Messaging.messaging().delegate = self
+        Messaging.messaging().shouldEstablishDirectChannel = true
         
         if WCSession.isSupported () {
             self.watchConnectivityHandler = WatchConnectivityHandler()
@@ -32,6 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("WCSession not supported (fe on iPad).")
         }
 
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+
+        
         return true
     }
     
@@ -131,3 +150,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
+
+extension AppDelegate : MessagingDelegate {
+    // [START refresh_token]
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+    }
+    // [END refresh_token]
+    // [START ios_10_data_message]
+    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
+    }
+    // [END ios_10_data_message]
+    
+}
+
