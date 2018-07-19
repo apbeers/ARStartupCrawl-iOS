@@ -24,18 +24,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.title! {
-        case "Map":
-            UIApplication.shared.statusBarStyle = .lightContent
-        case "Startups":
-            UIApplication.shared.statusBarStyle = .default
-        case "Announcements":
-            
-            UIApplication.shared.statusBarStyle = .default
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        default:
-            break
-        }
+        UIApplication.shared.statusBarStyle = .default
         
         guard let title: String = item.title else {
             return
