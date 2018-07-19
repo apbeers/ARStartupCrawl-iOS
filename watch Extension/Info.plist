@@ -32,8 +32,6 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>List startups by distance from you</string>
-	<key>UIBackgroundModes</key>
-	<array/>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 </dict>

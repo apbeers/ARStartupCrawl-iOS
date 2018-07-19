@@ -6,6 +6,7 @@ use_frameworks!
     platform :ios, '11.0'
     pod 'GoogleMaps'
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     pod 'SwiftyJSON'
     pod 'Alamofire'
   end
