@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4920F74F210028C400AA5ADE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4920F74E210028C400AA5ADE /* WebKit.framework */; };
 		49269B4D1FBD9DB000E9C208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49269B4C1FBD9DAF00E9C208 /* Main.storyboard */; };
 		49269B4F1FBD9DCA00E9C208 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */; };
 		49269B5F1FBD9E3200E9C208 /* Constants+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */; };
@@ -41,6 +42,7 @@
 		49EE607A2005B3A9001CB6AA /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE6064200571E0001CB6AA /* DataKit.swift */; };
 		49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607C2005B3F7001CB6AA /* StartupManager.swift */; };
 		49EE607F2005B6DF001CB6AA /* AnnouncementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */; };
+		49F006822102A57600D63784 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F006812102A57600D63784 /* SponsorsViewController.swift */; };
 		49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */; };
 		83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */; };
 		E8EAD8199454D1232B8D7ACD /* Pods_watch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72A45478055C485108515A3 /* Pods_watch_Extension.framework */; };
@@ -118,6 +120,7 @@
 		43DE8DE57E6F31008D04A0F5 /* Pods-watch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ar_startup_crawlTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49061CD51FCDE38D003EC691 /* ar-startup-crawl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ar-startup-crawl.entitlements"; sourceTree = "<group>"; };
+		4920F74E210028C400AA5ADE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		49269B4C1FBD9DAF00E9C208 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		49269B4E1FBD9DCA00E9C208 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constants+Analytics.swift"; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		49EE606C20059403001CB6AA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		49EE607C2005B3F7001CB6AA /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementManager.swift; sourceTree = "<group>"; };
+		49F006812102A57600D63784 /* SponsorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorsViewController.swift; sourceTree = "<group>"; };
 		49F0B3BB1FDB84410075E4CE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		55D387BB06B4926BF67B361A /* Pods-watch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watch Extension/Pods-watch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		59470A20611446C78D684467 /* Pods-ar-startup-crawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ar-startup-crawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-ar-startup-crawl/Pods-ar-startup-crawl.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4920F74F210028C400AA5ADE /* WebKit.framework in Frameworks */,
 				83FAB913E6207EAE303C4D3A /* Pods_ar_startup_crawl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +249,7 @@
 		49419C331FBD94E000695889 /* ar-startup-crawl */ = {
 			isa = PBXGroup;
 			children = (
+				49F006812102A57600D63784 /* SponsorsViewController.swift */,
 				4948FDD620EC0E9E00374EB0 /* yellow_map_marker.png */,
 				4948FDD820EC10D600374EB0 /* startup-junkie.png */,
 				49F0B3BA1FDB84410075E4CE /* Model.xcdatamodeld */,
@@ -334,6 +340,7 @@
 		AAA014E38CC788EB6BD82363 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4920F74E210028C400AA5ADE /* WebKit.framework */,
 				49EE606B200578CE001CB6AA /* SwiftyJSON.framework */,
 				A95ED57B0A72226235C9CFC2 /* Pods_ar_startup_crawl.framework */,
 				466D573135EE48AE8A7B3E5E /* Pods_ar_startup_crawlTests.framework */,
@@ -696,6 +703,7 @@
 				49269B641FBD9E3200E9C208 /* UpdatesTableViewController.swift in Sources */,
 				49269B6B1FBD9E3200E9C208 /* MapViewController.swift in Sources */,
 				49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */,
+				49F006822102A57600D63784 /* SponsorsViewController.swift in Sources */,
 				49269B681FBD9E3200E9C208 /* Constants.swift in Sources */,
 				49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */,
 			);

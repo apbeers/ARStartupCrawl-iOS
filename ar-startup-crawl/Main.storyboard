@@ -115,14 +115,41 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="27t-31-6Id" kind="relationship" relationship="viewControllers" id="1ya-YU-MZB"/>
+                        <segue destination="iX3-z4-eRy" kind="relationship" relationship="viewControllers" id="joP-vE-0qh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--Sponsors-->
+        <scene sceneID="g2A-b8-Bwz">
+            <objects>
+                <viewController id="iX3-z4-eRy" customClass="SponsorsViewController" customModule="ar_startup_crawl" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AQF-3D-RMv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2K-E0-TeN">
+                                <rect key="frame" x="166" y="323" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zfy-V5-6pQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sponsors" image="ic_info" selectedImage="ic_info" id="JdU-vJ-EIa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTy-ET-qXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1" y="834"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ic_info" width="24" height="24"/>
         <image name="ic_map" width="24" height="24"/>
         <image name="ic_store" width="24" height="24"/>
     </resources>
