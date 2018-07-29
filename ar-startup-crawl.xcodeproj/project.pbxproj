@@ -27,6 +27,8 @@
 		4948FDD920EC10D600374EB0 /* startup-junkie.png in Resources */ = {isa = PBXBuildFile; fileRef = 4948FDD820EC10D600374EB0 /* startup-junkie.png */; };
 		49596F8A2006E8700049A81F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49596F882006E8700049A81F /* Model.xcdatamodeld */; };
 		49596F8C2006E8960049A81F /* DataKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49596F8B2006E8960049A81F /* DataKit.swift */; };
+		4965F678210E06BE008960F9 /* RED-26.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4965F677210E06BE008960F9 /* RED-26.pdf */; };
+		4965F67A210E06DA008960F9 /* SponsorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4965F679210E06DA008960F9 /* SponsorsViewController.swift */; };
 		4986F56C20055FDD00FA0B7D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56A20055FDD00FA0B7D /* Interface.storyboard */; };
 		4986F56E20055FDD00FA0B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4986F56D20055FDD00FA0B7D /* Assets.xcassets */; };
 		4986F57520055FDE00FA0B7D /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4986F57420055FDE00FA0B7D /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -146,6 +148,8 @@
 		4948FDD820EC10D600374EB0 /* startup-junkie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startup-junkie.png"; sourceTree = "<group>"; };
 		49596F892006E8700049A81F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		49596F8B2006E8960049A81F /* DataKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKit.swift; sourceTree = "<group>"; };
+		4965F677210E06BE008960F9 /* RED-26.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "RED-26.pdf"; sourceTree = "<group>"; };
+		4965F679210E06DA008960F9 /* SponsorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorsViewController.swift; sourceTree = "<group>"; };
 		4986F56820055FDD00FA0B7D /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4986F56B20055FDD00FA0B7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		4986F56D20055FDD00FA0B7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -255,10 +259,12 @@
 				49EE607C2005B3F7001CB6AA /* StartupManager.swift */,
 				49EE607E2005B6DF001CB6AA /* AnnouncementManager.swift */,
 				49EE6064200571E0001CB6AA /* DataKit.swift */,
+				4965F677210E06BE008960F9 /* RED-26.pdf */,
 				49269B5A1FBD9E2F00E9C208 /* Constants.swift */,
 				49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */,
 				49269B581FBD9E2E00E9C208 /* Extensions.swift */,
 				49269B5D1FBD9E3100E9C208 /* MapViewController.swift */,
+				4965F679210E06DA008960F9 /* SponsorsViewController.swift */,
 				49269B541FBD9E2C00E9C208 /* StartupsTableViewController.swift */,
 				49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */,
 				49269B551FBD9E2C00E9C208 /* StartupTableViewCell.swift */,
@@ -536,6 +542,7 @@
 			files = (
 				49269B4F1FBD9DCA00E9C208 /* LaunchScreen.storyboard in Resources */,
 				49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */,
+				4965F678210E06BE008960F9 /* RED-26.pdf in Resources */,
 				49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */,
 				4948FDD920EC10D600374EB0 /* startup-junkie.png in Resources */,
 				49EE8EBF2102B8B800D5025A /* logo.png in Resources */,
@@ -700,6 +707,7 @@
 				49269B641FBD9E3200E9C208 /* UpdatesTableViewController.swift in Sources */,
 				49269B6B1FBD9E3200E9C208 /* MapViewController.swift in Sources */,
 				49EE607D2005B3F8001CB6AA /* StartupManager.swift in Sources */,
+				4965F67A210E06DA008960F9 /* SponsorsViewController.swift in Sources */,
 				49269B681FBD9E3200E9C208 /* Constants.swift in Sources */,
 				49F0B3BC1FDB84410075E4CE /* Model.xcdatamodeld in Sources */,
 			);
