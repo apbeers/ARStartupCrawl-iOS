@@ -22,6 +22,7 @@
 		49269B6B1FBD9E3200E9C208 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49269B5D1FBD9E3100E9C208 /* MapViewController.swift */; };
 		49328B5120EAE4120039EA71 /* DistanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */; };
 		493C8630210DFFDE00B91FBA /* RED-26.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 493C862F210DFFDE00B91FBA /* RED-26.pdf */; };
+		493C8632210E01BC00B91FBA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 493C8631210E01BC00B91FBA /* logo.png */; };
 		49419C351FBD94E000695889 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C341FBD94E000695889 /* AppDelegate.swift */; };
 		49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49419C3D1FBD94E000695889 /* Assets.xcassets */; };
 		49419C4C1FBD94E100695889 /* ar_startup_crawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49419C4B1FBD94E100695889 /* ar_startup_crawlTests.swift */; };
@@ -136,6 +137,7 @@
 		49269B5D1FBD9E3100E9C208 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		49328B5020EAE4120039EA71 /* DistanceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceInterfaceController.swift; sourceTree = "<group>"; };
 		493C862F210DFFDE00B91FBA /* RED-26.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "RED-26.pdf"; sourceTree = "<group>"; };
+		493C8631210E01BC00B91FBA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		49419C311FBD94E000695889 /* ar-startup-crawl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ar-startup-crawl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49419C341FBD94E000695889 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49419C3D1FBD94E000695889 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				49269B511FBD9E2A00E9C208 /* Constants+Analytics.swift */,
 				49269B581FBD9E2E00E9C208 /* Extensions.swift */,
 				49269B5D1FBD9E3100E9C208 /* MapViewController.swift */,
+				493C8631210E01BC00B91FBA /* logo.png */,
 				49269B541FBD9E2C00E9C208 /* StartupsTableViewController.swift */,
 				49A754981FCDEC50009D8A27 /* GoogleService-Info.plist */,
 				49269B551FBD9E2C00E9C208 /* StartupTableViewCell.swift */,
@@ -545,6 +548,7 @@
 				49A754991FCDEC50009D8A27 /* GoogleService-Info.plist in Resources */,
 				49419C3E1FBD94E000695889 /* Assets.xcassets in Resources */,
 				4948FDD920EC10D600374EB0 /* startup-junkie.png in Resources */,
+				493C8632210E01BC00B91FBA /* logo.png in Resources */,
 				49269B651FBD9E3200E9C208 /* style.json in Resources */,
 				49269B4D1FBD9DB000E9C208 /* Main.storyboard in Resources */,
 				493C8630210DFFDE00B91FBA /* RED-26.pdf in Resources */,

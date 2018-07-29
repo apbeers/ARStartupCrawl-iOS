@@ -18,7 +18,7 @@ class SponsorsViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
 
         let width = screenSize.width
-        let height = screenSize.height - 69
+        let height = screenSize.height
         var frame = CGRect(x: 0, y: 0, width: width, height: height)
         
         frame = CGRect(x: 0.0, y: view.safeAreaInsets.top , width: width, height: height - view.safeAreaInsets.top - view.safeAreaInsets.bottom)
