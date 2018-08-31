@@ -30,6 +30,18 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             return
         }
         
+        switch item.title! {
+        case "Map":
+            UIApplication.shared.statusBarStyle = .default
+        case "Startups":
+            UIApplication.shared.statusBarStyle = .default
+        case "Sponsors":
+            UIApplication.shared.statusBarStyle = .lightContent
+        default:
+            break
+        }
+
+        
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
             AnalyticsParameterItemID: title as NSObject,
             AnalyticsParameterContentType: Constants.Analytics.TabSelected as NSObject

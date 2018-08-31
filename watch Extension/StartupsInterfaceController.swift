@@ -112,7 +112,11 @@ class StartupsInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         for i in 0 ..< startups.count {
             
             let words = startups[i].brewery.components(separatedBy: " ")
-            startups[i].brewery = words[0] + " " + words[1]
+            if words.count > 1 {
+                startups[i].brewery = words[0] + " " + words[1]
+            } else {
+                startups[i].brewery = words[0]
+            }
         }
         
         switch currentSortType {
