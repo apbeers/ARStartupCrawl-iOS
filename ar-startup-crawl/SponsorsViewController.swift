@@ -29,7 +29,7 @@ class SponsorsViewController: UIViewController, WKNavigationDelegate {
         
         view.addSubview(webView)
         
-        let fileName = "RED-26"
+        let fileName = "sponsors"
         guard let pdf = Bundle.main.url(forResource: fileName , withExtension: "pdf") else {
             return
         }

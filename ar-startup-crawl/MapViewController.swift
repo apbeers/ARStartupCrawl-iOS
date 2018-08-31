@@ -74,7 +74,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             marker.map = self.mapView
             
             bounds = bounds.includingCoordinate(marker.position)
-            let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
+            let update = GMSCameraUpdate.fit(bounds, withPadding: 80)
             mapView.animate(with: update)
         }
     }
